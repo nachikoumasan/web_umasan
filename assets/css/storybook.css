@@ -13,7 +13,7 @@ body{background:var(--cream);color:var(--ink)}
 .hero-character{right:20%;bottom:auto;top:26px;width:190px;max-width:none;z-index:2}
 .hero-character>p{font-size:14px;letter-spacing:.14em;text-shadow:0 0 8px #fff;transform:rotate(-8deg)}
 .hero-footnote{right:2%;bottom:45px}
-.page-content{position:relative;background-image:url('assets/ornament.webp'),url('assets/ornament.webp'),url('assets/ornament.webp');background-repeat:no-repeat;background-position:left 130px,left 1200px,left 2500px;background-size:150px auto;padding-inline:4.8%}
+.page-content{position:relative;background-image:url('../../media/ornament.webp'),url('../../media/ornament.webp'),url('../../media/ornament.webp');background-repeat:no-repeat;background-position:left 130px,left 1200px,left 2500px;background-size:150px auto;padding-inline:4.8%}
 .section{padding-block:36px;isolation:isolate}
 .section-heading{margin-bottom:22px}
 .section-heading h2{font-size:25px;gap:12px}
@@ -44,7 +44,7 @@ body{background:var(--cream);color:var(--ink)}
 .section-heading p{max-width:760px}
 
 .archive-postcard{margin-top:10px}
-.travel-note{background:#f5e7cf url('assets/ornament.webp') left bottom/110px auto no-repeat;border:1px solid #dfc8a2;padding:18px 20px;width:210px;font-size:13px}
+.travel-note{background:#f5e7cf url('../../media/ornament.webp') left bottom/110px auto no-repeat;border:1px solid #dfc8a2;padding:18px 20px;width:210px;font-size:13px}
 .life-shop-grid{gap:28px}
 .compact-section h2{font-size:22px;gap:10px}
 .compact-section .section-heading p{font-size:12px;margin-left:58px}.stamp-nav{width:36px;height:36px;opacity:1;font-size:23px;box-shadow:0 1px 5px #49322620}
@@ -61,7 +61,7 @@ body{background:var(--cream);color:var(--ink)}
 .history .memories li{width:calc(25% - 14px)}
 .memories span{font-size:11px}
 .memories strong{font-size:12px}
-footer{background:#fffaf0 url('assets/ornament.webp') center bottom/100% auto no-repeat;padding-bottom:65px}
+footer{background:#fffaf0 url('../../media/ornament.webp') center bottom/100% auto no-repeat;padding-bottom:65px}
 .footer-main{padding-block:30px}
 .about-copy{font-size:12px}
 .social-links a{min-height:44px;font-size:11px}
@@ -245,7 +245,7 @@ body.video-open{overflow:hidden}
 .news-strip{margin-top:16px}
 
 /* フッター：風景は上段だけに敷き、下段は無地。半透明の帯をやめる */
-footer{background:#fffaf0 url('assets/ornament.webp') center bottom/100% auto no-repeat;padding-bottom:96px}
+footer{background:#fffaf0 url('../../media/ornament.webp') center bottom/100% auto no-repeat;padding-bottom:96px}
 .footer-main{padding-block:24px;background:#fffaf0}
 .footer-bottom{background:#fffaf0;border-top:1px solid var(--line);padding:11px 0 14px;font-size:10px}
 

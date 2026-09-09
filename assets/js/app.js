@@ -60,7 +60,7 @@ filterList.addEventListener('click', event => {
 renderExperiences();
 
 // noteのマガジンから自動取得した記事があれば差し替える。
-// 取得できないときは data/content.js の内容をそのまま使う。
+// 取得できないときは assets/js/content.js の内容をそのまま使う。
 fetch('data/articles-auto.json', {cache: 'no-cache'})
   .then(response => (response.ok ? response.json() : Promise.reject(response.status)))
   .then(auto => {
@@ -68,8 +68,8 @@ fetch('data/articles-auto.json', {cache: 'no-cache'})
     const notes = window.UMASAN_ARTICLE_NOTES || {};
     const images = new Map(content.experiences.map(item => [item.url, item.image]));
     experiences = auto.experiences.map(item => {
-      // タイトルと紹介文を上書きできるのは data/article-notes.js だけ。
-      // data/content.js は画像が取れなかったときの予備としてのみ使う。
+      // タイトルと紹介文を上書きできるのは assets/js/article-notes.js だけ。
+      // assets/js/content.js は画像が取れなかったときの予備としてのみ使う。
       const manual = notes[item.url] || {};
       return {
         genre: item.genre,
@@ -120,7 +120,7 @@ if (historyList) {
     const rows = content.history.filter(item => item.year === year).map(item => {
       const label = `<span class="history-tag" data-cat="${escapeHTML(item.category)}">${escapeHTML(item.category)}</span><span class="history-title">${escapeHTML(item.title)}</span>`;
       const line = item.url
-        ? `<a class="history-line" href="${escapeHTML(item.url)}" ${external}>${label}<img class="history-arrow ext ui-icon" src="assets/ui-external.svg" alt=""></a>`
+        ? `<a class="history-line" href="${escapeHTML(item.url)}" ${external}>${label}<img class="history-arrow ext ui-icon" src="media/ui-external.svg" alt=""></a>`
         : `<span class="history-line">${label}<span class="history-arrow" aria-hidden="true"></span></span>`;
       return `<li>${line}</li>`;
     }).join('');
@@ -141,7 +141,7 @@ document.querySelectorAll('[data-carousel]').forEach(root => {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   dots.innerHTML = slides.map((slide, i) =>
-    `<button type="button" aria-label="${escapeHTML(slide.alt || slide.getAttribute('aria-label'))}" aria-pressed="${i === 0}" data-index="${i}"${slide.matches('.video-card') ? ' class="video-dot"' : ''}>${slide.matches('.video-card') ? '<img class="ui-icon" src="assets/ui-play.svg" alt="">' : ''}</button>`).join('');
+    `<button type="button" aria-label="${escapeHTML(slide.alt || slide.getAttribute('aria-label'))}" aria-pressed="${i === 0}" data-index="${i}"${slide.matches('.video-card') ? ' class="video-dot"' : ''}>${slide.matches('.video-card') ? '<img class="ui-icon" src="media/ui-play.svg" alt="">' : ''}</button>`).join('');
 
   function go(next, user) {
     index = (next + slides.length) % slides.length;
@@ -205,7 +205,7 @@ videoItems.forEach(item => {
   button.type = 'button';
   button.className = 'video-card';
   // サムネイルはYouTubeのものを使い、取得できない場合は無地に再生マークだけを出す。
-  button.innerHTML = `<span class="video-thumb"><img src="https://i.ytimg.com/vi/${item.id}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="video-play" aria-hidden="true"><img class="ui-icon" src="assets/ui-play.svg" alt=""></span></span><span class="video-meta"><strong>${item.label}</strong><small>${item.duration}</small></span>`;
+  button.innerHTML = `<span class="video-thumb"><img src="https://i.ytimg.com/vi/${item.id}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="video-play" aria-hidden="true"><img class="ui-icon" src="media/ui-play.svg" alt=""></span></span><span class="video-meta"><strong>${item.label}</strong><small>${item.duration}</small></span>`;
   button.querySelector('img').addEventListener('error', event => event.target.remove());
   button.setAttribute('aria-haspopup', 'dialog');
   button.setAttribute('aria-label', `${item.title}を見る（${item.duration}）`);
@@ -233,7 +233,7 @@ videoItems.forEach(item => {
       const thumb = panel.querySelector('img').cloneNode();
       thumb.alt = '';
       choice.append(thumb);
-      if (index === 0) choice.insertAdjacentHTML('beforeend', '<img class="ui-icon media-play-icon" src="assets/ui-play.svg" alt="">');
+      if (index === 0) choice.insertAdjacentHTML('beforeend', '<img class="ui-icon media-play-icon" src="media/ui-play.svg" alt="">');
       choice.addEventListener('click', () => {
         original.hidden = index !== 1;
         button.hidden = index !== 0;
@@ -247,7 +247,7 @@ videoItems.forEach(item => {
       arrow.type = 'button';
       arrow.className = `gallery-arrow ${index ? 'next' : 'prev'}`;
       arrow.setAttribute('aria-label', label);
-      arrow.innerHTML = `<img class="ui-icon" src="assets/ui-chevron-${index ? 'right' : 'left'}.svg" alt="">`;
+      arrow.innerHTML = `<img class="ui-icon" src="media/ui-chevron-${index ? 'right' : 'left'}.svg" alt="">`;
       arrow.addEventListener('click', () => {
         const next = original.hidden ? 1 : 0;
         choices.querySelectorAll('button')[next].click();

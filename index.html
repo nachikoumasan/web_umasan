@@ -2,6 +2,14 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DMM1X6ECD6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DMM1X6ECD6');
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>旅するうまさん｜体験を探す。作品で遊ぶ。</title>
   <meta name="description" content="うまさんと、次の「やってみたい」を見つけよう。謎解きや没入型アートの体験レポート、無料で遊べる作品、スマホ壁紙やグッズをご紹介します。">
@@ -10,19 +18,19 @@
   <meta property="og:description" content="読む、遊ぶ、いっしょに出かける。小さな冒険の案内役・うまさんと、次の休日やいつもの毎日を楽しむヒントを探しに。">
   <meta property="og:locale" content="ja_JP">
   <meta name="theme-color" content="#fbf6eb">
-  <link rel="icon" href="assets/icon-horseshoe.webp" type="image/webp">
+  <link rel="icon" href="media/icon-horseshoe.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="storybook.css">
-  <link rel="stylesheet" href="journal.css">
-  <link rel="stylesheet" href="playful.css">
-  <link rel="stylesheet" href="dialogs.css">
-  <script src="data/content.js" defer></script>
-  <script src="data/article-notes.js" defer></script>
-  <script src="app.js" defer></script>
-  <script src="playful.js" defer></script>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/storybook.css">
+  <link rel="stylesheet" href="assets/css/journal.css">
+  <link rel="stylesheet" href="assets/css/playful.css">
+  <link rel="stylesheet" href="assets/css/dialogs.css">
+  <script src="assets/js/content.js" defer></script>
+  <script src="assets/js/article-notes.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/playful.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">本文へ進む</a>
@@ -34,7 +42,7 @@
 </header>
 <main id="main">
   <section class="hero" aria-labelledby="hero-title">
-    <img class="hero-landscape" src="assets/hero-umasan.webp" alt="城と湖を見渡す道で、ランタンを掲げて旅へ案内するうまさん" fetchpriority="high" width="1536" height="1024">
+    <img class="hero-landscape" src="media/hero-umasan.webp" alt="城と湖を見渡す道で、ランタンを掲げて旅へ案内するうまさん" fetchpriority="high" width="1536" height="1024">
     <div class="hero-copy"><p class="eyebrow">いつもの毎日に、小さな冒険を。</p><h1 id="hero-title">体験を探す。作品で遊ぶ。<br>うまさんと日常を<br class="mobile-break">少しだけ冒険に。</h1><p class="intro">うまさんは、あなたの日常に小さな冒険を届ける案内役。<br>謎解きやアートの体験レポートを読んだり、オリジナル作品で遊んだり。<br>気になる扉から、次の「やってみたい」を見つけてください。</p><div class="hero-actions"><a class="button primary" href="#play"><span class="journal-icon icon-play" aria-hidden="true"></span>作品で遊ぶ </a><a class="button" href="#discover"><span class="journal-icon icon-compass" aria-hidden="true"></span>体験レポート </a></div></div>
     <div class="hero-character"><p>いつもの景色の、<br>　少し先へ。</p></div>
     <span class="hero-footnote">YOUR NEXT LITTLE ADVENTURE</span>
@@ -52,41 +60,41 @@
       <div class="section-heading"><div><h2 id="discover-title"><span class="journal-icon icon-compass" aria-hidden="true"></span><span>体験レポート</span><small>EXPERIENCE</small></h2><p>次の休日は、物語の中へ。謎解きや没入型アートなど、実際に行ってきた体験の記録です。</p></div><a class="button small" href="https://note.com/nachiko0215" target="_blank" rel="noopener noreferrer">noteで全記事を読む</a></div>
       <h3 class="report-subheading" id="latest-reports-title">最新の体験レポート</h3>
       <div id="articles" class="articles-grid" aria-labelledby="latest-reports-title"></div>
-      <div class="archive-layout"><div class="archive-postcard photo-print"><img src="assets/postcard-new-storybook.webp" alt="湖と城を望む、花の咲く街の小道" loading="lazy"><p>出会う体験が、<br>わたしの世界を、<br>少しずつ広げてくれる。</p><span class="archive-seal"><small class="seal-label">GOOD EXPERIENCES</small><strong>100+</strong><small>and more…</small></span></div><div class="archive-browser"><h3 class="report-subheading" id="genre-reports-title">ジャンルから探す</h3><div class="filter-list" role="group" aria-label="体験のジャンルで絞り込む"></div><p class="archive-note"><span id="archive-label"></span> <span id="result-count" aria-live="polite"></span></p><div id="archive-list" aria-labelledby="genre-reports-title"></div></div><aside class="travel-note"></aside></div>
+      <div class="archive-layout"><div class="archive-postcard photo-print"><img src="media/postcard-new-storybook.webp" alt="湖と城を望む、花の咲く街の小道" loading="lazy"><p>出会う体験が、<br>わたしの世界を、<br>少しずつ広げてくれる。</p><span class="archive-seal"><small class="seal-label">GOOD EXPERIENCES</small><strong>100+</strong><small>and more…</small></span></div><div class="archive-browser"><h3 class="report-subheading" id="genre-reports-title">ジャンルから探す</h3><div class="filter-list" role="group" aria-label="体験のジャンルで絞り込む"></div><p class="archive-note"><span id="archive-label"></span> <span id="result-count" aria-live="polite"></span></p><div id="archive-list" aria-labelledby="genre-reports-title"></div></div><aside class="travel-note"></aside></div>
     </section>
     <div class="life-shop-grid">
-      <section id="with" class="section compact-section" aria-labelledby="with-title"><div class="section-heading"><div><h2 id="with-title"><span class="journal-icon icon-camera" aria-hidden="true"></span><span>壁紙・カメラ</span><small>FREE</small></h2><p>スマホの中でも、旅先でも。うまさんと無料で楽しもう。</p></div></div><div class="mini-grid"><article class="mini-card wallpaper"><div class="product-images phones"><div class="phones-row"><img src="assets/wallpaper-moon.jpg" alt="スマホ壁紙 光る花と月" loading="lazy"><img src="assets/wallpaper-tower.jpg" alt="スマホ壁紙 水鏡と塔" loading="lazy"><img src="assets/wallpaper-gate.jpg" alt="スマホ壁紙 紫陽花の回廊" loading="lazy"><img src="assets/wallpaper-lily.jpg" alt="スマホ壁紙 すずらんと光の門" loading="lazy"></div></div><div class="mini-copy"><h3>スマホ壁紙</h3><p>スマホを開くたび、小さな旅へ。好きな風景を壁紙に。</p><div class="mini-actions"><button type="button" class="button small wallpaper-open" aria-haspopup="dialog" aria-controls="wallpaper-dialog">壁紙を選んで保存 </button></div></div></article><article class="mini-card camera-mini"><div class="stamp-carousel" data-carousel>
+      <section id="with" class="section compact-section" aria-labelledby="with-title"><div class="section-heading"><div><h2 id="with-title"><span class="journal-icon icon-camera" aria-hidden="true"></span><span>壁紙・カメラ</span><small>FREE</small></h2><p>スマホの中でも、旅先でも。うまさんと無料で楽しもう。</p></div></div><div class="mini-grid"><article class="mini-card wallpaper"><div class="product-images phones"><div class="phones-row"><img src="media/wallpaper-moon.jpg" alt="スマホ壁紙 光る花と月" loading="lazy"><img src="media/wallpaper-tower.jpg" alt="スマホ壁紙 水鏡と塔" loading="lazy"><img src="media/wallpaper-gate.jpg" alt="スマホ壁紙 紫陽花の回廊" loading="lazy"><img src="media/wallpaper-lily.jpg" alt="スマホ壁紙 すずらんと光の門" loading="lazy"></div></div><div class="mini-copy"><h3>スマホ壁紙</h3><p>スマホを開くたび、小さな旅へ。好きな風景を壁紙に。</p><div class="mini-actions"><button type="button" class="button small wallpaper-open" aria-haspopup="dialog" aria-controls="wallpaper-dialog">壁紙を選んで保存 </button></div></div></article><article class="mini-card camera-mini"><div class="stamp-carousel" data-carousel>
   <div class="carousel-viewport"><div class="stamp-track" role="group" aria-label="うまさんカメラの作例">
-    <img src="assets/camera-sample-aquarium.jpg" alt="アートアクアリウム展の撮影スポットに立つうまさん" loading="lazy">
-    <img src="assets/camera-sample-castle.jpg" alt="大阪城を背にしたうまさん" loading="lazy">
-    <img src="assets/camera-sample-rose.jpg" alt="バラ園の前に立つうまさん" loading="lazy">
-    <img src="assets/camera-sample-tree.jpg" alt="木の枝の上にのったうまさん" loading="lazy">
+    <img src="media/camera-sample-aquarium.jpg" alt="アートアクアリウム展の撮影スポットに立つうまさん" loading="lazy">
+    <img src="media/camera-sample-castle.jpg" alt="大阪城を背にしたうまさん" loading="lazy">
+    <img src="media/camera-sample-rose.jpg" alt="バラ園の前に立つうまさん" loading="lazy">
+    <img src="media/camera-sample-tree.jpg" alt="木の枝の上にのったうまさん" loading="lazy">
   </div></div>
-  <div class="carousel-controls"><button type="button" class="stamp-nav prev" aria-label="前の写真"><img class="ui-icon" src="assets/ui-chevron-left.svg" alt=""></button><div class="stamp-dots" role="group" aria-label="作例を選ぶ"></div><button type="button" class="stamp-nav next" aria-label="次の写真"><img class="ui-icon" src="assets/ui-chevron-right.svg" alt=""></button></div>
-</div><div class="mini-copy"><h3>うまさんカメラ</h3><p>旅先でも、お散歩でも。うまさんと一緒に記念撮影。</p><div class="mini-actions"><a class="button small" href="umasan-camera.html">うまさんと写真を撮る </a></div></div></article></div></section>
+  <div class="carousel-controls"><button type="button" class="stamp-nav prev" aria-label="前の写真"><img class="ui-icon" src="media/ui-chevron-left.svg" alt=""></button><div class="stamp-dots" role="group" aria-label="作例を選ぶ"></div><button type="button" class="stamp-nav next" aria-label="次の写真"><img class="ui-icon" src="media/ui-chevron-right.svg" alt=""></button></div>
+</div><div class="mini-copy"><h3>うまさんカメラ</h3><p>旅先でも、お散歩でも。うまさんと一緒に記念撮影。</p><div class="mini-actions"><a class="button small" href="contents/umasan-camera.html">うまさんと写真を撮る </a></div></div></article></div></section>
       <section id="shop" class="section compact-section" aria-labelledby="shop-title"><div class="section-heading"><div><h2 id="shop-title"><span class="journal-icon icon-bag" aria-hidden="true"></span><span>スタンプ・グッズ</span><small>SHOP</small></h2><p>会話にも、おでかけにも。お気に入りのうまさんを見つけよう。</p></div></div><div class="mini-grid"><article class="mini-card"><div class="stamp-carousel" data-carousel>
   <div class="carousel-viewport"><div class="stamp-track" role="group" aria-label="LINEスタンプの一覧" aria-live="off">
-    <img src="assets/stamp-umasan.jpg" alt="LINEスタンプ うまさん" loading="lazy">
-    <img src="assets/stamp-umasan2.jpg" alt="LINEスタンプ うまさん2号" loading="lazy">
-    <img src="assets/stamp-umasan3.jpg" alt="LINEスタンプ うまさん3号" loading="lazy">
-    <img src="assets/stamp-merikuri.jpg" alt="LINEスタンプ うまさん メリクリ号" loading="lazy">
-    <img src="assets/stamp-fleming.jpg" alt="LINEスタンプ フレミング左手の法則" loading="lazy">
+    <img src="media/stamp-umasan.jpg" alt="LINEスタンプ うまさん" loading="lazy">
+    <img src="media/stamp-umasan2.jpg" alt="LINEスタンプ うまさん2号" loading="lazy">
+    <img src="media/stamp-umasan3.jpg" alt="LINEスタンプ うまさん3号" loading="lazy">
+    <img src="media/stamp-merikuri.jpg" alt="LINEスタンプ うまさん メリクリ号" loading="lazy">
+    <img src="media/stamp-fleming.jpg" alt="LINEスタンプ フレミング左手の法則" loading="lazy">
   </div></div>
-  <div class="carousel-controls"><button type="button" class="stamp-nav prev" aria-label="前のスタンプ"><img class="ui-icon" src="assets/ui-chevron-left.svg" alt=""></button><div class="stamp-dots" role="group" aria-label="スタンプを選ぶ"></div><button type="button" class="stamp-nav next" aria-label="次のスタンプ"><img class="ui-icon" src="assets/ui-chevron-right.svg" alt=""></button></div>
+  <div class="carousel-controls"><button type="button" class="stamp-nav prev" aria-label="前のスタンプ"><img class="ui-icon" src="media/ui-chevron-left.svg" alt=""></button><div class="stamp-dots" role="group" aria-label="スタンプを選ぶ"></div><button type="button" class="stamp-nav next" aria-label="次のスタンプ"><img class="ui-icon" src="media/ui-chevron-right.svg" alt=""></button></div>
 </div><div class="mini-copy"><h3>LINEスタンプ</h3><p>「ありがとう」も、ごあいさつも。うまさんの表情で伝えよう。</p><div class="mini-actions"><a class="button small" href="https://store.line.me/stickershop/author/114526/ja" target="_blank" rel="noopener noreferrer">スタンプを選ぶ</a></div></div></article><article class="mini-card"><div class="stamp-carousel suzuri-carousel" data-carousel>
   <div class="carousel-viewport"><div class="stamp-track" role="group" aria-label="SUZURIグッズ">
-    <img src="assets/suzuri-hoodie.png" alt="うまさんのパーカー" loading="lazy" width="500" height="500">
-    <img src="assets/suzuri-tshirt.png" alt="うまさんのTシャツ" loading="lazy" width="500" height="500">
-    <img src="assets/suzuri-sticker.png" alt="うまさんのステッカー" loading="lazy" width="500" height="500">
+    <img src="media/suzuri-hoodie.png" alt="うまさんのパーカー" loading="lazy" width="500" height="500">
+    <img src="media/suzuri-tshirt.png" alt="うまさんのTシャツ" loading="lazy" width="500" height="500">
+    <img src="media/suzuri-sticker.png" alt="うまさんのステッカー" loading="lazy" width="500" height="500">
   </div></div>
-  <div class="carousel-controls"><button type="button" class="stamp-nav prev" aria-label="前のグッズ"><img class="ui-icon" src="assets/ui-chevron-left.svg" alt=""></button><div class="stamp-dots" role="group" aria-label="グッズを選ぶ"></div><button type="button" class="stamp-nav next" aria-label="次のグッズ"><img class="ui-icon" src="assets/ui-chevron-right.svg" alt=""></button></div>
+  <div class="carousel-controls"><button type="button" class="stamp-nav prev" aria-label="前のグッズ"><img class="ui-icon" src="media/ui-chevron-left.svg" alt=""></button><div class="stamp-dots" role="group" aria-label="グッズを選ぶ"></div><button type="button" class="stamp-nav next" aria-label="次のグッズ"><img class="ui-icon" src="media/ui-chevron-right.svg" alt=""></button></div>
 </div><div class="mini-copy"><h3>SUZURIグッズ</h3><p>Tシャツやステッカーを、おでかけのおともに。</p><div class="mini-actions"><a class="button small" href="https://suzuri.jp/nachiko0215?sort=sales" target="_blank" rel="noopener noreferrer">グッズを見に行く</a></div></div></article></div></section>
     </div>
     <section id="about" class="section about-section" aria-labelledby="about-title">
       <div class="section-heading"><div><h2 id="about-title"><span class="journal-icon icon-book" aria-hidden="true"></span><span>うまさんについて</span><small>ABOUT</small></h2></div></div>
       <div class="about-layout">
         <div class="about-lead">
-          <img src="assets/about-map.webp" alt="地図を広げて次の旅を考えるうまさん" loading="lazy" width="1254" height="1254">
+          <img src="media/about-map.webp" alt="地図を広げて次の旅を考えるうまさん" loading="lazy" width="1254" height="1254">
           <div>
             <p class="about-summary">うまさんは、あなたの「ちょっと気になる」に寄り添う、小さな冒険の案内役です。謎解きやアートの世界へ出かけたり、写真やグッズで毎日を彩ったり。<strong>日常が少しだけ楽しくなる出会い</strong>を、この場所からお届けします。</p>
             <p>うまさんは2016年、LINEスタンプから生まれました。そこからグループ展やデザインフェスタ、Tシャツやステッカーへと活動が広がっています。いまは、自分で手がかりをたどって遊ぶ<strong>Web探索型の作品</strong>もつくっています。</p>
@@ -99,10 +107,10 @@
           <div id="history-list"></div>
           <div class="memories">
             <ul>
-              <li class="photo-print"><img src="assets/memory-bookcover2017.jpg" alt="三省堂書店名古屋本店に並ぶブックカバー" loading="lazy"><span><strong>つくしのブックカバー展</strong><time datetime="2017">2017</time></span></li>
-              <li class="photo-print"><img src="assets/memory-sakae2017.jpg" alt="なごや栄動物園のうまさんグッズ什器" loading="lazy"><span><strong>なごや栄動物園</strong><time datetime="2017">2017</time></span></li>
-              <li class="photo-print"><img src="assets/memory-suzuri2018.jpg" alt="SUZURIのうまさんTシャツとパーカー" loading="lazy"><span><strong>SUZURIグッズ販売開始</strong><time datetime="2018">2018</time></span></li>
-              <li class="photo-print"><img src="assets/memory-tshirt2018.jpg" alt="つくしのTシャツ展に並ぶTシャツ" loading="lazy"><span><strong>つくしのTシャツ展</strong><time datetime="2018">2018</time></span></li>
+              <li class="photo-print"><img src="media/memory-bookcover2017.jpg" alt="三省堂書店名古屋本店に並ぶブックカバー" loading="lazy"><span><strong>つくしのブックカバー展</strong><time datetime="2017">2017</time></span></li>
+              <li class="photo-print"><img src="media/memory-sakae2017.jpg" alt="なごや栄動物園のうまさんグッズ什器" loading="lazy"><span><strong>なごや栄動物園</strong><time datetime="2017">2017</time></span></li>
+              <li class="photo-print"><img src="media/memory-suzuri2018.jpg" alt="SUZURIのうまさんTシャツとパーカー" loading="lazy"><span><strong>SUZURIグッズ販売開始</strong><time datetime="2018">2018</time></span></li>
+              <li class="photo-print"><img src="media/memory-tshirt2018.jpg" alt="つくしのTシャツ展に並ぶTシャツ" loading="lazy"><span><strong>つくしのTシャツ展</strong><time datetime="2018">2018</time></span></li>
             </ul>
           </div>
         </div>
@@ -110,16 +118,16 @@
     </section>
   </div>
 </main>
-<footer id="site-footer"><div class="footer-main"><a class="brand" href="./"><span class="journal-icon icon-horseshoe" aria-hidden="true"></span><span>旅するうまさん<small>物語の扉を見つける、小さな冒険者。</small></span></a><p class="about-copy">制作・運営：なちこ（<a href="https://x.com/nachiko0215" target="_blank" rel="noopener noreferrer">なちこ＠旅するうまさん</a>）</p><nav class="social-links" aria-label="公式SNS・ショップ"><a href="https://x.com/nachiko0215" target="_blank" rel="noopener noreferrer"><b>X</b></a><a href="https://note.com/nachiko0215" target="_blank" rel="noopener noreferrer"><b>note</b></a><a href="https://www.youtube.com/@TabisuruUmasan" target="_blank" rel="noopener noreferrer"><b>YouTube</b></a><a href="https://www.instagram.com/nachiko0215" target="_blank" rel="noopener noreferrer"><b>Instagram</b></a><a href="https://store.line.me/stickershop/author/114526/ja" target="_blank" rel="noopener noreferrer"><b>LINE</b></a><a href="https://suzuri.jp/nachiko0215?sort=sales" target="_blank" rel="noopener noreferrer"><b>SUZURI</b></a></nav><img class="footer-character" src="assets/footer-umasan.webp" alt="" loading="lazy" width="384" height="384"></div><div class="footer-bottom"><small>© 2026 旅するうまさん</small><a href="#main">ページの先頭へ </a></div><div class="footer-scenery" aria-hidden="true"></div></footer>
+<footer id="site-footer"><div class="footer-main"><a class="brand" href="./"><span class="journal-icon icon-horseshoe" aria-hidden="true"></span><span>旅するうまさん<small>物語の扉を見つける、小さな冒険者。</small></span></a><p class="about-copy">制作・運営：なちこ（<a href="https://x.com/nachiko0215" target="_blank" rel="noopener noreferrer">なちこ＠旅するうまさん</a>）</p><nav class="social-links" aria-label="公式SNS・ショップ"><a href="https://x.com/nachiko0215" target="_blank" rel="noopener noreferrer"><b>X</b></a><a href="https://note.com/nachiko0215" target="_blank" rel="noopener noreferrer"><b>note</b></a><a href="https://www.youtube.com/@TabisuruUmasan" target="_blank" rel="noopener noreferrer"><b>YouTube</b></a><a href="https://www.instagram.com/nachiko0215" target="_blank" rel="noopener noreferrer"><b>Instagram</b></a><a href="https://store.line.me/stickershop/author/114526/ja" target="_blank" rel="noopener noreferrer"><b>LINE</b></a><a href="https://suzuri.jp/nachiko0215?sort=sales" target="_blank" rel="noopener noreferrer"><b>SUZURI</b></a></nav><img class="footer-character" src="media/footer-umasan.webp" alt="" loading="lazy" width="384" height="384"></div><div class="footer-bottom"><small>© 2026 旅するうまさん</small><a href="#main">ページの先頭へ </a></div><div class="footer-scenery" aria-hidden="true"></div></footer>
 <dialog id="wallpaper-dialog" class="wallpaper-dialog" aria-labelledby="wallpaper-title">
 <button type="button" class="image-close" aria-label="壁紙一覧を閉じる">×</button>
 <h2 id="wallpaper-title">お気に入りの壁紙を保存</h2>
 <p>好きな風景を選んで、スマホに保存できます。</p>
 <div class="wallpaper-choices">
-<article><img src="assets/wallpaper-moon.jpg" alt="光る花と月" width="420" height="908" loading="lazy"><h3>光る花と月</h3><a class="button small" href="assets/wallpaper-moon.jpg" download="umasan-wallpaper-moon.jpg" aria-label="光る花と月を保存">保存する</a></article>
-<article><img src="assets/wallpaper-tower.jpg" alt="水鏡と塔" width="420" height="910" loading="lazy"><h3>水鏡と塔</h3><a class="button small" href="assets/wallpaper-tower.jpg" download="umasan-wallpaper-tower.jpg" aria-label="水鏡と塔を保存">保存する</a></article>
-<article><img src="assets/wallpaper-gate.jpg" alt="紫陽花の回廊" width="420" height="910" loading="lazy"><h3>紫陽花の回廊</h3><a class="button small" href="assets/wallpaper-gate.jpg" download="umasan-wallpaper-gate.jpg" aria-label="紫陽花の回廊を保存">保存する</a></article>
-<article><img src="assets/wallpaper-lily.jpg" alt="すずらんと光の門" width="555" height="1200" loading="lazy"><h3>すずらんと光の門</h3><a class="button small" href="assets/wallpaper-lily.jpg" download="umasan-wallpaper-lily.jpg" aria-label="すずらんと光の門を保存">保存する</a></article>
+<article><img src="media/wallpaper-moon.jpg" alt="光る花と月" width="420" height="908" loading="lazy"><h3>光る花と月</h3><a class="button small" href="media/wallpaper-moon.jpg" download="umasan-wallpaper-moon.jpg" aria-label="光る花と月を保存">保存する</a></article>
+<article><img src="media/wallpaper-tower.jpg" alt="水鏡と塔" width="420" height="910" loading="lazy"><h3>水鏡と塔</h3><a class="button small" href="media/wallpaper-tower.jpg" download="umasan-wallpaper-tower.jpg" aria-label="水鏡と塔を保存">保存する</a></article>
+<article><img src="media/wallpaper-gate.jpg" alt="紫陽花の回廊" width="420" height="910" loading="lazy"><h3>紫陽花の回廊</h3><a class="button small" href="media/wallpaper-gate.jpg" download="umasan-wallpaper-gate.jpg" aria-label="紫陽花の回廊を保存">保存する</a></article>
+<article><img src="media/wallpaper-lily.jpg" alt="すずらんと光の門" width="555" height="1200" loading="lazy"><h3>すずらんと光の門</h3><a class="button small" href="media/wallpaper-lily.jpg" download="umasan-wallpaper-lily.jpg" aria-label="すずらんと光の門を保存">保存する</a></article>
 </div>
 <a class="wallpaper-more" href="https://x.com/search?q=%23%E3%81%86%E3%81%BE%E3%81%95%E3%82%93%E3%81%AE%E3%81%84%E3%82%8B%E6%97%A5%E5%B8%B8%20%23%E3%82%B9%E3%83%9E%E3%83%9B%E5%A3%81%E7%B4%99&amp;src=typed_query&amp;f=live" target="_blank" rel="noopener noreferrer">Xでほかの壁紙を見る</a>
 </dialog>

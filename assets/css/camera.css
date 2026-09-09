@@ -19,7 +19,7 @@
 button,.photo-label,.back{border-radius:22px;background:#fffdf8}
 .primary{background:linear-gradient(#745735,#3e2d1f);border-color:#a98550;color:#fff8e8;outline:1px solid #c5a772;outline-offset:-4px;box-shadow:0 2px 5px #38221025}
 .camera-stage{background:#332a24;border-color:#d6c5a9}
-.camera-stage:has(#camera-welcome:not([hidden])){background:#e8dfcb url('assets/hero-umasan.webp') center/cover no-repeat}
+.camera-stage:has(#camera-welcome:not([hidden])){background:#e8dfcb url('../../media/hero-umasan.webp') center/cover no-repeat}
 #camera-welcome{padding:22px 26px;border:1px solid #cbb594;border-radius:12px;background:#fffdf8f2;box-shadow:0 5px 18px #4b382020;max-width:440px;margin:16px}
 #camera-welcome h2{color:#513c26}#camera-welcome .photo-label{display:flex;margin:10px auto 0;width:fit-content}
 .camera-tools{background:#f0e5d3}.tool-panel{background:#fffdf8}

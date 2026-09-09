@@ -4,8 +4,8 @@
 (() => {
   const $ = selector => document.querySelector(selector);
   const socialIcons = {
-    X: 'assets/social-x.svg', note: 'assets/social-note.svg', YouTube: 'assets/social-youtube.svg',
-    Instagram: 'assets/social-instagram.svg', LINE: 'assets/social-line.svg', SUZURI: 'assets/social-suzuri.png'
+    X: 'media/social-x.svg', note: 'media/social-note.svg', YouTube: 'media/social-youtube.svg',
+    Instagram: 'media/social-instagram.svg', LINE: 'media/social-line.svg', SUZURI: 'media/social-suzuri.png'
   };
   document.querySelectorAll('.social-links a').forEach(link => {
     const src = socialIcons[link.querySelector('b')?.textContent];
@@ -14,13 +14,13 @@
     img.width = 24; img.height = 24; link.prepend(img);
   });
   const icons = {
-    star: 'assets/icon-star-color.png',
-    key: 'assets/icon-key-color.png',
-    art: 'assets/icon-art-color.png',
-    book: 'assets/icon-book-color.png',
-    clock: 'assets/icon-clock-color.png',
-    phone: 'assets/icon-phone-color.png',
-    save: 'assets/icon-save-color.png'
+    star: 'media/icon-star-color.png',
+    key: 'media/icon-key-color.png',
+    art: 'media/icon-art-color.png',
+    book: 'media/icon-book-color.png',
+    clock: 'media/icon-clock-color.png',
+    phone: 'media/icon-phone-color.png',
+    save: 'media/icon-save-color.png'
   };
   const icon = name => `<img class="action-icon" src="${icons[name] || icons.star}" alt="" aria-hidden="true" width="28" height="28">`;
   function dialog(id, title, body) {
@@ -76,7 +76,7 @@
   const wallpaper = $('#wallpaper-dialog');
   const preview = document.createElement('div');
   preview.className = 'wallpaper-preview';
-  preview.innerHTML = '<div class="preview-phone" aria-label="壁紙を設定したスマホ画面の見本"><img src="assets/wallpaper-moon.jpg" alt="光る花と月を設定した画面"><div class="phone-clock" aria-hidden="true"><small>うまさんと、小さな旅へ。</small><strong>9:41</strong></div><span class="phone-home" aria-hidden="true"></span></div><div class="preview-copy"><span class="try-eyebrow">YOUR FAVORITE VIEW</span><h3>スマホを開くのが、楽しみに。</h3><p>下の壁紙を選ぶと、画面の見本が切り替わります。</p><p class="wallpaper-selection" aria-live="polite">光る花と月</p><small>時計や端末の枠は見本です。<br>保存される画像には含まれません。</small></div>';
+  preview.innerHTML = '<div class="preview-phone" aria-label="壁紙を設定したスマホ画面の見本"><img src="media/wallpaper-moon.jpg" alt="光る花と月を設定した画面"><div class="phone-clock" aria-hidden="true"><small>うまさんと、小さな旅へ。</small><strong>9:41</strong></div><span class="phone-home" aria-hidden="true"></span></div><div class="preview-copy"><span class="try-eyebrow">YOUR FAVORITE VIEW</span><h3>スマホを開くのが、楽しみに。</h3><p>下の壁紙を選ぶと、画面の見本が切り替わります。</p><p class="wallpaper-selection" aria-live="polite">光る花と月</p><small>時計や端末の枠は見本です。<br>保存される画像には含まれません。</small></div>';
   wallpaper.querySelector('.wallpaper-choices').before(preview);
   wallpaper.querySelectorAll('.wallpaper-choices article').forEach((card, index) => {
     const img = card.querySelector('img');
@@ -111,7 +111,7 @@
   }
   adventure.el.querySelector('.adventure-again').addEventListener('click', chooseAdventure);
   const pick = document.createElement('div'); pick.className = 'note-invite';
-  pick.innerHTML = '<img src="assets/playful-guide.webp" alt="" width="72" height="72" loading="lazy"><p>どれを読むか迷ったら、<br>うまさんにおまかせ。</p>';
+  pick.innerHTML = '<img src="media/playful-guide.webp" alt="" width="72" height="72" loading="lazy"><p>どれを読むか迷ったら、<br>うまさんにおまかせ。</p>';
   $('.travel-note').append(pick);
   addTryButton(pick, '次の冒険を選んでもらう', 'book', b => { chooseAdventure(); adventure.open(b); });
 

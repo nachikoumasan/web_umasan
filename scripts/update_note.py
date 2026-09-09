@@ -233,7 +233,7 @@ def main():
     print("ジャンル:", " / ".join(payload["genres"]))
     missing = [row["url"] for row in unique if not row["summary"]]
     if missing:
-        print(f"注意: 紹介文を作れなかった記事が{len(missing)}件あります。data/article-notes.js で補ってください。")
+        print(f"注意: 紹介文を作れなかった記事が{len(missing)}件あります。assets/js/article-notes.js で補ってください。")
         for url in missing:
             print("  ", url)
 

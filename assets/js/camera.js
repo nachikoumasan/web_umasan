@@ -2,12 +2,12 @@
 const $ = selector => document.querySelector(selector);
 const canvas = $('#camera-canvas'), ctx = canvas.getContext('2d'), video = $('#camera-video');
 const poseData = [
- ['front','いつものうまさん','assets/camera-pose-front.png'],
- ['wave','こんにちは','assets/camera-pose-wave.png'],
- ['sit','ひとやすみ','assets/camera-pose-sit.png'],
- ['side','おさんぽ','assets/camera-pose-side.png'],
- ['lantern','見つけた！','assets/camera-pose-lantern.png'],
- ['back','振り返って','assets/camera-pose-back.png']
+ ['front','いつものうまさん','../media/camera-pose-front.png'],
+ ['wave','こんにちは','../media/camera-pose-wave.png'],
+ ['sit','ひとやすみ','../media/camera-pose-sit.png'],
+ ['side','おさんぽ','../media/camera-pose-side.png'],
+ ['lantern','見つけた！','../media/camera-pose-lantern.png'],
+ ['back','振り返って','../media/camera-pose-back.png']
 ];
 let stream = null, source = null, facing = 'environment', phase = 'idle', animation = 0, photoUrl = null;
 let poseImage = null, poseRequest = 0, capturedBlob = null, busy = false;

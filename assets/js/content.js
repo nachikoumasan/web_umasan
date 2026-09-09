@@ -101,20 +101,20 @@ window.UMASAN_CONTENT = {
                   {
                       "title":  "うまさんカメラ",
                       "cta":  "うまさんと写真を撮る",
-                      "url":  "umasan-camera.html",
+                      "url":  "contents/umasan-camera.html",
                       "type":  "CAMERA",
                       "description":  "いつもの景色で、うまさんと一枚。",
                       "lead":  "スマホのカメラにうまさんを重ねて、記念撮影。お散歩にも、旅の思い出にも。",
                       "meta":  ["無料","登録不要","スマホ"],
                       "genre":  "うまさんと撮れるカメラ",
-                      "image":  "assets/work-camera.webp",
+                      "image":  "media/work-camera.webp",
                       "imageAlt":  "スマホの景色にうまさんを重ねて写真を撮る、うまさんカメラのサービスイメージ",
                       "mediaType": "image",
                       "gallery":  [
-                          {"src":"assets/camera-sample-aquarium.jpg","alt":"アートアクアリウム展の撮影スポットに立つうまさん"},
-                          {"src":"assets/camera-sample-castle.jpg","alt":"大阪城を背にしたうまさん"},
-                          {"src":"assets/camera-sample-rose.jpg","alt":"バラ園の前に立つうまさん"},
-                          {"src":"assets/camera-sample-tree.jpg","alt":"木の枝の上にのったうまさん"}
+                          {"src":"media/camera-sample-aquarium.jpg","alt":"アートアクアリウム展の撮影スポットに立つうまさん"},
+                          {"src":"media/camera-sample-castle.jpg","alt":"大阪城を背にしたうまさん"},
+                          {"src":"media/camera-sample-rose.jpg","alt":"バラ園の前に立つうまさん"},
+                          {"src":"media/camera-sample-tree.jpg","alt":"木の枝の上にのったうまさん"}
                       ]
                   },
                   {
@@ -128,7 +128,7 @@ window.UMASAN_CONTENT = {
                       "lead":  "空を撮ったり、ふと上を見たり。毎日ひとつのお題で、いつもの景色に小さな発見を。",
                       "meta":  ["無料","1日1つ","スマホ・PC"],
                       "genre":  "毎日の挑戦状",
-                      "image":  "assets/work-quest.webp",
+                      "image":  "media/work-quest.webp",
                       "imageAlt":  "ランタンのそばで、星の封蝋の手紙を持つうまさん"
                   }
               ]

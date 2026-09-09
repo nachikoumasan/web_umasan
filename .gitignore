@@ -17,7 +17,7 @@ _original/
 
 # 作業記録・キャラクター正本・画像の生成原本は公開しない。
 # 保管先は creative-ops の projects/tabisuru-umasan/ 配下。
-docs/
+docs/private/
 _assets-source/
 asset-generation-*.json
 assets/*-generation.json

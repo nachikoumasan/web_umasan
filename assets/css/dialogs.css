@@ -2,11 +2,11 @@
 dialog.modal-sheet{padding:0;max-height:90dvh;overflow:hidden;border:1px solid #aa8960;border-radius:12px;background:#fffdf8;color:#493626;box-shadow:0 22px 80px #21180e66}
 dialog.modal-sheet[open]{display:flex;flex-direction:column}
 dialog.modal-sheet::backdrop{background:#241c15bf;backdrop-filter:blur(3px)}
-.modal-sheet .modal-heading{flex:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 20px 13px 58px;border-bottom:3px double #c9b28e;background:#eee2ce url('assets/icon-book-color.png') 18px center/28px auto no-repeat}
+.modal-sheet .modal-heading{flex:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 20px 13px 58px;border-bottom:3px double #c9b28e;background:#eee2ce url('../../media/icon-book-color.png') 18px center/28px auto no-repeat}
 .modal-sheet .modal-heading h2{margin:0;font:600 21px/1.5 var(--serif);letter-spacing:.04em}
 .modal-sheet .modal-close{position:static;inset:auto;flex:0 0 44px;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;margin:0;border:1px solid #bda37e;border-radius:7px;background:#fffdf8;color:#5b422a;font:26px/1 var(--sans);box-shadow:none}
 .modal-sheet .modal-content{position:relative;min-height:0;overflow:auto;overscroll-behavior:contain;padding:20px;background:#fffdf8}
-.modal-sheet .modal-content:before{content:'';position:absolute;left:0;top:0;bottom:0;width:12px;background:url('assets/botanical-border-storybook.webp') left bottom/110px auto no-repeat;pointer-events:none}
+.modal-sheet .modal-content:before{content:'';position:absolute;left:0;top:0;bottom:0;width:12px;background:url('../../media/botanical-border-storybook.webp') left bottom/110px auto no-repeat;pointer-events:none}
 .image-dialog .modal-content:before,.video-dialog .modal-content:before{content:none}
 .modal-sheet .modal-actions{flex:none;max-width:none;width:100%;margin:0;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #d6c3a5;background:#f0e5d3}
 .modal-sheet .modal-actions[hidden]{display:none}

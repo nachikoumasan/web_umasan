@@ -2,16 +2,24 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DMM1X6ECD6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DMM1X6ECD6');
+</script>
 <title>うまさんカメラ｜旅するうまさん</title>
-<link rel="icon" href="assets/icon-horseshoe.webp"><link rel="stylesheet" href="camera.css">
-<script src="camera.js" defer></script>
+<link rel="icon" href="../media/icon-horseshoe.webp"><link rel="stylesheet" href="../assets/css/camera.css">
+<script src="../assets/js/camera.js" defer></script>
 </head>
 <body>
 <main class="camera-app">
-<header class="camera-header"><a class="back" href="index.html" aria-label="旅するうまさんに戻る">←</a><div><h1>うまさんカメラ</h1><p>今日の景色に、小さな冒険を。</p></div><button id="flip" type="button" disabled>前後切替</button></header>
+<header class="camera-header"><a class="back" href="../index.html" aria-label="旅するうまさんに戻る">←</a><div><h1>うまさんカメラ</h1><p>今日の景色に、小さな冒険を。</p></div><button id="flip" type="button" disabled>前後切替</button></header>
 <section class="camera-stage" aria-label="撮影範囲全体のプレビュー">
 <canvas id="camera-canvas" width="1080" height="1440" tabindex="0" aria-label="うまさんをドラッグして移動。矢印キーでも移動できます。" hidden></canvas>
-<div id="camera-welcome"><img src="assets/camera-pose-front.png" alt="リュックとランタンを持ったうまさん"><h2>うまさんと、一枚。</h2><p>写真に入る範囲を、全部見ながら撮影できます。</p><button id="start" class="primary" type="button">カメラを起動</button><label class="photo-label" for="photo-input">写真を選んで楽しむ</label><p class="privacy">写真はこの端末内で合成します。</p></div>
+<div id="camera-welcome"><img src="../media/camera-pose-front.png" alt="リュックとランタンを持ったうまさん"><h2>うまさんと、一枚。</h2><p>写真に入る範囲を、全部見ながら撮影できます。</p><button id="start" class="primary" type="button">カメラを起動</button><label class="photo-label" for="photo-input">写真を選んで楽しむ</label><p class="privacy">写真はこの端末内で合成します。</p></div>
 </section>
 <section class="camera-tools" aria-label="撮影と調整">
 <p id="camera-status" role="status">カメラを起動するか、写真を選んでください。</p>

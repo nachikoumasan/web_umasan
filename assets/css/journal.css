@@ -1,8 +1,8 @@
 /* Illustrated travel journal. Final layer after storybook.css. */
-:root{--journal-art:url('assets/ornament.webp');--paper:#fffaf0;--line:#dcc59d}
+:root{--journal-art:url('../../media/ornament.webp');--paper:#fffaf0;--line:#dcc59d}
 .journal-icon{display:inline-block;flex:0 0 auto;width:48px;height:48px;background-repeat:no-repeat;mix-blend-mode:multiply;vertical-align:middle}
 .journal-icon{background-size:contain;background-position:center}
-.icon-play{background-image:url('assets/icon-play-storybook.webp')}.icon-compass{background-image:url('assets/icon-compass-storybook.webp')}.icon-camera{background-image:url('assets/icon-lantern.png')}.icon-bag{background-image:url('assets/icon-bag-storybook.webp')}.icon-book{background-image:url('assets/icon-book-storybook.webp')}.icon-horseshoe{background-image:url('assets/icon-horseshoe.webp')}
+.icon-play{background-image:url('../../media/icon-play-storybook.webp')}.icon-compass{background-image:url('../../media/icon-compass-storybook.webp')}.icon-camera{background-image:url('../../media/icon-lantern.png')}.icon-bag{background-image:url('../../media/icon-bag-storybook.webp')}.icon-book{background-image:url('../../media/icon-book-storybook.webp')}.icon-horseshoe{background-image:url('../../media/icon-horseshoe.webp')}
 .site-header{gap:18px;background-image:linear-gradient(#fffaf0dc,#fffaf0dc),var(--journal-art);background-size:cover;border-bottom:3px double #d5bc91}
 .brand{gap:7px}.brand>.journal-icon{width:43px;height:43px}
 .site-header nav{gap:14px;font-size:12px}.site-header nav a{display:flex;align-items:center;gap:3px;min-height:44px}
@@ -113,11 +113,11 @@ footer{padding-bottom:96px}
 .section:after{content:'';display:block;position:absolute;z-index:-1;
   width:112px;height:112px;right:1.5%;top:26px;opacity:.09;
   background-repeat:no-repeat;background-size:contain;background-position:center;pointer-events:none}
-#play:after{background-image:url('assets/icon-play-storybook.webp')}
-#discover:after{background-image:url('assets/icon-compass-storybook.webp')}
-#with:after{background-image:url('assets/icon-lantern.png')}
-#shop:after{background-image:url('assets/icon-bag-storybook.webp')}
-#about:after{background-image:url('assets/icon-book-storybook.webp')}
+#play:after{background-image:url('../../media/icon-play-storybook.webp')}
+#discover:after{background-image:url('../../media/icon-compass-storybook.webp')}
+#with:after{background-image:url('../../media/icon-lantern.png')}
+#shop:after{background-image:url('../../media/icon-bag-storybook.webp')}
+#about:after{background-image:url('../../media/icon-book-storybook.webp')}
 
 /* --- 3) 余白を詰めて密度を上げる --- */
 .section{padding-block:32px}
@@ -331,13 +331,13 @@ footer{padding-bottom:64px;background-size:100% 64px}
 /* D) SUZURIの商品写真：白い背景をカードの地になじませる */
 
 /* ============================================================
-   E) アイコンを assets/ の透過素材に差し替え
+   E) アイコンを ../../media/ の透過素材に差し替え
    ============================================================ */
 .journal-icon{mix-blend-mode:normal}
 
 /* ============================================================
    G) 背景の単調さをやわらげる
-   丸い透かしをやめ、assets/botanical-border-storybook.webp を
+   丸い透かしをやめ、../../media/botanical-border-storybook.webp を
    セクションの左右交互の縁飾りに。フッターは遠景で締める。
    ============================================================ */
 .section>*{position:relative;z-index:1}
@@ -345,7 +345,7 @@ footer{padding-bottom:64px;background-size:100% 64px}
   z-index:0;opacity:.5;
   width:min(500px,40vw);height:min(340px,27vw);
   top:auto;bottom:0;left:-12px;right:auto;
-  background-image:url('assets/botanical-border-storybook.webp');
+  background-image:url('../../media/botanical-border-storybook.webp');
   background-size:auto 100%;background-position:left bottom;background-repeat:no-repeat}
 #play:after,#about:after{left:auto;right:-12px;transform:scaleX(-1)}
 #with:after,#shop:after{content:none}
@@ -353,11 +353,11 @@ footer{padding-bottom:64px;background-size:100% 64px}
 .life-shop-grid:after{
   content:'';position:absolute;z-index:0;pointer-events:none;
   left:-12px;bottom:0;width:min(420px,34vw);height:min(290px,23vw);
-  background:url('assets/botanical-border-storybook.webp') left bottom/auto 100% no-repeat;
+  background:url('../../media/botanical-border-storybook.webp') left bottom/auto 100% no-repeat;
   opacity:.42}
 .life-shop-grid>*{position:relative;z-index:1}
 
-footer{background:#fffaf0 url('assets/footer-landscape-storybook.webp') center 88%/cover no-repeat;
+footer{background:#fffaf0 url('../../media/footer-landscape-storybook.webp') center 88%/cover no-repeat;
   padding-bottom:128px}
 @media(max-width:600px){
   footer{padding-bottom:92px;background-position:center 92%}
@@ -372,7 +372,7 @@ footer{background:#fffaf0 url('assets/footer-landscape-storybook.webp') center 8
 @media(max-width:600px){.hero-landscape{object-position:100% 62%}}
 /* 旧アイコン透かしの上書き（IDセレクタで指定されているため） */
 #play:after,#discover:after,#about:after{
-  background-image:url('assets/botanical-border-storybook.webp');
+  background-image:url('../../media/botanical-border-storybook.webp');
   background-size:auto 100%;background-position:left bottom;background-repeat:no-repeat}
 #play:after,#about:after{background-position:left bottom}
 
@@ -443,7 +443,7 @@ footer{background:var(--paper);padding-bottom:0}
 .footer-main,.footer-bottom{background:transparent}
 .footer-scenery{
   height:132px;
-  background:url('assets/footer-landscape-storybook.webp') center 78%/cover no-repeat;
+  background:url('../../media/footer-landscape-storybook.webp') center 78%/cover no-repeat;
   border-top:1px solid #e4d2b1}
 @media(max-width:600px){.footer-scenery{height:88px}}
 
@@ -595,7 +595,7 @@ footer{background:var(--paper);padding-bottom:0}
 }
 
 /* 画像を主役に戻し、カードの古い負の余白・枠線を解除 */
-.icon-news{background-image:url('assets/icon-news.webp')}
+.icon-news{background-image:url('../../media/icon-news.webp')}
 .hero-actions .button>.journal-icon{width:26px;height:26px;flex:0 0 26px;margin:0;filter:none}
 
 /* 商品画像は十分な大きさを確保。操作を画像の下に分離 */
@@ -797,7 +797,7 @@ footer{background:var(--paper);padding-bottom:0}
 
 /* 現行：生成した写真台紙。写真・名称・年は実データを上に配置 */
 .history .memories ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px 16px;padding:0;list-style:none}
-.history .memories li.photo-print{position:relative;display:block;aspect-ratio:4/3;width:auto;height:auto;min-width:0;margin:0;padding:0;background:transparent url('assets/activity-photo-mount.webp') center/100% 100% no-repeat;border:0;border-radius:0;box-shadow:none;transform:none;filter:drop-shadow(0 4px 4px #73532e16)}
+.history .memories li.photo-print{position:relative;display:block;aspect-ratio:4/3;width:auto;height:auto;min-width:0;margin:0;padding:0;background:transparent url('../../media/activity-photo-mount.webp') center/100% 100% no-repeat;border:0;border-radius:0;box-shadow:none;transform:none;filter:drop-shadow(0 4px 4px #73532e16)}
 .history .memories li.photo-print:nth-child(even),.history .memories li.photo-print:nth-child(odd),.history .memories li.photo-print:hover{transform:none}
 .history .memories li.photo-print>img{position:absolute;left:8%;top:11%;width:84%;height:61%;aspect-ratio:auto;object-fit:contain;border:0;border-radius:0;cursor:zoom-in}
 .history .memories li.photo-print>span{position:absolute;left:9%;top:76%;width:72%;height:auto;display:flex;flex-direction:column;gap:3px;margin:0;padding:0;background:none;box-shadow:none;color:#796044;line-height:1.35}
@@ -847,7 +847,7 @@ footer{background:var(--paper);padding-bottom:0}
 /* フッターの風景：上端で切れて見えないよう、紙から徐々に現す */
 #site-footer .footer-scenery{
   position:relative;height:190px;border-top:0;
-  background:url('assets/footer-landscape-storybook.webp') center bottom/cover no-repeat}
+  background:url('../../media/footer-landscape-storybook.webp') center bottom/cover no-repeat}
 #site-footer .footer-scenery:before{
   content:'';position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(var(--paper) 0,#fffaf0e0 22%,#fffaf000 68%)}
