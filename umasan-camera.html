@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>うまさんカメラ｜旅するうまさん</title>
+<link rel="icon" href="assets/icon-horseshoe.webp"><link rel="stylesheet" href="camera.css">
+<script src="camera.js" defer></script>
+</head>
+<body>
+<main class="camera-app">
+<header class="camera-header"><a class="back" href="index.html" aria-label="旅するうまさんに戻る">←</a><div><h1>うまさんカメラ</h1><p>今日の景色に、小さな冒険を。</p></div><button id="flip" type="button" disabled>前後切替</button></header>
+<section class="camera-stage" aria-label="撮影範囲全体のプレビュー">
+<canvas id="camera-canvas" width="1080" height="1440" tabindex="0" aria-label="うまさんをドラッグして移動。矢印キーでも移動できます。" hidden></canvas>
+<div id="camera-welcome"><img src="assets/camera-pose-front.png" alt="リュックとランタンを持ったうまさん"><h2>うまさんと、一枚。</h2><p>写真に入る範囲を、全部見ながら撮影できます。</p><button id="start" class="primary" type="button">カメラを起動</button><label class="photo-label" for="photo-input">写真を選んで楽しむ</label><p class="privacy">写真はこの端末内で合成します。</p></div>
+</section>
+<section class="camera-tools" aria-label="撮影と調整">
+<p id="camera-status" role="status">カメラを起動するか、写真を選んでください。</p>
+<div id="edit-tools" hidden>
+<div class="tool-tabs"><button id="poses-toggle" type="button" aria-expanded="false" aria-controls="poses-panel">うまさんを選ぶ</button><button id="adjust-toggle" type="button" aria-expanded="false" aria-controls="adjust-panel">大きさ・角度</button><button id="reset" type="button">位置を戻す</button></div>
+<div id="poses-panel" class="tool-panel" hidden><div id="pose-list" aria-label="うまさんのポーズ"></div></div>
+<div id="adjust-panel" class="tool-panel" hidden><label>大きさ <input id="size" type="range" min="10" max="90" value="32"><output id="size-value">32%</output></label><label>角度 <input id="rotation" type="range" min="-180" max="180" value="0"><output id="rotation-value">0°</output></label><button id="mirror" type="button" aria-pressed="false">うまさんを左右反転</button></div>
+</div>
+<div class="capture-row"><label class="secondary photo-label" for="photo-input">写真を選ぶ</label><button id="capture" class="primary" type="button" disabled>撮影する</button><button id="retake" type="button" hidden>調整に戻る</button><button id="save" class="primary" type="button" hidden>画像を保存</button><button id="share" type="button" hidden>共有</button></div>
+<p id="save-help" hidden>保存先が表示されたら保存を選んでください。共有画面は端末によって異なります。</p>
+</section>
+</main>
+<input id="photo-input" type="file" accept="image/*" hidden>
+<video id="camera-video" autoplay muted playsinline hidden></video>
+</body></html>

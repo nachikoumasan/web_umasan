@@ -1,0 +1,922 @@
+/* Illustrated travel journal. Final layer after storybook.css. */
+:root{--journal-art:url('assets/ornament.webp');--paper:#fffaf0;--line:#dcc59d}
+.journal-icon{display:inline-block;flex:0 0 auto;width:48px;height:48px;background-repeat:no-repeat;mix-blend-mode:multiply;vertical-align:middle}
+.journal-icon{background-size:contain;background-position:center}
+.icon-play{background-image:url('assets/icon-play-storybook.webp')}.icon-compass{background-image:url('assets/icon-compass-storybook.webp')}.icon-camera{background-image:url('assets/icon-lantern.png')}.icon-bag{background-image:url('assets/icon-bag-storybook.webp')}.icon-book{background-image:url('assets/icon-book-storybook.webp')}.icon-horseshoe{background-image:url('assets/icon-horseshoe.webp')}
+.site-header{gap:18px;background-image:linear-gradient(#fffaf0dc,#fffaf0dc),var(--journal-art);background-size:cover;border-bottom:3px double #d5bc91}
+.brand{gap:7px}.brand>.journal-icon{width:43px;height:43px}
+.site-header nav{gap:14px;font-size:12px}.site-header nav a{display:flex;align-items:center;gap:3px;min-height:44px}
+.site-header nav .journal-icon{width:28px;height:28px}.journal-link{font-size:12px;padding:9px 15px}
+.site-header nav a:hover{background:#eee2cc;border-radius:8px}
+.hero{background:#fffaf0}.hero-landscape{width:100%;object-position:right bottom}
+.hero:before{background:linear-gradient(90deg,#fffaf0 0%,#fffaf0e6 22%,#fffaf08c 43%,transparent 65%)}
+.hero:after{content:'';position:absolute;left:-2%;bottom:-32px;width:104%;height:48px;border-radius:48% 50% 0 0;background:#fffaf0;z-index:3;pointer-events:none}
+.hero .eyebrow{padding-bottom:10px;border-bottom:1px solid #cbb38a80;width:fit-content}
+.hero-character{right:22%;top:22px}.hero-footnote{color:#5e4b35}
+.page-content{background-image:linear-gradient(#fffaf0a8,#fffaf0a8),var(--journal-art);background-size:auto,100% auto;background-repeat:repeat,repeat-y;background-position:center top}
+.section{position:relative;padding-block:42px}
+.section+.section:not(.compact-section){border-top:1px dashed #cbb28b}
+.section-heading h2{display:flex;align-items:center;gap:10px}.section-heading h2>.journal-icon{width:60px;height:60px;letter-spacing:0}
+.section-heading h2 small{color:#896c43;border-left:1px solid #cfb88e;padding-left:12px}
+.section-heading p,.compact-section .section-heading p{margin-left:70px}
+.news-strip h2 .journal-icon{width:35px;height:35px}
+.news-strip,.article-card,.archive-browser,.about-lead,.history{background-color:#fffaf0;background-image:linear-gradient(#fffaf09e,#fffaf09e),var(--journal-art);background-size:100% 100%;border:1px solid #d9c09a;box-shadow:inset 0 0 0 4px #fffaf0,inset 0 0 0 5px #e9dac0,0 5px 16px #78582a12}
+.article-card{border-radius:12px;overflow:hidden}
+.article-body{padding-top:12px}.article-image{border-bottom:1px solid #dbc6a5}
+
+.tag{background:#f3e6cf;border-color:#dcc59f}
+.button,.journal-link{background-image:linear-gradient(110deg,#ffffff50,#ffffff00),var(--journal-art);background-size:100% 100%;border:1px solid #ac8148;outline:1px solid #d6bd92;outline-offset:-5px;box-shadow:inset 0 2px 1px #fff9,inset 0 -2px 2px #94704626,0 3px 0 #d4bc95,0 5px 10px #7050251a}
+.button.primary,.journal-link{color:#fff8e8;background-image:linear-gradient(#513b23ed,#382a1bed),var(--journal-art);outline-color:#bd9b60;border-color:#916b35}
+.button:hover,.journal-link:hover{box-shadow:inset 0 1px 1px #fff6,0 4px 0 #bfa27a,0 7px 15px #70502525}
+.button:active,.journal-link:active{transform:translateY(1px)}
+.button.is-waiting{background:#f4ecdf;box-shadow:inset 0 0 0 4px #fffaf0;outline-color:#d8c7aa;color:#746049}
+.filter-list button{border:1px solid #ceb38a;background:#fff9ec;box-shadow:inset 0 0 0 3px #fffdf6}
+.filter-list button[aria-pressed=true]{background:#6c573b;color:#fffaf0;box-shadow:inset 0 0 0 3px #6c573b,inset 0 0 0 4px #b49b70}
+.travel-note{background:#f8eedc var(--journal-art) center/100% 100%;border:1px solid #d5bb90;box-shadow:2px 3px 0 #e9dcc5}.about-lead>img,.footer-character{mix-blend-mode:multiply}
+.archive-postcard{box-shadow:0 5px 13px #73532e25;border:1px solid #dfcfb3}
+footer{background:#fffaf0 var(--journal-art) center bottom/100% auto no-repeat;padding-bottom:115px;border-top:1px solid #d5bf98}
+.footer-main,.footer-bottom{background:transparent}.footer-main{padding-top:32px}.footer-character{object-fit:contain}
+@media(max-width:1200px){.site-header{flex-wrap:wrap;gap:8px 20px}.site-header nav{order:3;flex-basis:100%;justify-content:center;margin:0}.journal-link{margin-left:auto}}
+@media(max-width:850px){.section-heading h2{flex-wrap:wrap}.section-heading h2 small{font-size:10px}.section-heading h2>.journal-icon{width:48px;height:48px}.section-heading p,.compact-section .section-heading p{margin-left:0}}
+@media(max-width:600px){
+ .site-header{flex-wrap:wrap;padding:9px 12px;min-height:68px}.brand>.journal-icon{width:31px;height:36px}.brand{font-size:18px;gap:4px}.brand small{font-size:7px}
+ .site-header nav{justify-content:initial;flex-basis:100%;order:4;gap:4px}.site-header nav a{gap:9px;font-size:14px;width:100%;min-height:44px}.site-header nav .journal-icon{width:35px;height:35px}
+ .hero{background:#fffaf0;padding-bottom:255px}.hero-landscape{width:100%;height:285px;object-fit:cover;object-position:right center;mask-image:linear-gradient(transparent,#000 50px)}
+ .hero:before{background:linear-gradient(#fffaf0,transparent)}.hero-copy{padding-top:23px}.hero .eyebrow{margin-bottom:12px;padding-bottom:7px}.hero-character{top:auto;bottom:130px;right:auto;left:18px}
+ .page-content{background-size:720px auto;padding-inline:16px}.section{padding-block:29px}.section-heading h2{display:grid;grid-template-columns:48px 1fr;gap:0 9px;font-size:21px}.section-heading h2>.journal-icon{grid-column:1;grid-row:1/3;width:48px;height:48px}.section-heading h2>span:not(.journal-icon){grid-column:2}.section-heading h2 small{grid-column:2;margin:0;padding:0;border:0;font-size:10px}.section-heading p,.compact-section .section-heading p{margin:10px 0 0}
+ .news-strip h2 .journal-icon{width:29px;height:29px}.news-strip{padding:14px}.article-card,.archive-browser,.about-lead,.history{background-size:660px 100%}
+ .section-heading>.button{margin-right:0}.button{letter-spacing:.025em}
+ footer{background-size:900px auto;padding-bottom:80px}.footer-main .brand{font-size:21px}
+}
+.news-strip,.article-card,.archive-browser,.about-lead,.history{background-image:linear-gradient(#fffaf0c4,#fffaf0c4),var(--journal-art);background-size:auto,760px auto;background-position:center,right bottom;background-repeat:no-repeat}
+.button,.journal-link{background-size:auto,340px auto;background-position:center,right center}
+@media(prefers-reduced-motion:reduce){.button,.journal-link{transition:none}.button:hover{transform:none}}
+
+/* ============================================================
+   2026-09-08 修正レイヤー（journal.css の最後）
+   1 ヒーローの見切れ / 2 ボタン内の絵 / 4 文字面の紙テクスチャ / 5 角丸
+   ============================================================ */
+
+/* 1) ヒーロー：うまさんの頭が上端で切れていたので基準位置を上げる */
+.hero-landscape{object-position:100% 20%}
+/* 吹き出しと英字が絵に重なって読めなかったので、余白のある側へ */
+.hero-character{right:26%;top:16px}
+.hero-character>p{text-shadow:0 0 10px #fffaf0,0 0 20px #fffaf0}
+.hero-footnote{right:auto;left:1.6%;bottom:16px;color:#8a7455;text-shadow:0 0 8px #fffaf0,0 0 14px #fffaf0}
+
+/* 2) ボタン：背景の装飾画像をやめ、矢印と文字だけが見えるようにする */
+.button,.journal-link{background-image:linear-gradient(#fffdf6,#f6e9d2)}
+.button.primary,.journal-link{background-image:linear-gradient(#513b23,#382a1b)}
+.button.is-waiting{background-image:none}
+
+/* 4) 文字が乗る面から紙テクスチャを外す */
+.site-header{background-image:none;background-color:var(--paper)}
+.news-strip,.article-card,.archive-browser,.about-lead,.history{
+  background-image:none;background-color:#fffdf8}
+
+/* 地の装飾は残しつつ、本文が読める濃さまで白を強める */
+.page-content{background-image:linear-gradient(#fffaf0e8,#fffaf0e8),var(--journal-art)}
+/* フッター：文字は無地の上、装飾は下端の帯だけ */
+footer{padding-bottom:96px}
+.footer-main,.footer-bottom{background:var(--paper)}
+.footer-bottom{border-top:1px solid var(--line)}
+
+/* 5) 角丸を14pxに統一 */
+.article-card,.news-strip,.archive-browser,.about-lead,.history{border-radius:14px}
+.history{background-color:#fffdf8}
+
+@media(max-width:600px){
+  .hero-landscape{object-position:100% 25%}
+  .hero-character{right:14%}
+  .hero-footnote{left:auto;right:8px;bottom:auto;top:12px}
+  footer{padding-bottom:64px}
+}
+
+/* ============================================================
+   2026-09-08 密度と抑揚
+   1 セクションの地色を交互に / 2 セクションごとの控えめな装飾
+   3 カードの余白を詰める / 6 GOOD EXPERIENCES のシール
+   ============================================================ */
+
+/* --- 1) 地色を交互にして、区切り線に頼らずリズムを作る --- */
+/* 余白を子要素側へ移し、負のマージンを使わずに地色を全幅にする */
+.page-content{--pad:4.8%;padding-inline:0}
+.page-content>.section,
+.page-content>.life-shop-grid{margin-inline:0;padding-inline:var(--pad)}
+.page-content>.news-strip{margin-inline:var(--pad)}
+#play,.life-shop-grid{background-color:#f7eee0}
+#discover,#about{background-color:#fffaf0}
+.section+.section:not(.compact-section){border-top:0}
+.life-shop-grid{padding-block:6px}
+
+/* --- 2) セクションごとに違う印を、地の模様として薄く置く --- */
+.section:after{content:'';display:block;position:absolute;z-index:-1;
+  width:112px;height:112px;right:1.5%;top:26px;opacity:.09;
+  background-repeat:no-repeat;background-size:contain;background-position:center;pointer-events:none}
+#play:after{background-image:url('assets/icon-play-storybook.webp')}
+#discover:after{background-image:url('assets/icon-compass-storybook.webp')}
+#with:after{background-image:url('assets/icon-lantern.png')}
+#shop:after{background-image:url('assets/icon-bag-storybook.webp')}
+#about:after{background-image:url('assets/icon-book-storybook.webp')}
+
+/* --- 3) 余白を詰めて密度を上げる --- */
+.section{padding-block:32px}
+.section-heading{margin-bottom:18px}
+
+.news-strip{padding:13px 20px}
+.archive-browser{padding:13px 17px}
+.about-section .history{padding:17px 20px 6px}
+.about-lead{padding:16px 20px}
+.article-body{padding:0 13px 12px}
+
+.articles-grid{gap:16px}
+
+/* --- 6) GOOD EXPERIENCES のシール（旧スタンプと差し替え） --- */
+.archive-seal{position:absolute;right:8px;bottom:6px;z-index:2;margin:0;padding:0;
+  width:104px;height:104px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+  border-radius:50%;background:#fffaef;border:3px double #a48861;
+  outline:1px dashed #b49a73;outline-offset:-8px;box-shadow:0 3px 10px #7a5a2e1a;
+  font-family:Georgia,serif;color:#836748;text-align:center;line-height:1.35;transform:rotate(6deg)}
+.archive-seal .seal-label{font-size:7px;letter-spacing:.12em}
+.archive-seal strong{font-size:24px;font-weight:normal;letter-spacing:.02em;color:#6d5228;line-height:1.1}
+.archive-seal small{font-size:7px;letter-spacing:.1em;opacity:.85}
+.archive-postcard{position:relative}
+
+@media(max-width:850px){
+  .section:after{width:84px;height:84px;top:20px}
+}
+@media(max-width:600px){
+  .page-content{--pad:18px;padding-inline:0}
+  .section{padding-block:26px}
+  .section:after{width:66px;height:66px;right:0;top:16px;opacity:.08}
+  .archive-seal{width:88px;height:88px;right:6px;bottom:4px}
+  .archive-seal strong{font-size:20px}
+
+}
+
+/* ============================================================
+   2026-09-08 動画ボタン・フッター・Instagram
+   ============================================================ */
+
+/* フッター：文字の面を全幅の無地にして、絵は下端の帯だけにする */
+footer{padding-inline:0}
+.footer-main,.footer-bottom{padding-inline:3.7%}
+.footer-main{background:var(--paper)}
+.footer-bottom{background:var(--paper)}
+
+@media(max-width:600px){
+  .footer-main,.footer-bottom{padding-inline:18px}
+}
+
+/* ============================================================
+   2026-09-08 仕上げ2：枠・地紋・高さ・ボタン位置
+   ============================================================ */
+
+/* --- 二重枠をやめ、細い線と柔らかい影の1種類に --- */
+.news-strip,.article-card,.archive-browser,.about-lead,.history{
+  border:1px solid #dcc7a4;
+  box-shadow:0 3px 14px #7a5a2e14}
+
+.button,.journal-link{outline:0;box-shadow:0 2px 0 #d4bc95,0 4px 9px #70502516}
+.button:hover,.journal-link:hover{box-shadow:0 3px 0 #c3a87e,0 6px 13px #70502522}
+.button.is-waiting{box-shadow:none}
+.filter-list button{box-shadow:none}
+.filter-list button[aria-pressed=true]{box-shadow:none}
+.archive-seal{box-shadow:0 3px 10px #7a5a2e1a}
+
+/* --- 地紋をうっすら見えるところまで戻す（帯は半透明にして模様を通す） --- */
+.page-content{background-image:linear-gradient(#fffaf0d4,#fffaf0d4),var(--journal-art)}
+#play,.life-shop-grid{background-color:#f3e7d3a6}
+#discover,#about{background-color:#fffaf0b8}
+
+/* --- 作品カード：2枚だけ余分な下余白があってボタンがずれていた --- */
+
+/* --- ヘッダーを詰める --- */
+.site-header{min-height:0;padding:10px 4%}
+.brand{font-size:23px}
+.brand>.journal-icon{width:37px;height:37px}
+.site-header nav .journal-icon{width:24px;height:24px}
+.journal-link{padding:8px 14px}
+
+/* --- フッターを詰める --- */
+footer{padding-bottom:64px;background-size:100% 64px}
+.footer-main{padding-block:18px}
+.footer-bottom{padding-block:9px 11px}
+.footer-character{width:78px}
+
+/* --- 縦の詰め --- */
+.section{padding-block:26px}
+.section-heading{margin-bottom:15px}
+.news-strip{margin-top:12px}
+.about-section .history{margin-top:14px}
+
+/* --- 体験レポート左カラムの空きを均す --- */
+.archive-postcard>img{height:258px}
+.travel-note{align-self:center}
+
+/* --- シールの文字が円のふちに触っていた --- */
+.archive-seal .seal-label{font-size:6.5px;letter-spacing:.06em}
+
+/* --- ヒーローの吹き出しをうまさん寄りへ --- */
+.hero-character{right:17%;top:34px}
+
+@media(max-width:600px){
+  .site-header{padding:8px 12px}
+  .brand{font-size:18px}
+  .section{padding-block:22px}
+  footer{padding-bottom:52px;background-size:auto 52px}
+  .footer-main{padding-block:16px}
+  .archive-postcard>img{height:170px}
+  .travel-note{align-self:auto}
+}
+
+/* ============================================================
+   2026-09-08 指摘対応：可読性・外部リンク・グッズ・区切り・ナビ
+   ============================================================ */
+
+/* 1) 「無料」バッジがコントラスト比3.68でAA未満だった（4.64へ） */
+
+/* 2) 外部リンクの印（フッターSNSと本文リンクに追加した分の位置調整） */
+.social-links a .ext{margin-left:.25em;opacity:.4}
+.about-author a .ext,.about-copy a .ext{opacity:.45}
+
+/* 3) SUZURI：1枚固定からスライドへ。商品カットは紙地に収める */
+
+/* 4) 「無料でつかう」と「グッズ」の境目をはっきりさせる */
+.life-shop-grid{column-gap:34px}
+#shop{border-left:1px dashed #cbb28b;padding-left:34px}
+
+/* 5) ナビの文字を12→13pxへ */
+.site-header nav{font-size:13px}
+
+@media(max-width:600px){
+  #shop{border-left:0;border-top:1px dashed #cbb28b;padding-left:0;padding-top:22px;margin-top:4px}
+  .site-header nav{font-size:14px}
+}
+
+/* ============================================================
+   2026-09-08 視覚的な階層づけ
+   1 カードと地の明度差 / 2 画像の角丸 / 3 画像サイズ
+   4 英字ラベルと番号 / 5 枠線と影
+   ============================================================ */
+
+/* 1) カードが地から浮くように、地を濃く・カードを白寄りに --- */
+#play,.life-shop-grid{background-color:#eddfc4d9}
+#discover,#about{background-color:#fffcf3e8}
+.news-strip,.article-card,.archive-browser,.about-lead,.history{
+  background-color:#fffefb}
+
+/* 5) 枠線と影を1段はっきりさせる（1と同時に効く） */
+.news-strip,.article-card,.archive-browser,.about-lead,.history{
+  border-color:#d3b98f;
+  box-shadow:0 2px 4px #7a5a2e0f,0 8px 20px #7a5a2e14}
+.article-card:hover{box-shadow:0 4px 8px #7a5a2e17,0 14px 30px #7a5a2e22}
+.archive-row{border-bottom-color:#e0cdab}
+
+/* 2) 画像の角丸を2種類だけにする
+      ・カードの縁に接する画像 → 角丸なし（カード側で丸まる）
+      ・カードの中に浮く画像   → 10px */
+.article-image,.archive-postcard>img{border-radius:0}
+.memories img,.archive-row img,.about-lead>img{border-radius:10px}
+
+/* 3) 小さすぎた画像を大きく */
+
+.archive-row{grid-template-columns:92px 1fr 12px}
+.archive-row img{width:92px;height:58px}
+
+/* 4) 英字ラベルと番号を「あしらい」として効かせる */
+.section-heading h2 small{font-size:14px;letter-spacing:.18em;color:#8a6b3c}
+.news-strip h2 small{font-size:12px;letter-spacing:.14em}
+
+@media(max-width:850px){
+  .archive-row{grid-template-columns:74px 1fr 12px}
+  .archive-row img{width:74px;height:47px}
+}
+@media(max-width:600px){
+  .section-heading h2 small{font-size:11px}
+
+  .archive-row{grid-template-columns:64px 1fr 12px}
+  .archive-row img{width:64px;height:48px}
+
+}
+
+/* ============================================================
+   2026-09-08 「実装はあるが見えていない」への対策
+   ============================================================ */
+
+/* A) セクションの透かしが不透明度9%で存在に気づけなかった */
+.section:after{opacity:.16;width:124px;height:124px;top:20px}
+
+/* B) 明朝600は横線が細く、淡い地の上で薄く見える */
+.section-heading h2{font-weight:700;color:#3f2a1e}
+.hero h1{font-weight:700;color:#3f2a1e}
+.article-card h3{font-weight:700}
+
+/* C) ボタンの優先度が読み取れない
+      → 1セクションにプライマリ（塗り）はひとつだけ、というルールにする */
+
+/* D) ホバーの浮き上がりが4pxで、動いたことに気づきにくい */
+.article-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 6px 10px #7a5a2e1c,0 18px 34px #7a5a2e26}
+.article-card{transition:transform .22s ease,box-shadow .22s ease}
+
+/* ============================================================
+/* ============================================================
+   2026-09-09 A) 作品カードの画像を大きく
+   ============================================================ */
+
+/* B) FREE〜SHOPの4つのボタンで、濃い塗りは「グッズを見に行く」だけにする */
+
+/* D) SUZURIの商品写真：白い背景をカードの地になじませる */
+
+/* ============================================================
+   E) アイコンを assets/ の透過素材に差し替え
+   ============================================================ */
+.journal-icon{mix-blend-mode:normal}
+
+/* ============================================================
+   G) 背景の単調さをやわらげる
+   丸い透かしをやめ、assets/botanical-border-storybook.webp を
+   セクションの左右交互の縁飾りに。フッターは遠景で締める。
+   ============================================================ */
+.section>*{position:relative;z-index:1}
+.section:after{
+  z-index:0;opacity:.5;
+  width:min(500px,40vw);height:min(340px,27vw);
+  top:auto;bottom:0;left:-12px;right:auto;
+  background-image:url('assets/botanical-border-storybook.webp');
+  background-size:auto 100%;background-position:left bottom;background-repeat:no-repeat}
+#play:after,#about:after{left:auto;right:-12px;transform:scaleX(-1)}
+#with:after,#shop:after{content:none}
+.life-shop-grid{position:relative}
+.life-shop-grid:after{
+  content:'';position:absolute;z-index:0;pointer-events:none;
+  left:-12px;bottom:0;width:min(420px,34vw);height:min(290px,23vw);
+  background:url('assets/botanical-border-storybook.webp') left bottom/auto 100% no-repeat;
+  opacity:.42}
+.life-shop-grid>*{position:relative;z-index:1}
+
+footer{background:#fffaf0 url('assets/footer-landscape-storybook.webp') center 88%/cover no-repeat;
+  padding-bottom:128px}
+@media(max-width:600px){
+  footer{padding-bottom:92px;background-position:center 92%}
+  .section:after{opacity:.38}
+  .life-shop-grid:after{display:none}
+}
+
+/* F) HEROの見せ方：うまさんと道しるべが両方入る位置に */
+.hero-landscape{object-position:100% 60%}
+.hero-character{right:33%;top:26px}
+.hero-character>p{text-shadow:0 0 5px #fffaf0,0 0 12px #fffaf0,0 0 22px #fffaf0,0 0 34px #fffaf0}
+@media(max-width:600px){.hero-landscape{object-position:100% 62%}}
+/* 旧アイコン透かしの上書き（IDセレクタで指定されているため） */
+#play:after,#discover:after,#about:after{
+  background-image:url('assets/botanical-border-storybook.webp');
+  background-size:auto 100%;background-position:left bottom;background-repeat:no-repeat}
+#play:after,#about:after{background-position:left bottom}
+
+/* ============================================================
+   2026-09-09 復元：Codexの変更（docs/refinement-20260909.md,
+   docs/compact-3d-20260909.md）を再適用
+   ============================================================ */
+
+/* --- 縁飾りがページ幅をはみ出して横スクロールを作っていた --- */
+.section:after{left:0;right:auto;opacity:.34}
+#play:after,#about:after{left:auto;right:0}
+.life-shop-grid:after{left:0;opacity:.3}
+#discover:after{content:none}
+
+/* --- 見出しアイコンの枠と説明文の開始位置を統一 --- */
+@media(max-width:600px){
+  .section-heading h2>.journal-icon{width:42px;height:42px}
+  .section-heading p,.compact-section .section-heading p{margin:9px 0 0 57px}
+}
+
+/* --- ヒーローの高さを縮小。横幅超過を出さない --- */
+@media(min-width:601px){
+  .hero{min-height:500px;display:flex;align-items:center}
+  .hero-copy{padding-top:0;padding-bottom:0}
+  .hero-landscape{width:58%;left:auto;right:0;object-position:100% 78%}
+  .hero-character{top:auto;bottom:auto;right:22%}
+}
+@media(max-width:600px){.hero-character{display:none}}
+
+/* --- 作品カードの画像枠を16:10に統一（画像の縦横比は維持） --- */
+
+/* --- 無料・グッズ4枚の画像枠を4:3に統一し、左右の内側余白を均等に --- */
+
+/* --- PCの記事一覧は2列 --- */
+@media(min-width:901px){
+  #archive-list{display:grid;grid-template-columns:1fr 1fr;column-gap:22px}
+  .archive-row{border-bottom:1px solid #e0cdab}
+}
+
+/* --- 活動写真の枠を縮小 --- */
+.memories img{height:132px}
+
+/* --- セクション間隔を詰める --- */
+.section{padding-block:26px}
+.section-heading{margin-bottom:14px}
+
+/* --- 1100px以下の縦並びでは、グッズの左罫線と余白を上側へ --- */
+@media(max-width:1100px){
+  .life-shop-grid{grid-template-columns:1fr;gap:0}
+  #shop{border-left:0;border-top:1px solid var(--line);padding-top:26px}
+}
+
+/* --- スマホ：記事は画像と本文、無料・グッズは画像と説明を横並び --- */
+@media(max-width:600px){
+  .article-card>a{display:grid;grid-template-columns:38% 1fr;gap:0 12px;align-items:start}
+  .article-image{aspect-ratio:1/1;height:100%;grid-row:1/4}
+  .article-body{padding:2px 12px 12px 0}
+  .tags{margin-top:0}
+
+  .memories img{height:104px}
+}
+
+/* ============================================================
+   ここから下は今回ご依頼の5件
+   ============================================================ */
+/* フッター：文字の面と風景を重ねず、風景は下端の帯として独立させる */
+footer{background:var(--paper);padding-bottom:0}
+.footer-main,.footer-bottom{background:transparent}
+.footer-scenery{
+  height:132px;
+  background:url('assets/footer-landscape-storybook.webp') center 78%/cover no-repeat;
+  border-top:1px solid #e4d2b1}
+@media(max-width:600px){.footer-scenery{height:88px}}
+
+/* NEWSをHEROに少しかぶせる */
+.news-strip{position:relative;z-index:5;margin-top:-34px}
+@media(max-width:600px){.news-strip{margin-top:-20px}}
+
+/* --- スマホ：作品画像・NEWS・活動写真・フッターの余白を詰める --- */
+@media(max-width:600px){
+
+  .archive-row{padding:5px 0}
+  .footer-main{gap:14px;padding:20px 0 22px}
+  .footer-character{width:66px}
+  .about-copy{padding-left:0;border-left:0}
+}
+
+/* フッター：風景の上の罫線をやめ、コピーライトを中央に置く */
+.footer-scenery{border-top:0}
+.footer-bottom{display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+.footer-bottom small{grid-column:2;text-align:center}
+.footer-bottom a{grid-column:3;justify-self:end}
+@media(max-width:600px){
+  .footer-bottom{grid-template-columns:1fr auto;gap:8px}
+  .footer-bottom small{grid-column:1;justify-self:start;text-align:left}
+  .footer-bottom a{grid-column:2}
+}
+/* SNS欄とコピーライトの間の罫線も不要 */
+.footer-bottom{border-top:0}/* --- カードの縦の無駄を削る ---
+   壁紙・カメラの説明文に、画像を絶対配置していた頃の余白(78/82px)が
+   そのまま残っていた。SUZURI側は動画ボタンぶんの下余白が空いていた。 */
+.wallpaper p{margin-top:10px;max-width:none}
+
+/* 動画ボタンはCTAの上に置き、どのカードでもCTAが下端で揃うようにする */
+
+/* 縦方向で本文が縮んで欠けないようにする */
+
+/* ============================================================
+   画像の余白・切れ・縦積みの整理
+   ============================================================ */
+/* 1) 画像枠を素材の比率(3:2)に合わせ、上下左右の余白をなくす */
+
+/* 壁紙は縦長3枚。枠の高さいっぱいに使う */
+
+/* フッターのうまさんは正方形の素材。高さを幅に合わせる */
+.footer-character{height:auto}
+
+/* 2) スマホ：作品カードを画像と本文の横並びにして縦を詰める */
+@media(max-width:600px){
+
+  /* 活動写真は2列に */
+  .memories{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .memories img{height:96px;width:100%;object-fit:cover}
+}
+
+/* ============================================================
+   フッター：文字を減らし、全体を下寄りに
+   ============================================================ */
+.footer-main{align-items:flex-end;padding:44px 0 34px;gap:22px}
+.about-copy{font-size:11px;line-height:1.9;border-left:1px solid var(--line);padding-left:20px}
+.social-links{gap:22px;align-items:flex-end}
+.social-links a{
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  font-size:0;min-width:auto}
+.social-links b{
+  display:block;margin:0;font:16px/1.2 Georgia;letter-spacing:.03em;color:#6b4f2c}
+.social-links a:hover b{color:#93652f}
+.social-links .ext{width:9px;height:9px;opacity:.55}
+.footer-character{width:96px;align-self:flex-end;margin-bottom:-6px}
+.footer-bottom{padding-block:14px 20px}
+@media(max-width:600px){
+  .footer-main{align-items:flex-start;padding:30px 0 26px;gap:16px}
+  .social-links{gap:16px;flex-wrap:wrap}
+  .footer-character{width:74px}
+  .footer-bottom{padding-block:12px 16px}
+}
+/* うまさんの素材は背景が不透明のクリーム。フッターの地になじませる */
+.footer-character{mix-blend-mode:multiply}
+
+/* ============================================================
+   修正：壁紙が消えた／画像サイズが揃わない／活動写真が切れる
+   ============================================================ */
+/* 壁紙は縦長3枚。3:2の枠の中に高さいっぱいで並べる */
+
+/* FREE側にもSHOPと同じ内側余白を入れて、4枚のカード幅を揃える */
+#with{padding-right:34px}
+
+/* 活動写真は素材が1.6:1。切らずにそのまま出す */
+.memories img{height:auto;aspect-ratio:1.6;object-fit:cover}
+.about-section .history{padding-bottom:18px}
+
+/* ============================================================
+   フッター：一列で高さを揃え、うまさんは透過素材で地面に立たせる
+   ============================================================ */
+.footer-main{
+  display:flex;align-items:center;gap:30px;
+  padding-block:38px 26px;position:relative}
+.footer-main .brand{align-self:center}
+.about-copy{align-self:center;margin:0}
+.social-links{margin-left:auto;align-items:center}
+.footer-character{
+  width:104px;height:auto;align-self:flex-end;
+  margin:0 0 -30px;position:relative;z-index:2;
+  mix-blend-mode:normal;
+  filter:drop-shadow(0 8px 8px #6b512b26)}
+.footer-bottom{padding-block:10px 14px}
+@media(max-width:600px){
+  .footer-main{flex-wrap:wrap;gap:14px;padding-block:26px 18px}
+  .social-links{margin-left:0;flex-basis:100%;justify-content:flex-start;gap:18px}
+  .footer-character{width:76px;margin-bottom:-22px;position:absolute;right:0;bottom:0}
+}
+@media(max-width:600px){
+  .social-links{flex-wrap:wrap;gap:10px 18px;padding-right:82px;justify-content:flex-start}
+  .social-links b{font-size:14px}
+  .footer-character{width:72px;right:2px;bottom:2px;margin:0}
+  .about-copy{padding-left:0;border-left:0;font-size:11px}
+}
+/* 以前の指定でフッターの左右余白が0になっていた */
+.footer-main,.footer-bottom{padding-inline:3.7%}
+@media(max-width:600px){.footer-main,.footer-bottom{padding-inline:18px}}
+@media(max-width:600px){
+  .social-links{padding-right:0;gap:8px 15px}
+  .social-links b{font-size:13px}
+  .footer-character{width:64px;right:8px;bottom:-30px}
+  .footer-bottom{padding-right:78px}
+}
+/* ECHO AGAINの画像はnoteのサムネイル（横長）。切らずに全体を出す */
+
+/* 復旧後の補完：紹介文を残し、スマホの画像と段落の余白を整理 */
+@media(max-width:600px){
+  .about-section .about-lead{padding:14px 16px;gap:10px;margin-bottom:18px}
+  .about-lead>img{width:88px;height:88px;object-fit:contain}
+  .about-lead p,.about-summary{line-height:1.85!important}
+  .about-lead p{margin-bottom:10px}
+}
+
+/* カードの役割に合わせた共通操作：茶色は移動、アイボリーは動画 */
+
+.life-shop-grid .section-heading{min-height:0;margin-bottom:12px}
+
+@media(min-width:601px) and (max-width:1100px){
+ .life-shop-grid{grid-template-columns:1fr 1fr}
+
+ #shop{border-top:0;border-left:1px solid var(--line)}
+}
+@media(max-width:600px){
+
+ .life-shop-grid .section{padding-block:18px}
+ .life-shop-grid .section-heading p{margin-left:0}
+}
+
+/* 画像を主役に戻し、カードの古い負の余白・枠線を解除 */
+.icon-news{background-image:url('assets/icon-news.webp')}
+.hero-actions .button>.journal-icon{width:26px;height:26px;flex:0 0 26px;margin:0;filter:none}
+
+/* 商品画像は十分な大きさを確保。操作を画像の下に分離 */
+
+.memories img{cursor:zoom-in}
+.image-dialog{width:min(92vw,900px);max-height:92dvh;padding:48px 18px 16px;border:1px solid #b58e55;border-radius:16px;background:#fffaf0;color:#493226}
+.image-dialog::backdrop{background:#21180ed9}
+.image-dialog>img{max-width:100%;max-height:72dvh;width:auto;height:auto;object-fit:contain;margin:auto}
+.image-dialog>p{text-align:center;margin:10px 0 0;font-size:13px}
+.image-close{position:absolute;right:8px;top:4px;width:44px;height:44px;border:0;background:transparent;font-size:30px}
+
+/* 活動の写真は旅の写真帳として、写真を切らずに額装 */
+.history .memories{display:block;margin-top:20px;width:100%}
+.history .memories ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding:0;margin:0;list-style:none}
+
+/* 背景風景と透過キャラクターが同じ余白を共有するフッター */
+#site-footer{position:relative;padding:0;background:var(--paper);overflow:hidden}
+#site-footer .footer-main{min-height:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px 28px;align-items:center;padding:22px 160px 8px 3.7%;border-top:1px solid var(--line)}
+#site-footer .about-copy{margin:0;padding-left:16px;font-size:11px}
+#site-footer .social-links{grid-column:1/-1;justify-content:flex-start;flex-wrap:wrap;gap:14px 22px;margin:0;padding:0;position:static}
+#site-footer .social-links a{min-height:30px;justify-content:center}
+#site-footer .footer-character{position:absolute;width:128px;height:auto;right:22px;bottom:-50px;top:auto;margin:0;mix-blend-mode:normal;filter:none;z-index:2}
+#site-footer .footer-bottom{padding:8px 160px 12px 3.7%;display:flex;justify-content:space-between;gap:10px}
+#site-footer .footer-scenery{height:78px;background-position:center 80%}
+@media(max-width:1100px){
+ .life-shop-grid{grid-template-columns:1fr}
+
+ #shop{border-left:0;border-top:1px solid var(--line)}
+}
+
+@media(max-width:600px){
+
+ .history .memories ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 10px}
+ #site-footer .footer-main{grid-template-columns:1fr;padding:18px 105px 4px 18px;gap:10px}
+ #site-footer .footer-main .brand{font-size:20px;width:auto}
+ #site-footer .about-copy{border:0;padding:0;font-size:10px}
+ #site-footer .social-links{grid-column:1;gap:5px 14px}
+ #site-footer .social-links b{font-size:12px}
+ #site-footer .footer-character{width:100px;right:6px;bottom:-32px}
+ #site-footer .footer-bottom{padding:8px 18px 10px;flex-wrap:wrap;font-size:9px}
+ #site-footer .footer-scenery{height:60px}
+}
+
+.hero-actions .primary>.icon-play{background-color:#fff4dc;border-radius:50%;background-size:80%;}
+@media(max-width:600px){
+ #with,#shop{padding-inline:0;padding-block:18px}
+}
+
+/* ============================================================
+   2026-09-09 うまさん紹介・活動写真・作品カード・無料/グッズの整列
+   ============================================================ */
+
+/* うまさん紹介のキャラクターを大きく */
+.about-section .about-lead>img{width:225px;height:auto;object-fit:contain}
+@media(max-width:850px){.about-section .about-lead>img{width:180px;height:auto}}
+@media(max-width:600px){.about-section .about-lead>img{width:145px;height:auto}}
+
+/* 活動写真：体験レポートのポストカードと同じ額装（厚い台紙・やわらかい影・わずかな傾き） */
+.history .memories ul{gap:22px 18px}
+
+@media(max-width:600px){
+ .history .memories ul{gap:16px 12px}
+
+}
+
+/* 作品カード：Echo Againの画像比率に3枚をそろえ、余白を出さない */
+
+/* 無料コンテンツ・グッズ：画像の余白を消し、2枚のカードでボタン位置をそろえる */
+
+/* 無料/グッズ：画像を枠いっぱいに使い、下の空白をなくす */
+
+/* フッター：左右の偏りをなくし、SNSを右へ寄せる */
+@media(min-width:851px){
+ #site-footer .footer-main{grid-template-columns:auto minmax(0,1fr) auto;align-items:center;padding:22px 170px 14px 3.7%;gap:10px 26px}
+ #site-footer .footer-main .brand{grid-column:1;grid-row:1}
+ #site-footer .about-copy{grid-column:2;grid-row:1}
+ #site-footer .social-links{grid-column:3;grid-row:1;justify-content:flex-end;gap:12px 20px}
+}
+
+/* 現行：体験レポートの役割を分ける小見出し */
+.report-subheading{font:600 17px/1.5 var(--serif);letter-spacing:.04em;color:var(--ink);margin:0 0 14px}
+.archive-browser>.report-subheading{padding-bottom:10px;border-bottom:1px solid var(--line)}
+
+/* 現行：画像と操作欄を分離した共通スライド。商品は全体、作例は風景を見せる */
+
+.carousel-viewport{overflow:hidden;aspect-ratio:3/2;border:1px solid var(--line);border-radius:10px;background:#fffdf7}
+
+.carousel-controls{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:4px;padding-top:8px}
+
+/* 現行：壁紙4枚のプレビューと保存一覧 */
+
+.wallpaper-open{cursor:pointer}
+.wallpaper-dialog{width:min(94vw,940px);max-height:90dvh;overflow:auto;padding:38px 24px 24px;border:1px solid var(--line);border-radius:16px;background:var(--paper);color:var(--ink)}
+.wallpaper-dialog::backdrop{background:#21180ed9}
+.wallpaper-dialog h2{font:600 22px/1.5 var(--serif);margin:0 32px 12px 0}
+.wallpaper-dialog>p{font-size:13px;line-height:1.8;margin:0 0 20px}
+.wallpaper-choices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.wallpaper-choices article{min-width:0;display:flex;flex-direction:column;align-items:stretch}
+.wallpaper-choices article>img,.wallpaper-pick>img{width:100%;height:240px;object-fit:contain;border-radius:8px;background:#f4ead5}
+.wallpaper-choices .action-icon{width:24px;height:24px;aspect-ratio:1;flex:0 0 24px;object-fit:contain;background:transparent;border-radius:0}
+.wallpaper-choices .button{gap:7px;padding-inline:8px;white-space:normal;min-width:0}
+.wallpaper-choices h3{font:600 14px/1.6 var(--serif);margin:10px 0;min-height:2.2em}
+.wallpaper-choices .button{min-height:44px;margin-top:auto}
+.wallpaper-original{display:block;text-align:center;font-size:12px;padding:10px 0;text-decoration:underline;text-underline-offset:3px}
+.wallpaper-more{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:20px;padding:12px;border-top:1px solid var(--line);font-size:13px;text-decoration:underline;text-underline-offset:3px}
+.image-save:not([hidden]){display:flex;width:fit-content;margin:12px auto 0;min-height:44px}
+.image-save[hidden]{display:none}
+@media(max-width:600px){
+ .wallpaper-dialog{padding:42px 16px 20px}
+ .wallpaper-dialog h2{font-size:19px}
+ .wallpaper-choices{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px}
+ .wallpaper-choices h3{font-size:12px}
+}
+
+
+/* 現行：作品カード。ジャンル札を使わず、条件・作品名・説明・操作の順に読む */
+.works-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
+#play .work-card{min-width:0;display:flex;flex-direction:column;padding:14px;background:#fffdf8;border:1px solid #dfcfb3;border-radius:12px;box-shadow:0 4px 12px #73532e10}
+.work-media{position:relative;display:block;width:100%;aspect-ratio:1.91;overflow:hidden;border-radius:8px;background:#f8f2e5}
+.work-image{display:block;width:100%;height:100%;object-fit:cover;object-position:center 42%}
+.work-status{position:absolute;right:8px;bottom:8px;padding:4px 9px;border-radius:6px;background:#493226e8;color:#fff8e7;font-size:11px;line-height:1.4}
+.work-status small{display:block;font-size:9px}
+.work-detail{display:flex;flex-direction:column;flex:1;min-width:0;padding-top:12px}
+.work-meta{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 8px;padding:0;list-style:none}
+.work-meta li{border:1px solid #e2d3b8;border-radius:5px;background:#f7efde;padding:2px 7px;font-size:10px;line-height:1.5;color:#79654e}
+.work-info h3{font:600 22px/1.45 var(--serif);color:var(--ink);margin:0 0 6px;letter-spacing:.025em}
+.work-info p{font-size:13px;line-height:1.75;margin:0;color:var(--muted)}
+.work-info .work-lead{margin-top:8px}
+.work-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:16px}
+.work-actions>.button{flex:1;min-height:44px;font-size:13px;padding:8px 14px;gap:8px}
+.work-actions>.is-waiting{color:#99866b;background:#f3ebdd;border-color:#dfd2bd;box-shadow:none}
+@media(max-width:850px){
+ .works-grid{grid-template-columns:1fr}
+ #play .work-card{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px}
+ .work-media{grid-column:1;grid-row:2/4;aspect-ratio:1.5}
+ .work-detail,.work-info{display:contents}
+ .work-meta{grid-column:1/-1;grid-row:1;margin:0}
+ .work-info h3{grid-column:2;grid-row:2;font-size:20px;margin:0}
+ .work-info p:not(.work-lead){grid-column:2;grid-row:3;align-self:start}
+ .work-info .work-lead{grid-column:1/-1;grid-row:4;margin:0}
+ .work-actions{grid-column:1/-1;grid-row:5;margin:0;padding-top:0}
+ .work-status{right:4px;bottom:4px;font-size:9px;padding:3px 5px}
+ .work-status small{font-size:8px}
+}
+@media(max-width:400px){
+ #play .work-card{grid-template-columns:96px minmax(0,1fr);gap:10px;padding:12px}
+ .work-info h3{font-size:18px}
+}
+
+/* 現行：FREE / SHOP。メディアと文章・操作を分け、固定高と行またぎを廃止 */
+.life-shop-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;align-items:start}
+.life-shop-grid #with,.life-shop-grid #shop{min-width:0;padding:24px 0;border:0;margin:0}
+.life-shop-grid .section-heading{min-height:82px;margin-bottom:14px;align-items:start}
+.life-shop-grid .section-heading p{margin:8px 0 0}
+.life-shop-grid .mini-grid{display:grid;grid-template-columns:1fr;gap:16px;align-items:start;grid-auto-rows:auto}
+.life-shop-grid .mini-card{display:grid;grid-template-columns:minmax(0,43%) minmax(0,1fr);gap:16px;align-items:start;min-width:0;min-height:0;height:auto;margin:0;padding:16px;overflow:hidden;background:#fffdf8;border:1px solid #dfcfb3;border-radius:12px;box-shadow:0 4px 12px #73532e10}
+.mini-copy{display:flex;flex-direction:column;align-items:stretch;align-self:stretch;gap:8px;min-width:0}
+.mini-copy h3{font:600 18px/1.45 var(--serif);margin:0;color:var(--ink)}
+.mini-copy p{font-size:13px;line-height:1.75;margin:0;color:var(--muted)}
+.mini-actions{display:flex;flex-direction:column;align-items:stretch;gap:6px;margin-top:auto;padding-top:12px}
+.mini-actions>.button{width:100%;min-height:44px;padding:8px 10px;font-size:12px;line-height:1.5;white-space:normal;gap:5px;background:linear-gradient(#71522f,#49321e);color:#fff6df;border:1px solid #aa8550;box-shadow:inset 0 0 0 2px #ffffff20,0 2px 3px #49321e20}
+.life-shop-grid .stamp-carousel{display:grid;grid-template-rows:auto auto;width:100%;height:auto;min-width:0;min-height:0;margin:0;padding:0;aspect-ratio:auto;overflow:visible;border:0;border-radius:0;background:transparent}
+.life-shop-grid .stamp-track{height:100%}
+.life-shop-grid .stamp-track img{width:100%;height:100%;object-fit:cover;background:#fffdf7;padding:0;cursor:zoom-in}
+.life-shop-grid #shop .stamp-track img{object-fit:contain;mix-blend-mode:normal}
+.life-shop-grid .stamp-nav{position:static;inset:auto;transform:none;width:36px;height:36px;min-width:0;padding:0;border:1px solid #dcc8a6;border-radius:7px;opacity:1;background:#fffaf0;color:#796044;font-size:20px;box-shadow:none}
+.life-shop-grid .stamp-dots{position:static;inset:auto;transform:none;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;width:auto;gap:0;padding:0;background:none;box-shadow:none}
+.life-shop-grid .stamp-dots button{position:relative;flex:0 0 20px;width:20px;height:28px;min-width:20px;padding:0;background:none;border:0;border-radius:0}
+.life-shop-grid .stamp-dots button:after{content:'';position:absolute;left:7px;top:11px;width:6px;height:6px;border:1px solid #715333;border-radius:50%;background:#fffdf5}
+.life-shop-grid .stamp-dots button[aria-pressed=true]:after{background:#715333}
+.life-shop-grid .product-images{display:flex;align-items:center;justify-content:center;aspect-ratio:3/2;width:100%;height:auto;min-height:0;margin:0;padding:0;border:0;border-radius:8px;background:transparent;overflow:hidden}
+.life-shop-grid .phones-row{display:flex;align-items:center;justify-content:center;gap:4px;width:100%;height:100%;position:static}
+.life-shop-grid .phones-row img{display:block;flex:1 1 0;width:0;min-width:0;height:auto;max-height:100%;max-width:none;object-fit:contain;border:0;border-radius:4px;box-shadow:none;cursor:zoom-in}
+@media(min-width:1101px){
+ .life-shop-grid{grid-template-rows:auto auto auto;row-gap:16px;padding-block:24px}
+ .life-shop-grid #with,.life-shop-grid #shop{display:grid;grid-template-rows:subgrid;grid-row:1/4;padding:0;row-gap:16px}
+ .life-shop-grid #with{grid-column:1}
+ .life-shop-grid #shop{grid-column:2}
+ .life-shop-grid .section-heading{margin:0;min-height:0}
+ .life-shop-grid .mini-grid{display:contents}
+ .life-shop-grid .mini-card{height:100%}
+}
+@media(max-width:1100px){
+ .life-shop-grid{grid-template-columns:1fr;gap:0}
+ .life-shop-grid .mini-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .life-shop-grid .mini-card{grid-template-columns:1fr;gap:12px}
+ .life-shop-grid .section-heading{min-height:0}
+}
+@media(max-width:600px){
+ .life-shop-grid .mini-grid{grid-template-columns:1fr;gap:14px}
+ .life-shop-grid .mini-card{padding:14px}
+ .life-shop-grid .product-images,.life-shop-grid .carousel-viewport{aspect-ratio:1.6}
+}
+@media(min-width:601px) and (max-width:1100px){
+ .life-shop-grid .mini-grid{grid-template-rows:auto auto}
+ .life-shop-grid .mini-card{grid-template-rows:subgrid;grid-row:1/3;height:100%}
+ .life-shop-grid .mini-actions{margin-top:auto}
+}
+
+/* 現行：生成した写真台紙。写真・名称・年は実データを上に配置 */
+.history .memories ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px 16px;padding:0;list-style:none}
+.history .memories li.photo-print{position:relative;display:block;aspect-ratio:4/3;width:auto;height:auto;min-width:0;margin:0;padding:0;background:transparent url('assets/activity-photo-mount.webp') center/100% 100% no-repeat;border:0;border-radius:0;box-shadow:none;transform:none;filter:drop-shadow(0 4px 4px #73532e16)}
+.history .memories li.photo-print:nth-child(even),.history .memories li.photo-print:nth-child(odd),.history .memories li.photo-print:hover{transform:none}
+.history .memories li.photo-print>img{position:absolute;left:8%;top:11%;width:84%;height:61%;aspect-ratio:auto;object-fit:contain;border:0;border-radius:0;cursor:zoom-in}
+.history .memories li.photo-print>span{position:absolute;left:9%;top:76%;width:72%;height:auto;display:flex;flex-direction:column;gap:3px;margin:0;padding:0;background:none;box-shadow:none;color:#796044;line-height:1.35}
+.history .memories li.photo-print strong{font:600 13px/1.35 var(--serif);color:#493226;letter-spacing:.02em}
+.history .memories li.photo-print time{font:11px/1.3 Georgia;letter-spacing:.1em}
+
+/* ============================================================
+   動画は画像と共通の枠にサムネイル＋再生マークで見せる
+   （旧・文字だけの動画ボタンは3層から除去して、ここに集約）
+   ============================================================ */
+.video-card{position:relative;display:block;width:100%;height:100%;min-width:0;padding:0;border:0;border-radius:8px;background:#3d2f20;overflow:hidden;cursor:pointer}
+.video-card:hover{background:linear-gradient(#fffefb,#f2e5cc);border-color:#b98f4f}
+.video-thumb{display:block;width:100%;height:100%;overflow:hidden;background:#3d2f20}
+.video-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.video-play{position:absolute;left:50%;top:50%;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;background:#fffaf0f2;border:1px solid #a98045;box-shadow:0 2px 8px #2d1c0a55;transition:transform .18s,background .18s}
+.video-play:after{content:'';position:absolute;left:50%;top:50%;margin:-7px 0 0 -4px;border:7px solid transparent;border-left:11px solid #6b4d24}
+.video-card:hover .video-play{background:#fff;transform:scale(1.08)}
+.video-meta{position:absolute;left:8px;top:8px;display:flex;gap:6px;padding:3px 7px;border-radius:4px;background:#302619e8;color:#fff6df;font:11px/1.5 var(--sans)}
+.video-meta strong{font-weight:500}
+.video-meta small{font:inherit}
+.video-card[hidden],.gallery-image[hidden]{display:none}
+.work-gallery>.gallery-image,.work-gallery>.video-card{position:absolute;inset:0;width:100%;height:100%}
+.media-choices{position:absolute;right:6px;bottom:6px;display:flex;gap:4px;z-index:2}
+.media-choices button{position:relative;width:52px;height:44px;padding:3px;border:2px solid #d9c4a0;border-radius:5px;background:#fffaf0;overflow:hidden}
+.media-choices button[aria-pressed=true]{border-color:#6b4d24;box-shadow:0 0 0 1px #fffaf0}
+.media-choices img{width:100%;height:100%;object-fit:cover}
+.media-choices span{position:absolute;inset:0;display:grid;place-items:center;color:white;text-shadow:0 1px 4px #000;font-size:16px}
+@media(min-width:601px) and (max-width:850px){
+ #play .work-card{grid-template-columns:minmax(200px,34%) minmax(0,1fr)}
+}
+.life-shop-grid .stamp-track>.video-card{flex:0 0 100%;border-radius:0}
+.life-shop-grid #shop .video-thumb img{object-fit:cover;cursor:pointer;background:#3d2f20}
+.life-shop-grid .stamp-dots .video-dot{color:#715333;font-size:11px}
+.life-shop-grid .stamp-dots .video-dot:after{content:none}
+.life-shop-grid .stamp-dots .video-dot[aria-pressed=true]{background:#eadcc5;border-radius:4px}
+.video-dialog-actions{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:16px}
+.video-dialog-actions .video-fallback{margin:0;min-height:44px;display:inline-flex;align-items:center}
+
+/* ============================================================
+   1) ジャンル一覧の最後の行の下線を消す
+   2) フッターの風景を、紙からグラデーションで現す
+   3) スマホ：横並びの圧縮をやめ、画像を全幅に戻す
+   ============================================================ */
+
+#archive-list .archive-row:last-child{border-bottom:0}
+
+/* フッターの風景：上端で切れて見えないよう、紙から徐々に現す */
+#site-footer .footer-scenery{
+  position:relative;height:190px;border-top:0;
+  background:url('assets/footer-landscape-storybook.webp') center bottom/cover no-repeat}
+#site-footer .footer-scenery:before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(var(--paper) 0,#fffaf0e0 22%,#fffaf000 68%)}
+@media(max-width:600px){
+ #site-footer .footer-scenery{height:140px}
+ #site-footer .footer-scenery:before{background:linear-gradient(var(--paper) 0,#fffaf0e0 20%,#fffaf000 64%)}
+}
+
+@media(max-width:600px){
+ /* 作品カード：96pxのサムネをやめ、画像を全幅へ戻す */
+ #play .work-card{display:flex;flex-direction:column;gap:0;padding:15px}
+ .work-media{grid-column:auto;grid-row:auto;width:100%;aspect-ratio:1.91}
+ .work-detail{display:flex;flex-direction:column;flex:1;min-width:0;padding-top:13px}
+ .work-info{display:block}
+ .work-meta{margin:0 0 9px}
+ .work-info h3{font-size:21px;margin:0 0 7px}
+ .work-info .work-lead{margin-top:8px}
+ .work-actions{margin-top:15px;padding-top:0}
+ .work-status{right:8px;bottom:8px;font-size:10px;padding:4px 9px}
+ .work-status small{font-size:9px}
+ .works-grid{gap:16px}
+
+ /* 体験レポート：横長の写真を縦長に切らない。画像は上に全幅 */
+ .article-card>a{display:block}
+ .article-image{aspect-ratio:1.9;width:100%;height:auto;grid-row:auto}
+ .article-body{padding:0 15px 14px}
+ .tags{margin-top:-13px}
+ .articles-grid{gap:18px}
+
+ /* 活動写真：2列で写真が小さくなっていたので1列に */
+ .history .memories ul{grid-template-columns:1fr;gap:14px}
+ .history .memories li,.history .memories li.photo-print{width:100%}
+
+ /* セクションの間隔を戻す */
+ .section{padding:30px 0 34px}
+ .section-heading{margin-bottom:18px}
+ #with,#shop{padding-block:26px}
+ .archive-row{padding:9px 0}
+}
+
+/* スマホ：フッターのうまさんが「ページの先頭へ」に重なっていた */
+@media(max-width:600px){
+ #site-footer .footer-main{padding:18px 18px 4px}
+ #site-footer .footer-bottom{flex-direction:column;align-items:flex-start;gap:7px;padding:6px 116px 18px 18px}
+}
+@media(max-width:600px){
+ /* SNSの行に重ならないよう、うまさんを風景の手前へ下げる */
+ #site-footer .footer-character{bottom:-122px}
+}
+
+/* ============================================================
+   1) スマホ：FREEとSHOPの間の区切り線を消す
+   2) フッターのタップ領域を確保する
+   3) スマホ：メニューはページを押し下げず、ヘッダーに重ねて開く
+   ============================================================ */
+
+/* SHOPの側にだけ出ていた片側の区切り線を消す（PC・スマホ共通） */
+.life-shop-grid .compact-section+.compact-section:before{content:none}
+
+/* 文字サイズは保ち、フッターのタップ領域を確保する。 */
+#site-footer .social-links a{min-width:44px;min-height:44px;padding:4px}
+#site-footer .footer-bottom a{display:inline-flex;align-items:center;min-width:44px;min-height:44px;padding:4px 0}
+
+/* メニューを開いてもHEROが動かないよう、ヘッダーに重ねて表示する */
+@media(max-width:850px){
+ .site-header nav.is-open{
+  position:absolute;left:0;right:0;top:100%;z-index:41;
+  width:auto;margin:0;padding:10px 5% 18px;
+  background:var(--paper);border-top:1px solid var(--line);
+  box-shadow:0 14px 26px #6b482324;
+  max-height:calc(100dvh - 100%);overflow-y:auto}
+}

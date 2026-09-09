@@ -1,0 +1,49 @@
+/* Shared interior pages: album paper, brown bindings, botanical outer corners. */
+dialog.modal-sheet{padding:0;max-height:90dvh;overflow:hidden;border:1px solid #aa8960;border-radius:12px;background:#fffdf8;color:#493626;box-shadow:0 22px 80px #21180e66}
+dialog.modal-sheet[open]{display:flex;flex-direction:column}
+dialog.modal-sheet::backdrop{background:#241c15bf;backdrop-filter:blur(3px)}
+.modal-sheet .modal-heading{flex:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 20px 13px 58px;border-bottom:3px double #c9b28e;background:#eee2ce url('assets/icon-book-color.png') 18px center/28px auto no-repeat}
+.modal-sheet .modal-heading h2{margin:0;font:600 21px/1.5 var(--serif);letter-spacing:.04em}
+.modal-sheet .modal-close{position:static;inset:auto;flex:0 0 44px;width:44px;min-width:44px;height:44px;min-height:44px;padding:0;margin:0;border:1px solid #bda37e;border-radius:7px;background:#fffdf8;color:#5b422a;font:26px/1 var(--sans);box-shadow:none}
+.modal-sheet .modal-content{position:relative;min-height:0;overflow:auto;overscroll-behavior:contain;padding:20px;background:#fffdf8}
+.modal-sheet .modal-content:before{content:'';position:absolute;left:0;top:0;bottom:0;width:12px;background:url('assets/botanical-border-storybook.webp') left bottom/110px auto no-repeat;pointer-events:none}
+.image-dialog .modal-content:before,.video-dialog .modal-content:before{content:none}
+.modal-sheet .modal-actions{flex:none;max-width:none;width:100%;margin:0;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #d6c3a5;background:#f0e5d3}
+.modal-sheet .modal-actions[hidden]{display:none}
+.modal-sheet .modal-actions p{margin:0;font:13px/1.6 var(--sans)}
+.modal-sheet .modal-actions .button{min-height:44px;font-size:13px;gap:8px}
+.modal-sheet .modal-actions .action-icon{width:22px;height:22px}
+.image-dialog .modal-content{padding:10px;background:#332a24}
+.image-stage{display:flex;align-items:center;justify-content:center;min-height:0}
+.image-stage>img{display:block;max-width:100%;max-height:min(62dvh,calc(90dvh - 220px));width:auto;height:auto;object-fit:contain;margin:0 auto}
+.image-dialog .modal-actions{flex-wrap:wrap;justify-content:center;text-align:center}
+.image-dialog .modal-actions p{flex:1 1 100%}
+.video-dialog .modal-content{padding:12px;background:#332a24}
+.video-dialog .video-player{border-radius:4px;width:100%}
+.video-dialog .video-fallback{margin:0;min-height:44px;display:inline-flex;align-items:center}
+.try-dialog .modal-content{padding:18px 24px}
+.try-dialog .try-note{margin:0 0 14px}
+.try-dialog .adventure-result>img{max-height:32dvh;object-fit:contain;background:#fff;border:1px solid #e3d8c6}
+.try-dialog .adventure-result h3{font-size:19px}
+.try-dialog .adventure-result p:last-child{margin-bottom:0}
+.modal-actions .adventure-actions{width:100%;margin:0;gap:8px}
+.wallpaper-dialog .modal-content>p{font-size:13px;margin:0 0 12px}
+.wallpaper-dialog .wallpaper-preview{justify-content:flex-start;gap:20px;padding:12px 0;margin:0 0 16px;background:none;border-block:1px solid #dfd2bc}
+.wallpaper-preview .preview-phone{flex:0 0 64px;width:64px;border-width:3px;border-radius:13px;box-shadow:0 3px 7px #50351922}
+.wallpaper-preview .phone-clock strong{font-size:16px}.wallpaper-preview .phone-clock small{display:none}
+.wallpaper-preview .preview-copy{max-width:none}.wallpaper-preview .preview-copy h3{font-size:16px;margin:4px 0}
+.wallpaper-preview .preview-copy p{margin:4px 0;font-size:12px}.wallpaper-preview .preview-copy small{font-size:10px}
+.wallpaper-dialog .wallpaper-choices{gap:12px}
+.wallpaper-dialog .wallpaper-pick>img{height:180px;background:transparent}
+.wallpaper-dialog .wallpaper-choices h3{margin:6px 0 0;font-size:12px;text-align:center;min-height:0}
+.wallpaper-dialog .wallpaper-more{margin-top:14px;padding:8px;font-size:12px}
+@media(max-width:600px){
+ .modal-sheet .modal-heading{padding:9px 12px 9px 46px;gap:8px;background-position:12px center;background-size:24px auto}.modal-sheet .modal-heading h2{font-size:17px}
+ .modal-sheet .modal-content{padding:14px}.modal-sheet .modal-actions{padding:10px 12px;gap:8px}
+ .image-dialog .modal-content,.video-dialog .modal-content{padding:8px}
+ .wallpaper-dialog .wallpaper-preview{gap:12px}.wallpaper-preview .preview-copy h3{font-size:14px}
+ .wallpaper-preview .preview-copy .try-eyebrow,.wallpaper-preview .preview-copy>p:not(.wallpaper-selection){display:none}
+ .wallpaper-dialog .wallpaper-pick>img{height:160px}.wallpaper-dialog .selected-wallpaper-name{font-size:11px}
+ .wallpaper-dialog .modal-actions .button{font-size:12px;padding-inline:12px}
+ .try-dialog .adventure-result h3{font-size:17px}.try-dialog .adventure-result>img{max-height:25dvh}
+}

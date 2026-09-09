@@ -1,0 +1,124 @@
+/* Optional previews and small reactions. Loaded after the existing journal layout. */
+.action-icon{display:inline-block;flex:0 0 auto;width:28px;height:28px;object-fit:contain;vertical-align:middle}
+.try-link{display:inline-flex;justify-content:center;align-items:center;gap:7px;min-height:44px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fffaf0;color:var(--ink);font:600 12px/1.5 var(--sans);text-decoration:none;cursor:pointer}
+.try-link:hover{background:#f3e6cf;border-color:#aa8550}
+.try-link .action-icon{width:20px;height:20px}
+.work-meta li{display:inline-flex;align-items:center;gap:3px}
+.work-meta .action-icon{width:18px;height:18px}
+.hero-actions .button .journal-icon{transition:transform .25s ease}
+.hero-actions .button:hover .journal-icon,.hero-actions .button:focus-visible .journal-icon{transform:none}
+.work-actions>.button:hover .ext{transform:none}
+.filter-list{align-items:stretch}
+.filter-list button{display:flex;align-items:center;gap:8px;text-align:left;white-space:normal;min-height:60px;border-radius:10px;padding:10px 12px;flex:1 1 170px}
+.filter-list button .genre-label{display:block;font:600 12px/1.6 var(--sans)}
+.filter-list button small{display:block;font:10px/1.6 var(--sans);opacity:.86}
+.note-invite{display:flex;flex-direction:column;align-items:center;gap:9px;width:100%}
+/* JSが動かない場合に空の紙片を出さない */
+.travel-note:empty{display:none}
+.note-invite>img{width:72px;height:72px;object-fit:contain}
+.note-invite p{margin:0;font:12px/1.8 var(--serif);letter-spacing:.02em;text-align:center}
+/* .travel-note span の25px指定がボタン内のspanに効いていたため打ち消す */
+.note-invite .try-link{width:100%;font:600 11px/1.5 var(--sans);letter-spacing:0;padding:9px 8px;gap:6px}
+.note-invite .try-link span{font-size:11px;line-height:1.5;color:inherit;letter-spacing:0}
+.note-invite .action-icon{width:20px;height:20px}
+/* ボタンの文言が2行に折れないよう、紙片を少し広げる */
+@media(min-width:601px){.travel-note{width:248px}}
+.try-dialog{width:min(92vw,650px);max-height:90dvh;padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--paper);color:var(--ink);overflow:auto;box-shadow:0 24px 90px #27180c55}
+.try-dialog::backdrop{background:#251b12ba}
+.try-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.try-heading h2{font:600 23px/1.5 var(--serif);margin:0}
+.try-close{flex-shrink:0;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:#fffaf0;font:26px/1 var(--sans)}
+.try-note{font:13px/1.8 var(--sans);color:var(--muted)}
+.try-note{margin:12px 0}
+.try-eyebrow{font:10px/1.5 Georgia;letter-spacing:.15em;color:#957345}
+.wallpaper-preview{display:flex;align-items:center;justify-content:center;gap:30px;padding:20px;margin-bottom:20px;background:#f2e7d1;border-radius:12px}
+.preview-phone{position:relative;width:128px;flex:0 0 128px;aspect-ratio:555/1200;border:5px solid #493b30;border-radius:23px;overflow:hidden;background:#493b30;box-shadow:0 7px 18px #50351933}
+.preview-phone>img{width:100%;height:100%;object-fit:cover}
+.phone-clock{position:absolute;top:12%;left:0;width:100%;text-align:center;color:white;text-shadow:0 1px 7px #000c}
+.phone-clock small{display:block;font:6px/2 var(--sans)}
+.phone-clock strong{display:block;font:300 34px/1.2 var(--sans);letter-spacing:-.04em}
+.phone-home{position:absolute;bottom:7px;left:33%;width:34%;height:3px;border-radius:3px;background:white}
+.preview-copy{max-width:330px}
+.preview-copy h3{font:600 20px/1.5 var(--serif);margin:8px 0}
+.preview-copy p{font:13px/1.8 var(--sans)}
+.preview-copy small{font:11px/1.7 var(--sans);color:var(--muted)}
+.wallpaper-selection{font-weight:600!important}
+.preview-changed .preview-phone{animation:preview-in .25s ease-out}
+.wallpaper-pick{width:100%;padding:4px;border:2px solid transparent;border-radius:10px;background:transparent;text-align:center;color:var(--muted)}
+.wallpaper-pick[aria-pressed=true]{border-color:#866235;background:#efe1c8}
+.wallpaper-pick span{display:block;font:11px/1.6 var(--sans);padding:5px 0 1px}
+.wallpaper-choices .wallpaper-pick img{border-radius:6px}
+.gallery-arrow{position:absolute;top:50%;z-index:3;transform:translateY(-50%);width:44px;height:44px;border:1px solid #c5aa7b;border-radius:50%;background:#fffaf0eb;color:#604326;font:30px/1 var(--sans);box-shadow:0 2px 8px #2d1c0a25}
+.gallery-arrow.prev{left:7px}.gallery-arrow.next{right:7px}
+/* 色の違う旅のページ。文字の背面は明るく保つ。 */
+.page-content{background:linear-gradient(140deg,#fffaf0,#fff8ed)}
+#play{background:radial-gradient(ellipse at 95% 10%,#e6d2ad70,transparent 58%),#f1e4cf}
+#discover,#about{background:linear-gradient(125deg,#fffaf0,#fffdf7)}
+.life-shop-grid{background:radial-gradient(ellipse at 0% 20%,#e3cfac70,transparent 55%),linear-gradient(120deg,#f1e4cf,#f6eada)}
+#with .mini-card{background:linear-gradient(135deg,#f5fbf5,#fffdf5)}
+#shop .mini-card{background:linear-gradient(135deg,#fff7ed,#fffaf7)}
+.wallpaper-preview{background:transparent;border-block:1px solid #d8c5a7;border-radius:0}
+.button,.try-link{position:relative;isolation:isolate;overflow:hidden;transition:transform .22s ease,box-shadow .22s ease,filter .22s ease}
+.button:before,.try-link:before{content:none}
+@media(hover:hover){
+ .button:hover,.try-link:hover{transform:none;filter:brightness(1.025)}
+ .button:hover .action-icon,.try-link:hover .action-icon{transform:none}
+}
+.button:active,.try-link:active{transform:none}
+.action-icon{transition:transform .22s ease}
+@keyframes button-shine{to{left:140%}}
+.social-links .social-icon{width:24px;height:24px;object-fit:contain}
+#site-footer .social-links a{gap:5px;padding:8px;border-radius:0;background:transparent;border:0;min-width:44px;min-height:44px;transition:opacity .15s}
+#site-footer .social-links a:hover{transform:none;box-shadow:none;opacity:.8}
+#site-footer .social-links b{font:10px/1.4 var(--sans)}
+.adventure-result>img{width:100%;aspect-ratio:1.9;object-fit:cover;border-radius:8px}
+.adventure-result h3{font:600 20px/1.6 var(--serif);margin:8px 0}
+.adventure-result p{font-size:13px;line-height:1.8}
+.adventure-again{margin-top:16px}
+@keyframes preview-in{from{opacity:.5}to{opacity:1}}
+@media(max-width:600px){
+ .try-dialog{padding:16px;width:94vw}.try-heading h2{font-size:19px}
+ .wallpaper-preview{gap:14px;padding:14px}.preview-phone{width:100px;flex-basis:100px;border-width:4px;border-radius:18px}.phone-clock strong{font-size:28px}.phone-clock small{font-size:5px}
+ .preview-copy h3{font-size:16px}.preview-copy p{font-size:11px}.preview-copy small{font-size:10px}.preview-copy .try-eyebrow{font-size:8px}
+ .note-invite{flex-direction:row;flex-wrap:wrap;gap:10px}
+ .note-invite>img{width:58px;height:58px}
+ .note-invite p{font-size:11px;text-align:left;flex:1 1 150px}
+ .note-invite .try-link{font-size:11px}
+ .filter-list button{flex-basis:100%;min-height:56px}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+ .button:hover,.button:active,.try-link:hover,.try-link:active,.social-links a:hover,.button:hover img,.article-card:hover,.hero-actions .button:hover .journal-icon{transform:none}
+}
+
+/* 現行の操作アイコンとレイアウト。文字記号による描画を使わない。 */
+.site-header{position:sticky;top:0;z-index:50}
+.ui-icon{display:inline-block;width:18px;height:18px;max-width:none;object-fit:contain;flex:0 0 18px;vertical-align:middle}
+img.ext.ui-icon{background:none;mask:none;-webkit-mask:none;border:0;transform:none;width:16px;height:16px;opacity:.85}
+.button.primary .ui-icon,.journal-link .ui-icon{filter:none}
+.gallery-arrow{display:flex;align-items:center;justify-content:center;padding:0;background:transparent;border:0;box-shadow:none}
+.gallery-arrow .ui-icon{width:28px;height:35px;flex-basis:28px}
+.life-shop-grid .stamp-nav{background:transparent;border:0;box-shadow:none}
+.stamp-nav .ui-icon{width:24px;height:30px;flex-basis:24px}
+.video-play{display:flex;align-items:center;justify-content:center;background:transparent;border:0;box-shadow:none}
+.video-card:hover .video-play{background:transparent;transform:none}
+.video-play:after{content:none}
+.video-thumb .video-play .ui-icon{width:38px;height:38px;object-fit:contain}
+.life-shop-grid #shop .video-thumb .video-play .ui-icon{background:transparent;object-fit:contain}
+.ext{background:transparent url('assets/ui-external.svg') center/contain no-repeat;mask:none;-webkit-mask:none}
+.media-choices .media-play-icon{position:absolute;left:50%;top:50%;width:18px;height:18px;transform:translate(-50%,-50%);background:transparent;border:0;padding:0}
+.life-shop-grid .stamp-dots .video-dot .ui-icon{width:12px;height:12px;vertical-align:middle}
+.adventure-actions{display:grid;gap:10px;margin-top:20px}
+.adventure-actions>a,.adventure-actions>button{width:100%;margin:0;min-height:46px;font-size:13px;gap:8px}
+.adventure-actions .adventure-again{background:transparent;border-color:#d8c5a7}
+.video-local-note{display:flex;align-items:center;justify-content:center;text-align:center;height:100%;margin:0;padding:24px;color:#fffaf0;font-size:14px;line-height:1.8}
+#play .work-card{padding:0;overflow:hidden}
+#play .work-media{border-radius:0}
+#play .work-detail{padding:14px;display:flex;flex-direction:column}
+@media(min-width:601px) and (max-width:850px){
+ #play .work-card{display:grid;grid-template-columns:minmax(200px,34%) minmax(0,1fr);gap:0}
+ #play .work-media{grid-column:1;grid-row:1;width:100%;height:100%;aspect-ratio:auto}
+ #play .work-info{display:block}
+ #play .work-actions{margin-top:auto;padding-top:14px}
+}

@@ -1,0 +1,24 @@
+# 依存・ログ
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+
+# 実行キャッシュ
+__pycache__/
+*.pyc
+
+# 自動生成の中間ファイル
+data/source-articles.json
+
+# 作業用の書き出し（アプリが生成。サイトとは無関係）
+Claude outputs/
+_original/
+
+# 作業記録・キャラクター正本・画像の生成原本は公開しない。
+# 保管先は creative-ops の projects/tabisuru-umasan/ 配下。
+docs/
+_assets-source/
+asset-generation-*.json
+assets/*-generation.json
+design-audit-dialogs.md
