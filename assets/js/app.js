@@ -152,7 +152,7 @@ document.querySelectorAll('[data-carousel]').forEach(root => {
   }
   function start() {
     stop();
-    if (slides.some(slide => slide.matches('.video-card'))) return;
+    if (root.closest('.camera-mini, #shop') || slides.some(slide => slide.matches('.video-card'))) return;
     if (!reduce.matches && !root.matches(':hover') && !root.contains(document.activeElement) && !document.querySelector('dialog[open]')) {
       timer = setInterval(() => go(index + 1), 4500);
     }

@@ -1,0 +1,7 @@
+﻿/* Saving stays inside the existing wallpaper/photo preview. */
+.save-hint{font-size:11px;line-height:1.6;color:#796954;margin:8px 0;text-align:center}
+[aria-disabled=true]{opacity:.5;cursor:wait}
+.preview-phone>img,.image-stage>img,#camera-review{-webkit-touch-callout:default;user-select:auto}
+.phone-clock,.phone-home{pointer-events:none}
+.modal-sheet .modal-heading{position:relative;z-index:2}
+.modal-sheet .modal-close{pointer-events:auto;position:relative;z-index:3;touch-action:manipulation}

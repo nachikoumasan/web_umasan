@@ -1,4 +1,4 @@
-/* Illustrated travel journal. Final layer after storybook.css. */
+﻿/* Illustrated travel journal. Final layer after storybook.css. */
 :root{--journal-art:url('../../media/ornament.webp');--paper:#fffaf0;--line:#dcc59d}
 .journal-icon{display:inline-block;flex:0 0 auto;width:48px;height:48px;background-repeat:no-repeat;mix-blend-mode:multiply;vertical-align:middle}
 .journal-icon{background-size:contain;background-position:center}
@@ -32,7 +32,7 @@
 .button.is-waiting{background:#f4ecdf;box-shadow:inset 0 0 0 4px #fffaf0;outline-color:#d8c7aa;color:#746049}
 .filter-list button{border:1px solid #ceb38a;background:#fff9ec;box-shadow:inset 0 0 0 3px #fffdf6}
 .filter-list button[aria-pressed=true]{background:#6c573b;color:#fffaf0;box-shadow:inset 0 0 0 3px #6c573b,inset 0 0 0 4px #b49b70}
-.travel-note{background:#f8eedc var(--journal-art) center/100% 100%;border:1px solid #d5bb90;box-shadow:2px 3px 0 #e9dcc5}.about-lead>img,.footer-character{mix-blend-mode:multiply}
+.travel-note{background:#f8eedc var(--journal-art) center/100% 100%;border:1px solid #d5bb90;box-shadow:2px 3px 0 #e9dcc5}.about-lead>img{mix-blend-mode:normal}.footer-character{mix-blend-mode:multiply}
 .archive-postcard{box-shadow:0 5px 13px #73532e25;border:1px solid #dfcfb3}
 footer{background:#fffaf0 var(--journal-art) center bottom/100% auto no-repeat;padding-bottom:115px;border-top:1px solid #d5bf98}
 .footer-main,.footer-bottom{background:transparent}.footer-main{padding-top:32px}.footer-character{object-fit:contain}

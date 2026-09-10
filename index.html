@@ -11,12 +11,18 @@
     gtag('config', 'G-DMM1X6ECD6');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>旅するうまさん｜体験を探す。作品で遊ぶ。</title>
+  <title>旅するうまさん｜謎解き・没入型アートの体験レポートと無料作品</title>
   <meta name="description" content="うまさんと、次の「やってみたい」を見つけよう。謎解きや没入型アートの体験レポート、無料で遊べる作品、スマホ壁紙やグッズをご紹介します。">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="旅するうまさん｜体験を探す。作品で遊ぶ。">
+  <meta property="og:title" content="旅するうまさん｜謎解き・没入型アートの体験レポートと無料作品">
+  <meta property="og:site_name" content="旅するうまさん">
   <meta property="og:description" content="読む、遊ぶ、いっしょに出かける。小さな冒険の案内役・うまさんと、次の休日やいつもの毎日を楽しむヒントを探しに。">
   <meta property="og:locale" content="ja_JP">
+  <link rel="canonical" href="https://web-umasan.nachiko-umasan0215.workers.dev/">
+  <meta property="og:url" content="https://web-umasan.nachiko-umasan0215.workers.dev/">
+  <meta property="og:image" content="https://web-umasan.nachiko-umasan0215.workers.dev/media/hero-umasan.webp">
+  <meta property="og:image:alt" content="旅するうまさん">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#fbf6eb">
   <link rel="icon" href="media/icon-horseshoe.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +33,10 @@
   <link rel="stylesheet" href="assets/css/journal.css">
   <link rel="stylesheet" href="assets/css/playful.css">
   <link rel="stylesheet" href="assets/css/dialogs.css">
+  <link rel="stylesheet" href="assets/css/image-save.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="assets/css/scenery.css">
+  <script src="assets/js/image-save.js" defer></script>
   <script src="assets/js/content.js" defer></script>
   <script src="assets/js/article-notes.js" defer></script>
   <script src="assets/js/app.js" defer></script>
@@ -38,20 +48,20 @@
   <a class="brand" href="./" aria-label="旅するうまさん ホーム"><span class="journal-icon icon-horseshoe" aria-hidden="true"></span><span>旅するうまさん<small>物語の扉を見つける、小さな冒険者。</small></span></a>
   <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
   <nav id="main-nav" aria-label="メインナビゲーション"><a href="#play"><span class="journal-icon icon-play" aria-hidden="true"></span><span>作品で遊ぶ</span></a><a href="#discover"><span class="journal-icon icon-compass" aria-hidden="true"></span><span>体験レポート</span></a><a href="#with"><span class="journal-icon icon-camera" aria-hidden="true"></span><span>壁紙・カメラ</span></a><a href="#shop"><span class="journal-icon icon-bag" aria-hidden="true"></span><span>スタンプ・グッズ</span></a><a href="#about"><span class="journal-icon icon-book" aria-hidden="true"></span><span>うまさんについて</span></a></nav>
-  <a class="journal-link" href="https://note.com/nachiko0215" target="_blank" rel="noopener noreferrer">noteで読む</a>
 </header>
 <main id="main">
+  <div class="hero-region">
   <section class="hero" aria-labelledby="hero-title">
-    <img class="hero-landscape" src="media/hero-umasan.webp" alt="城と湖を見渡す道で、ランタンを掲げて旅へ案内するうまさん" fetchpriority="high" width="1536" height="1024">
+    <picture><source media="(max-width:600px)" srcset="media/hero-mobile-storybook.webp"><img class="hero-landscape" src="media/hero-umasan.webp" alt="城と湖を見渡す道で、ランタンを掲げて旅へ案内するうまさん" fetchpriority="high" width="1536" height="1024"></picture>
     <div class="hero-copy"><p class="eyebrow">いつもの毎日に、小さな冒険を。</p><h1 id="hero-title">体験を探す。作品で遊ぶ。<br>うまさんと日常を<br class="mobile-break">少しだけ冒険に。</h1><p class="intro">うまさんは、あなたの日常に小さな冒険を届ける案内役。<br>謎解きやアートの体験レポートを読んだり、オリジナル作品で遊んだり。<br>気になる扉から、次の「やってみたい」を見つけてください。</p><div class="hero-actions"><a class="button primary" href="#play"><span class="journal-icon icon-play" aria-hidden="true"></span>作品で遊ぶ </a><a class="button" href="#discover"><span class="journal-icon icon-compass" aria-hidden="true"></span>体験レポート </a></div></div>
-    <div class="hero-character"><p>いつもの景色の、<br>　少し先へ。</p></div>
     <span class="hero-footnote">YOUR NEXT LITTLE ADVENTURE</span>
   </section>
-  <div class="page-content">
     <section id="news" class="news-strip" aria-labelledby="news-title">
-      <h2 id="news-title"><span class="journal-icon icon-news" aria-hidden="true"></span>NEWS<small>お知らせ</small></h2>
+      <h2 id="news-title"><span class="journal-icon icon-news" aria-hidden="true"></span>お知らせ<small>NEWS</small></h2>
       <ul id="news-list"></ul>
     </section>
+  </div>
+  <div class="page-content">
     <section id="play" class="section play-section" aria-labelledby="play-title">
       <div class="section-heading"><div><h2 id="play-title"><span class="journal-icon icon-play" aria-hidden="true"></span><span>作品で遊ぶ</span><small>PLAY</small></h2><p>Webの手がかりをたどるミステリーも、うまさんと撮る記念写真も。気になる作品から、小さな冒険を始めてみませんか。</p></div></div>
       <div id="works" class="works-grid"></div>
@@ -60,7 +70,7 @@
       <div class="section-heading"><div><h2 id="discover-title"><span class="journal-icon icon-compass" aria-hidden="true"></span><span>体験レポート</span><small>EXPERIENCE</small></h2><p>次の休日は、物語の中へ。謎解きや没入型アートなど、実際に行ってきた体験の記録です。</p></div><a class="button small" href="https://note.com/nachiko0215" target="_blank" rel="noopener noreferrer">noteで全記事を読む</a></div>
       <h3 class="report-subheading" id="latest-reports-title">最新の体験レポート</h3>
       <div id="articles" class="articles-grid" aria-labelledby="latest-reports-title"></div>
-      <div class="archive-layout"><div class="archive-postcard photo-print"><img src="media/postcard-new-storybook.webp" alt="湖と城を望む、花の咲く街の小道" loading="lazy"><p>出会う体験が、<br>わたしの世界を、<br>少しずつ広げてくれる。</p><span class="archive-seal"><small class="seal-label">GOOD EXPERIENCES</small><strong>100+</strong><small>and more…</small></span></div><div class="archive-browser"><h3 class="report-subheading" id="genre-reports-title">ジャンルから探す</h3><div class="filter-list" role="group" aria-label="体験のジャンルで絞り込む"></div><p class="archive-note"><span id="archive-label"></span> <span id="result-count" aria-live="polite"></span></p><div id="archive-list" aria-labelledby="genre-reports-title"></div></div><aside class="travel-note"></aside></div>
+      <div class="archive-layout"><aside class="travel-note"></aside><div class="archive-postcard photo-print"><img src="media/postcard-new-storybook.webp" alt="湖と城を望む、花の咲く街の小道" loading="lazy"><p>出会う体験が、<br>わたしの世界を、<br>少しずつ広げてくれる。</p><span class="archive-seal"><small class="seal-label">GOOD EXPERIENCES</small><strong>100+</strong><small>and more…</small></span></div><div class="archive-browser"><h3 class="report-subheading" id="genre-reports-title">ジャンルから探す</h3><div class="filter-list" role="group" aria-label="体験のジャンルで絞り込む"></div><p class="archive-note"><span id="archive-label"></span> <span id="result-count" aria-live="polite"></span></p><div id="archive-list" aria-labelledby="genre-reports-title"></div></div></div>
     </section>
     <div class="life-shop-grid">
       <section id="with" class="section compact-section" aria-labelledby="with-title"><div class="section-heading"><div><h2 id="with-title"><span class="journal-icon icon-camera" aria-hidden="true"></span><span>壁紙・カメラ</span><small>FREE</small></h2><p>スマホの中でも、旅先でも。うまさんと無料で楽しもう。</p></div></div><div class="mini-grid"><article class="mini-card wallpaper"><div class="product-images phones"><div class="phones-row"><img src="media/wallpaper-moon.jpg" alt="スマホ壁紙 光る花と月" loading="lazy"><img src="media/wallpaper-tower.jpg" alt="スマホ壁紙 水鏡と塔" loading="lazy"><img src="media/wallpaper-gate.jpg" alt="スマホ壁紙 紫陽花の回廊" loading="lazy"><img src="media/wallpaper-lily.jpg" alt="スマホ壁紙 すずらんと光の門" loading="lazy"></div></div><div class="mini-copy"><h3>スマホ壁紙</h3><p>スマホを開くたび、小さな旅へ。好きな風景を壁紙に。</p><div class="mini-actions"><button type="button" class="button small wallpaper-open" aria-haspopup="dialog" aria-controls="wallpaper-dialog">壁紙を選んで保存 </button></div></div></article><article class="mini-card camera-mini"><div class="stamp-carousel" data-carousel>
@@ -99,7 +109,6 @@
             <p class="about-summary">うまさんは、あなたの「ちょっと気になる」に寄り添う、小さな冒険の案内役です。謎解きやアートの世界へ出かけたり、写真やグッズで毎日を彩ったり。<strong>日常が少しだけ楽しくなる出会い</strong>を、この場所からお届けします。</p>
             <p>うまさんは2016年、LINEスタンプから生まれました。そこからグループ展やデザインフェスタ、Tシャツやステッカーへと活動が広がっています。いまは、自分で手がかりをたどって遊ぶ<strong>Web探索型の作品</strong>もつくっています。</p>
             <p>2024年から続けているnote「うまさんの体験型エンタメ冒険記」は、100記事を超えました。謎解きやARG、没入型アートなど、訪れた先で見たことを書きためています。記事はすべて、実際に足を運んだ体験をもとに書いています。</p>
-            <p class="about-author">制作・運営はなちこ（X：<a href="https://x.com/nachiko0215" target="_blank" rel="noopener noreferrer">なちこ＠旅するうまさん</a>）。</p>
           </div>
         </div>
                 <div class="history">
@@ -118,7 +127,7 @@
     </section>
   </div>
 </main>
-<footer id="site-footer"><div class="footer-main"><a class="brand" href="./"><span class="journal-icon icon-horseshoe" aria-hidden="true"></span><span>旅するうまさん<small>物語の扉を見つける、小さな冒険者。</small></span></a><p class="about-copy">制作・運営：なちこ（<a href="https://x.com/nachiko0215" target="_blank" rel="noopener noreferrer">なちこ＠旅するうまさん</a>）</p><nav class="social-links" aria-label="公式SNS・ショップ"><a href="https://x.com/nachiko0215" target="_blank" rel="noopener noreferrer"><b>X</b></a><a href="https://note.com/nachiko0215" target="_blank" rel="noopener noreferrer"><b>note</b></a><a href="https://www.youtube.com/@TabisuruUmasan" target="_blank" rel="noopener noreferrer"><b>YouTube</b></a><a href="https://www.instagram.com/nachiko0215" target="_blank" rel="noopener noreferrer"><b>Instagram</b></a><a href="https://store.line.me/stickershop/author/114526/ja" target="_blank" rel="noopener noreferrer"><b>LINE</b></a><a href="https://suzuri.jp/nachiko0215?sort=sales" target="_blank" rel="noopener noreferrer"><b>SUZURI</b></a></nav><img class="footer-character" src="media/footer-umasan.webp" alt="" loading="lazy" width="384" height="384"></div><div class="footer-bottom"><small>© 2026 旅するうまさん</small><a href="#main">ページの先頭へ </a></div><div class="footer-scenery" aria-hidden="true"></div></footer>
+<footer id="site-footer"><div class="footer-main"><a class="brand" href="./"><span class="journal-icon icon-horseshoe" aria-hidden="true"></span><span>旅するうまさん<small>物語の扉を見つける、小さな冒険者。</small></span></a><p class="about-copy">制作・運営：なちこ</p><nav class="social-links" aria-label="公式SNS・ショップ"><a href="https://x.com/nachiko0215" target="_blank" rel="noopener noreferrer"><b>X</b></a><a href="https://note.com/nachiko0215" target="_blank" rel="noopener noreferrer"><b>note</b></a><a href="https://www.youtube.com/@TabisuruUmasan" target="_blank" rel="noopener noreferrer"><b>YouTube</b></a><a href="https://www.instagram.com/nachiko0215" target="_blank" rel="noopener noreferrer"><b>Instagram</b></a><a href="https://store.line.me/stickershop/author/114526/ja" target="_blank" rel="noopener noreferrer"><b>LINE</b></a><a href="https://suzuri.jp/nachiko0215?sort=sales" target="_blank" rel="noopener noreferrer"><b>SUZURI</b></a></nav><img class="footer-character" src="media/footer-umasan.webp" alt="" loading="lazy" width="384" height="384"></div><div class="footer-bottom"><small>© 2026 旅するうまさん</small><a href="#main">ページの先頭へ </a></div><div class="footer-scenery" aria-hidden="true"></div></footer>
 <dialog id="wallpaper-dialog" class="wallpaper-dialog" aria-labelledby="wallpaper-title">
 <button type="button" class="image-close" aria-label="壁紙一覧を閉じる">×</button>
 <h2 id="wallpaper-title">お気に入りの壁紙を保存</h2>

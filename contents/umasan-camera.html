@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,24 +11,38 @@
   gtag('config', 'G-DMM1X6ECD6');
 </script>
 <title>うまさんカメラ｜旅するうまさん</title>
+<meta name="description" content="うまさんと一緒に写真が撮れる無料のWebカメラ。カメラで撮影するか、お手持ちの写真を選んで、ポーズ・大きさ・角度を調整できます。写真は端末内で合成します。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="うまさんカメラ｜旅するうまさん">
+<meta property="og:description" content="うまさんと一緒に写真が撮れる無料のWebカメラ。撮影した景色やお手持ちの写真に、好きなポーズのうまさんを添えて楽しめます。">
+<meta property="og:site_name" content="旅するうまさん">
+<meta property="og:locale" content="ja_JP">
+<link rel="canonical" href="https://web-umasan.nachiko-umasan0215.workers.dev/contents/umasan-camera.html">
+<meta property="og:url" content="https://web-umasan.nachiko-umasan0215.workers.dev/contents/umasan-camera.html">
+<meta property="og:image" content="https://web-umasan.nachiko-umasan0215.workers.dev/media/work-camera.webp">
+<meta property="og:image:alt" content="うまさんカメラ">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../media/icon-horseshoe.webp"><link rel="stylesheet" href="../assets/css/camera.css">
+<link rel="stylesheet" href="../assets/css/image-save.css">
+<script src="../assets/js/image-save.js" defer></script>
 <script src="../assets/js/camera.js" defer></script>
 </head>
 <body>
 <main class="camera-app">
-<header class="camera-header"><a class="back" href="../index.html" aria-label="旅するうまさんに戻る">←</a><div><h1>うまさんカメラ</h1><p>今日の景色に、小さな冒険を。</p></div><button id="flip" type="button" disabled>前後切替</button></header>
+<header class="camera-header"><a class="back" href="../index.html" aria-label="旅するうまさんに戻る"><img src="../media/camera-return.png" alt=""></a><div><h1>うまさんカメラ</h1><p>今日の景色に、小さな冒険を。</p></div><button id="flip" type="button" aria-label="前後のカメラを切り替える" disabled><img src="../media/camera-flip-rendered.png" alt=""></button><button id="view-only" class="camera-icon-button" type="button" aria-label="操作をすべて隠す（映像をタップで再表示）" title="操作を隠す・映像をタップで戻る" aria-pressed="false"><img src="../media/camera-fullscreen.png" alt=""></button></header>
 <section class="camera-stage" aria-label="撮影範囲全体のプレビュー">
 <canvas id="camera-canvas" width="1080" height="1440" tabindex="0" aria-label="うまさんをドラッグして移動。矢印キーでも移動できます。" hidden></canvas>
+<img id="camera-review" alt="撮影した写真。長押しでも保存できます。" hidden>
 <div id="camera-welcome"><img src="../media/camera-pose-front.png" alt="リュックとランタンを持ったうまさん"><h2>うまさんと、一枚。</h2><p>写真に入る範囲を、全部見ながら撮影できます。</p><button id="start" class="primary" type="button">カメラを起動</button><label class="photo-label" for="photo-input">写真を選んで楽しむ</label><p class="privacy">写真はこの端末内で合成します。</p></div>
 </section>
 <section class="camera-tools" aria-label="撮影と調整">
 <p id="camera-status" role="status">カメラを起動するか、写真を選んでください。</p>
 <div id="edit-tools" hidden>
-<div class="tool-tabs"><button id="poses-toggle" type="button" aria-expanded="false" aria-controls="poses-panel">うまさんを選ぶ</button><button id="adjust-toggle" type="button" aria-expanded="false" aria-controls="adjust-panel">大きさ・角度</button><button id="reset" type="button">位置を戻す</button></div>
+<div class="tool-tabs"><button id="poses-toggle" type="button" aria-label="うまさんのポーズを選ぶ" aria-expanded="false" aria-controls="poses-panel"><img src="../media/camera-pose-front.png" alt=""><span>ポーズ</span></button><button id="adjust-toggle" type="button" aria-label="大きさと角度を調整" aria-expanded="false" aria-controls="adjust-panel"><img src="../media/camera-adjust-rendered.png" alt=""><span>調整</span></button><button id="reset" type="button" aria-label="位置を元に戻す"><img src="../media/camera-reset-rendered.png" alt=""><span>リセット</span></button></div>
 <div id="poses-panel" class="tool-panel" hidden><div id="pose-list" aria-label="うまさんのポーズ"></div></div>
-<div id="adjust-panel" class="tool-panel" hidden><label>大きさ <input id="size" type="range" min="10" max="90" value="32"><output id="size-value">32%</output></label><label>角度 <input id="rotation" type="range" min="-180" max="180" value="0"><output id="rotation-value">0°</output></label><button id="mirror" type="button" aria-pressed="false">うまさんを左右反転</button></div>
+<div id="adjust-panel" class="tool-panel" hidden><label>大きさ <input id="size" type="range" min="10" max="90" value="32"><output id="size-value">32%</output></label><label>角度 <input id="rotation" type="range" min="-180" max="180" value="0"><output id="rotation-value">0°</output></label><button id="mirror" type="button" aria-pressed="false" aria-label="うまさんを左右反転"><img src="../media/camera-flip-rendered.png" alt="" width="26" height="26"><span>左右反転</span></button></div>
 </div>
-<div class="capture-row"><label class="secondary photo-label" for="photo-input">写真を選ぶ</label><button id="capture" class="primary" type="button" disabled>撮影する</button><button id="retake" type="button" hidden>調整に戻る</button><button id="save" class="primary" type="button" hidden>画像を保存</button><button id="share" type="button" hidden>共有</button></div>
+<div class="capture-row"><label class="secondary photo-label camera-icon-button" for="photo-input" aria-label="写真を選ぶ"><img src="../media/camera-gallery-rendered.png" alt=""><span>写真</span></label><button id="capture" class="primary camera-shutter" type="button" aria-label="撮影する" disabled><img src="../media/camera-capture.png" alt=""></button><button id="tools-toggle" class="camera-icon-button" type="button" aria-label="編集メニューを開閉" aria-expanded="false" aria-controls="edit-tools"><img src="../media/camera-adjust-rendered.png" alt=""><span>メニュー</span></button><button id="retake" class="camera-icon-button" type="button" aria-label="調整に戻る" hidden><img src="../media/camera-reset-rendered.png" alt=""><span>戻る</span></button><button id="save" class="primary camera-icon-button" type="button" hidden><img src="../media/camera-save-rendered.png" alt=""><span>保存</span></button></div>
 <p id="save-help" hidden>保存先が表示されたら保存を選んでください。共有画面は端末によって異なります。</p>
 </section>
 </main>

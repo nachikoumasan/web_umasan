@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 const $ = selector => document.querySelector(selector);
 const canvas = $('#camera-canvas'), ctx = canvas.getContext('2d'), video = $('#camera-video');
 const poseData = [
@@ -11,6 +11,8 @@ const poseData = [
 ];
 let stream = null, source = null, facing = 'environment', phase = 'idle', animation = 0, photoUrl = null;
 let poseImage = null, poseRequest = 0, capturedBlob = null, busy = false;
+let toolsVisible = false;
+const photoSave = UmasanImageSave.bind($('#save'), {image:$('#camera-review'),message:$('#save-help')});
 const transform = {x:.5,y:.66,size:.32,rotation:0,mirror:false};
 const status = text => { $('#camera-status').textContent = text; };
 const clamp = (n,a,b) => Math.max(a,Math.min(b,n));
@@ -24,15 +26,19 @@ function closePanels() {
 }
 function updateUI() {
  const editing = phase === 'edit', review = phase === 'review';
+ document.querySelector('.camera-app').classList.toggle('is-editing', editing);
  document.querySelector('.capture-row').hidden = !source;
  $('#camera-welcome').hidden = !!source;
- canvas.hidden = !source;
- $('#edit-tools').hidden = !editing;
+ canvas.hidden = !source || review;
+ $('#camera-review').hidden = !review;
+ $('#edit-tools').hidden = !editing || !toolsVisible;
+ $('#tools-toggle').hidden = !editing;
+ $('#tools-toggle').setAttribute('aria-expanded',String(toolsVisible));
  $('#capture').hidden = review; $('#capture').disabled = !editing || !poseImage || busy;
  $('#flip').disabled = !editing || busy;
- $('#flip').textContent = source && source !== video ? 'カメラへ' : '前後切替';
+ $('#view-only').disabled = !editing || busy;
+ $('#flip').setAttribute('aria-label', source && source !== video ? 'カメラへ切り替える' : '前後のカメラを切り替える');
  $('#retake').hidden = !review; $('#save').hidden = !review;
- $('#share').hidden = !review || !navigator.share;
  $('#save-help').hidden = !review;
 }
 function stopStream() { if(stream) stream.getTracks().forEach(t=>t.stop()); stream=null; }
@@ -55,7 +61,7 @@ function draw() {
 }
 function animate() { cancelAnimationFrame(animation); function tick(){if(phase==='edit')draw();animation=requestAnimationFrame(tick);}animation=requestAnimationFrame(tick); }
 function ready() {
- phase='edit';capturedBlob=null;draw();updateUI();animate();
+ photoSave.clear();phase='edit';capturedBlob=null;draw();updateUI();animate();
  const s=frameSize();status(`全体表示・${s.width} × ${s.height}px ／ うまさんをドラッグして移動`);
 }
 async function startCamera() {
@@ -63,14 +69,28 @@ async function startCamera() {
  try {
    if(!navigator.mediaDevices?.getUserMedia)throw new Error('unsupported');
    stopStream();
-   stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:facing},width:{ideal:1920},height:{ideal:1920}},audio:false});
+   stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:facing},width:{ideal:1920},resizeMode:{ideal:'none'}},audio:false});
    video.srcObject=stream; await video.play(); source=video; ready();
  } catch(error) {
    if(source===video){source=null;phase='idle';}
    status(error.name==='NotAllowedError' ? 'カメラの使用が許可されていません。写真を選んで使うこともできます。' : 'カメラを起動できませんでした。HTTPS・端末の設定を確認するか、写真を選んでください。');
  } finally {busy=false;updateUI();}
 }
+const app = document.querySelector('.camera-app');
+function setImmersive(active){
+ app.classList.toggle('is-immersive',active);
+ document.querySelector('.camera-header').inert=active;
+ document.querySelector('.camera-tools').inert=active;
+ $('#view-only').setAttribute('aria-pressed',String(active));
+ if(active){toolsVisible=false;closePanels();updateUI();canvas.focus();}
+ else $('#view-only').focus();
+}
+$('#view-only').addEventListener('click',()=>{if(source)setImmersive(true);});
+document.querySelector('.camera-stage').addEventListener('click',()=>{if(app.classList.contains('is-immersive'))setImmersive(false);});
+canvas.addEventListener('keydown',e=>{if(app.classList.contains('is-immersive')&&(e.key==='Enter'||e.key===' ')){e.preventDefault();setImmersive(false);}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){setImmersive(false);toolsVisible=false;closePanels();updateUI();}});
 $('#start').addEventListener('click',startCamera);
+$('#tools-toggle').addEventListener('click',()=>{toolsVisible=!toolsVisible;if(!toolsVisible)closePanels();updateUI();});
 document.querySelectorAll('.photo-label').forEach(label=>{
  label.tabIndex=0;label.setAttribute('role','button');
  label.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();$('#photo-input').click();}});
@@ -107,7 +127,7 @@ function point(event){const r=canvas.getBoundingClientRect(),scale=Math.min(r.wi
  return {x:(event.clientX-r.left-(r.width-w)/2)/w,y:(event.clientY-r.top-(r.height-h)/2)/h};}
 const pointers=new Map();let gesture=null;
 function beginGesture(){const pts=[...pointers.values()];gesture={pts,x:transform.x,y:transform.y,size:transform.size,rotation:transform.rotation};}
-canvas.addEventListener('pointerdown',e=>{if(phase!=='edit')return;canvas.setPointerCapture(e.pointerId);pointers.set(e.pointerId,point(e));beginGesture();});
+canvas.addEventListener('pointerdown',e=>{if(phase!=='edit'||app.classList.contains('is-immersive'))return;canvas.setPointerCapture(e.pointerId);pointers.set(e.pointerId,point(e));beginGesture();});
 canvas.addEventListener('pointermove',e=>{
  if(!pointers.has(e.pointerId)||phase!=='edit')return;pointers.set(e.pointerId,point(e));const pts=[...pointers.values()];
  if(pts.length===1){transform.x=clamp(gesture.x+pts[0].x-gesture.pts[0].x,0,1);transform.y=clamp(gesture.y+pts[0].y-gesture.pts[0].y,0,1);}
@@ -118,21 +138,14 @@ canvas.addEventListener('pointermove',e=>{
  }syncControls();draw();
 });
 ['pointerup','pointercancel','lostpointercapture'].forEach(type=>canvas.addEventListener(type,e=>{pointers.delete(e.pointerId);beginGesture();}));
-canvas.addEventListener('wheel',e=>{if(phase!=='edit')return;e.preventDefault();transform.size=clamp(transform.size+(e.deltaY<0?.02:-.02),.1,.9);syncControls();draw();},{passive:false});
-canvas.addEventListener('keydown',e=>{if(phase!=='edit')return;const moves={ArrowLeft:[-.01,0],ArrowRight:[.01,0],ArrowUp:[0,-.01],ArrowDown:[0,.01]};if(!moves[e.key])return;e.preventDefault();transform.x=clamp(transform.x+moves[e.key][0],0,1);transform.y=clamp(transform.y+moves[e.key][1],0,1);draw();});
+canvas.addEventListener('wheel',e=>{if(phase!=='edit'||app.classList.contains('is-immersive'))return;e.preventDefault();transform.size=clamp(transform.size+(e.deltaY<0?.02:-.02),.1,.9);syncControls();draw();},{passive:false});
+canvas.addEventListener('keydown',e=>{if(phase!=='edit'||app.classList.contains('is-immersive'))return;const moves={ArrowLeft:[-.01,0],ArrowRight:[.01,0],ArrowUp:[0,-.01],ArrowDown:[0,.01]};if(!moves[e.key])return;e.preventDefault();transform.x=clamp(transform.x+moves[e.key][0],0,1);transform.y=clamp(transform.y+moves[e.key][1],0,1);draw();});
 $('#capture').addEventListener('click',async()=>{
  if(phase!=='edit'||!poseImage)return;phase='capturing';busy=true;updateUI();draw();
- try{capturedBlob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!capturedBlob)throw new Error('empty');phase='review';closePanels();status(`${canvas.width} × ${canvas.height}pxで撮影しました。確認して保存してください。`);}
+ try{UmasanImageSave.watermark(ctx,canvas.width,canvas.height);capturedBlob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!capturedBlob)throw new Error('empty');await photoSave.prepare({blob:capturedBlob,name:'umasan-'+Date.now()+'.png',marked:true});phase='review';closePanels();status(`${canvas.width} × ${canvas.height}pxで撮影しました。確認して保存してください。`);}
  catch{phase='edit';status('撮影に失敗しました。もう一度お試しください。');}
  finally{busy=false;updateUI();}
 });
 $('#retake').addEventListener('click',()=>{ready();});
-function download(){if(!capturedBlob)return;const url=URL.createObjectURL(capturedBlob),a=document.createElement('a');a.href=url;a.download='umasan-'+Date.now()+'.png';a.click();setTimeout(()=>URL.revokeObjectURL(url),60000);status('保存用の画像を開きました。端末のダウンロード先をご確認ください。');}
-$('#save').addEventListener('click',download);
-$('#share').addEventListener('click',async()=>{
- if(!capturedBlob)return;const file=new File([capturedBlob],'umasan.png',{type:'image/png'});
- if(!navigator.canShare?.({files:[file]})){status('この端末では画像の共有に対応していません。「画像を保存」を使ってください。');return;}
- try{await navigator.share({files:[file],title:'旅するうまさん'});}catch(e){if(e.name!=='AbortError')status('共有できませんでした。「画像を保存」を使ってください。');}
-});
 window.addEventListener('pagehide',()=>{stopStream();cancelAnimationFrame(animation);});
 syncControls();selectPose('front');updateUI();

@@ -1,0 +1,44 @@
+/* Illustrated section surfaces. Loaded after responsive layout rules. */
+#play{background:#e8d6b8 url('../../media/scenery-atelier.webp') center top/cover no-repeat}
+#discover{background:#edf1ef url('../../media/scenery-lake.webp') center top/100% auto no-repeat}
+.life-shop-grid{background:#ead8bb url('../../media/scenery-shop.webp') center top/cover no-repeat}
+#about{background:#f2efe6 url('../../media/scenery-lake.webp') right bottom/100% auto no-repeat}
+#play>.section-heading,#discover>.section-heading,.life-shop-grid .section-heading,#about>.section-heading{text-shadow:0 1px 3px #fffdf5,0 0 12px #fffdf5}
+#play .work-card,.article-card,#with .mini-card,#shop .mini-card{background:#fffdf8f5;box-shadow:0 5px 18px #49362619}
+.archive-layout .archive-browser{background:#fffdf8f2}
+#about .about-lead{background:linear-gradient(90deg,#fffaf0cf,#fffaf0ed),url('../../media/invite-journey.webp') center/cover no-repeat;border:1px solid #d3bea0;border-radius:14px}
+#about .history{background:#fffdf8e8}
+#site-footer .footer-main,#site-footer .footer-bottom{background:transparent}
+#site-footer{background:linear-gradient(#fffaf0da,#fffaf09c),url('../../media/footer-landscape-storybook.webp') center bottom/cover no-repeat}
+.modal-sheet .modal-heading{background-image:url('../../media/icon-book-color.png'),url('../../media/invite-journey.webp');background-position:18px center,center;background-size:28px auto,cover;background-repeat:no-repeat;text-shadow:0 1px 4px #fffaf0}
+.try-dialog .modal-content,.wallpaper-dialog .modal-content{background:linear-gradient(#fffdf8dd,#fffdf8ed),url('../../media/scenery-lake.webp') center/cover no-repeat}
+/* Existing corner illustrations stay within the scene, behind the content. */
+#play:after,#discover:after,#about:after,.life-shop-grid:before,.life-shop-grid:after,#with:after{opacity:.28}
+@media(max-width:600px){
+ #play{background-size:auto 760px;background-position:65% top}
+ #discover{background-size:auto 640px;background-position:65% top}
+ .life-shop-grid{background:#ead8bb}
+ .life-shop-grid #with{background:linear-gradient(#ffffff16,#ead8bb),url('../../media/scenery-lake.webp') 70% top/auto 680px no-repeat}
+ .life-shop-grid #shop{background:linear-gradient(#ffffff10,#ead8bb),url('../../media/scenery-shop.webp') 75% top/auto 720px no-repeat}
+ #about{background-size:auto 680px;background-position:70% bottom}
+ .modal-sheet .modal-heading{background-position:12px center,center;background-size:24px auto,cover}
+}
+#play>.section-heading,.life-shop-grid .section-heading{background:#fffaf0e8;border:1px solid #decdb4;border-radius:12px;padding:12px 16px}
+@media(max-width:600px){#play>.section-heading,.life-shop-grid .section-heading{padding:12px}}
+/* Warm alternating paper bases with the scenery visible at low contrast. */
+#play{background-image:linear-gradient(#f1e4cfd9,#f1e4cfd9),url('../../media/scenery-atelier.webp');background-color:#f1e4cf}
+#discover{background-image:linear-gradient(#fffaf0df,#fffaf0df),url('../../media/scenery-lake.webp');background-color:#fffaf0}
+.life-shop-grid{background-image:linear-gradient(#f1e4cfdb,#f1e4cfdb),url('../../media/scenery-shop.webp');background-color:#f1e4cf}
+#about{background-image:linear-gradient(#fffaf0df,#fffaf0df),url('../../media/scenery-lake.webp');background-color:#fffaf0}
+.site-header{background:linear-gradient(#f3e8d6dc,#f3e8d6dc),url('../../media/invite-journey.webp') center 65%/cover no-repeat;border-bottom-color:#cfb996}
+.archive-layout .travel-note{background-image:linear-gradient(#f5e8d1b8,#f5e8d1b8),url('../../media/invite-journey.webp')}
+#site-footer{background-image:linear-gradient(#f1e4cfdf,#f1e4cfcf),url('../../media/footer-landscape-storybook.webp');background-color:#f1e4cf}
+.modal-sheet .modal-heading{background-image:url('../../media/icon-book-color.png'),linear-gradient(#f1e4cfd4,#f1e4cfd4),url('../../media/invite-journey.webp');background-position:18px center,center,center;background-size:28px auto,cover,cover}
+#play>.section-heading,.life-shop-grid .section-heading{background:transparent;border-color:transparent}
+@media(max-width:600px){
+ .life-shop-grid{background:#f1e4cf}
+ .life-shop-grid #with{background-image:linear-gradient(#f1e4cfdf,#f1e4cf),url('../../media/scenery-lake.webp');background-color:#f1e4cf}
+ .life-shop-grid #shop{background-image:linear-gradient(#f1e4cfdb,#f1e4cf),url('../../media/scenery-shop.webp');background-color:#f1e4cf}
+ .modal-sheet .modal-heading{background-position:12px center,center,center;background-size:24px auto,cover,cover}
+ .site-header{background-size:auto,auto 190px;background-position:center,left center}
+}

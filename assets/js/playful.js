@@ -111,7 +111,8 @@
   }
   adventure.el.querySelector('.adventure-again').addEventListener('click', chooseAdventure);
   const pick = document.createElement('div'); pick.className = 'note-invite';
-  pick.innerHTML = '<img src="media/playful-guide.webp" alt="" width="72" height="72" loading="lazy"><p>どれを読むか迷ったら、<br>うまさんにおまかせ。</p>';
+  pick.innerHTML = '<img src="media/playful-guide.webp" alt="" width="150" height="150" loading="lazy"><div class="invite-copy"><p class="invite-eyebrow">どれを読むか迷ったら</p><h3 id="invite-title">うまさんにおまかせ。</h3><p class="invite-description">体験レポートの中から、うまさんが1件選びます。<br>まだ知らなかった体験との出会いを、楽しんでみませんか。</p></div>';
+  $('.travel-note').setAttribute('aria-labelledby', 'invite-title');
   $('.travel-note').append(pick);
   addTryButton(pick, '次の冒険を選んでもらう', 'book', b => { chooseAdventure(); adventure.open(b); });
 
@@ -141,15 +142,40 @@
   const videoSheet = $('.video-dialog');
   sheet(videoSheet, videoSheet.querySelector('h2'), videoSheet.querySelector('.video-close'), [videoSheet.querySelector('.video-player')], [videoSheet.querySelector('.video-destination'), videoSheet.querySelector('.video-fallback')]);
   sheet(adventure.el, adventure.el.querySelector('h2'), adventure.el.querySelector('.try-close'), [adventure.el.querySelector('.try-note'), adventure.el.querySelector('.adventure-result')], [adventure.el.querySelector('.adventure-actions')]);
-  const selectedName = document.createElement('p'); selectedName.className = 'selected-wallpaper-name';
   const selectedSave = document.createElement('a'); selectedSave.className = 'button primary'; selectedSave.innerHTML = `${icon('save')}この壁紙を保存`;
+  const saveHint = document.createElement('p'); saveHint.className = 'save-hint'; saveHint.setAttribute('role','status');
+  const wallpaperSave = UmasanImageSave.bind(selectedSave, {image:preview.querySelector('img'), message:saveHint});
   wallpaper.querySelectorAll('.wallpaper-choices article').forEach((card, index) => {
     const download = card.querySelector('a[download]');
     const href = download.getAttribute('href'), filename = download.download, title = card.querySelector('h3').textContent;
-    function selectDownload(){selectedSave.href = href; selectedSave.download = filename; selectedName.textContent = title; selectedSave.setAttribute('aria-label', title + 'を保存');}
+    function selectDownload(){selectedSave.href = href; selectedSave.download = filename; selectedSave.setAttribute('aria-label', title + 'を保存');wallpaperSave.prepare({src:href,name:filename});}
     card.querySelector('.wallpaper-pick').addEventListener('click', selectDownload);
     if(index === 0) selectDownload();
     download.remove();
   });
-  sheet(wallpaper, wallpaper.querySelector('h2'), wallpaper.querySelector('.image-close'), [wallpaper.querySelector(':scope > p'), preview, wallpaper.querySelector('.wallpaper-choices'), wallpaper.querySelector('.wallpaper-more')], [selectedName, selectedSave]);
+  sheet(wallpaper, wallpaper.querySelector('h2'), wallpaper.querySelector('.image-close'), [wallpaper.querySelector(':scope > p'), preview, saveHint, wallpaper.querySelector('.wallpaper-choices'), wallpaper.querySelector('.wallpaper-more')], [selectedSave]);
+  const albumHint = document.createElement('p'); albumHint.className = 'save-hint'; albumHint.setAttribute('role','status');
+  imageSheet.querySelector('.modal-actions').append(albumHint);
+  const albumSave = UmasanImageSave.bind(imageSave, {image:enlarged,message:albumHint});
+  new MutationObserver(() => {
+    albumHint.hidden = imageSave.hidden;
+    if (imageSheet.open && !imageSave.hidden) albumSave.prepare({src:imageSave.href,name:imageSave.download});
+    else albumSave.clear();
+  }).observe(imageSheet,{attributes:true,attributeFilter:['open']});
+  // Keep the introduction readable on phones without removing its content.
+  const about = document.querySelector('.about-lead>div');
+  const more = document.createElement('div'); more.id = 'about-more';
+  [...about.children].filter(el => !el.classList.contains('about-summary')).forEach(el => more.append(el));
+  const aboutToggle = document.createElement('button'); aboutToggle.type = 'button';
+  aboutToggle.className = 'about-more-toggle'; aboutToggle.setAttribute('aria-controls', more.id);
+  about.append(more, aboutToggle);
+  const phone = matchMedia('(max-width:600px)');
+  function setAbout(open) {
+    more.hidden = !open;
+    aboutToggle.setAttribute('aria-expanded', String(open));
+    aboutToggle.textContent = open ? '紹介を閉じる' : 'うまさんの歩みを読む';
+  }
+  function adaptAbout() { aboutToggle.hidden = !phone.matches; setAbout(!phone.matches); }
+  aboutToggle.addEventListener('click', () => setAbout(more.hidden));
+  phone.addEventListener('change', adaptAbout); adaptAbout();
 })();
