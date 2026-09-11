@@ -1,11 +1,20 @@
 {
-  "updatedAt": "2026-09-11",
+  "updatedAt": "2026-09-12",
   "genres": [
     "ARG",
     "没入型アート・イベント",
     "謎解き"
   ],
   "experiences": [
+    {
+      "genre": "ARG",
+      "title": "誰かのスマホを調べるうちに、他人事ではなくなった。｜その日、偶像の影をひろった",
+      "rawTitle": "【ARG体験レポ】誰かのスマホを調べるうちに、他人事ではなくなった。｜その日、偶像の影をひろった",
+      "url": "https://note.com/nachiko0215/n/nde1e0f7e4187",
+      "image": "https://assets.st-note.com/production/uploads/images/312715654/rectangle_large_type_2_34277aadf12e5b930cf08cb88b8644b8.png?width=800",
+      "publishedAt": "2026-09-12",
+      "summary": "このスマホは、誰のものなんだろう。"
+    },
     {
       "genre": "没入型アート・イベント",
       "title": "四季を眺め、階段を上がって作品の中へ｜アートアクアリウム展 名古屋2026",
@@ -266,15 +275,6 @@
       "image": "https://assets.st-note.com/production/uploads/images/208436364/rectangle_large_type_2_135b3f68b8866525490e363cf267e1fa.png?width=800",
       "publishedAt": "2025-07-25",
       "summary": "その財布を開いた瞬間、自分は触れてはいけないものに触れてしまったのかもしれない、と思いました。"
-    },
-    {
-      "genre": "ARG",
-      "title": "通販サイトで買った交換日記の内容が気になりすぎた｜第四境界『人の交換日記』",
-      "rawTitle": "【ARG体験レポ】通販サイトで買った交換日記の内容が気になりすぎた｜第四境界『人の交換日記』",
-      "url": "https://note.com/nachiko0215/n/nbd2f74832fa8",
-      "image": "https://assets.st-note.com/production/uploads/images/208438608/rectangle_large_type_2_5e50fe83f2cdb8df691c8b8fcd4690cb.png?width=800",
-      "publishedAt": "2025-06-01",
-      "summary": "それは、通販サイトで見つけた一冊の交換日記でした。"
     }
   ],
   "works": [
