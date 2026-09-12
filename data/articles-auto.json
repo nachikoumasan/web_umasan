@@ -1,11 +1,20 @@
 {
-  "updatedAt": "2026-09-12",
+  "updatedAt": "2026-09-13",
   "genres": [
     "ARG",
     "没入型アート・イベント",
     "謎解き"
   ],
   "experiences": [
+    {
+      "genre": "謎解き",
+      "title": "杖を振って魔法を発動する。夜の遊園地で魔法使いに｜夜の魔法学校からの脱出",
+      "rawTitle": "【謎解き体験レポ】杖を振って魔法を発動する。夜の遊園地で魔法使いに｜夜の魔法学校からの脱出",
+      "url": "https://note.com/nachiko0215/n/n012f877b6523",
+      "image": "https://assets.st-note.com/production/uploads/images/312714012/rectangle_large_type_2_fbcc0fc65ec81abd428a4e877f65412f.png?width=800",
+      "publishedAt": "2026-09-13",
+      "summary": "謎から導いた呪文を唱えて、杖を振る。"
+    },
     {
       "genre": "ARG",
       "title": "誰かのスマホを調べるうちに、他人事ではなくなった。｜その日、偶像の影をひろった",
@@ -248,15 +257,6 @@
       "image": "https://assets.st-note.com/production/uploads/images/224880312/rectangle_large_type_2_c433e4713b3ae7c5668e8a67784c58dc.png?width=800",
       "publishedAt": "2025-10-26",
       "summary": "「京都謎解き街歩き」に参加してきました！"
-    },
-    {
-      "genre": "謎解き",
-      "title": "『推しの子』の世界で真相を暴く謎解き！仕組まれたスキャンダルからの脱出",
-      "rawTitle": "【リアル脱出ゲーム】『推しの子』の世界で真相を暴く謎解き！仕組まれたスキャンダルからの脱出",
-      "url": "https://note.com/nachiko0215/n/n2bc227007273",
-      "image": "https://assets.st-note.com/production/uploads/images/221695045/rectangle_large_type_2_c2f0583f7345d3a3d6c2de2061f9324d.png?width=800",
-      "publishedAt": "2025-10-13",
-      "summary": "「仕組まれたスキャンダルからの脱出」をやりました！"
     },
     {
       "genre": "ARG",
