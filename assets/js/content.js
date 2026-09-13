@@ -145,6 +145,8 @@ window.UMASAN_CONTENT.history = [
   {"year":"2026","category":"Web","title":"旅するうまさん公式サイトを公開","period":"4/27","venue":null,"url":null},
   {"year":"2025","category":"note","title":"note「うまさんの体験型エンタメ冒険記」が100記事を突破","period":"10/26","venue":null,"url":"https://note.com/nachiko0215"},
   {"year":"2025","category":"展示","title":"デザインフェスタ vol.61 に出展","period":"7/6","venue":null,"url":null},
+  {"year":"2024","category":"謎解き","title":"地域謎応募","period":null,"venue":null,"image":"media/history-20240827-niigata.png"},
+  {"year":"2024","category":"謎解き","title":"おやつタウン謎解き応募","period":null,"venue":null,"image":"media/history-20240823-oyatsu-town.png"},
   {"year":"2024","category":"note","title":"note「うまさんの体験型エンタメ冒険記」を開始","period":"4/14","venue":null,"url":"https://note.com/nachiko0215"},
   {"year":"2019","category":"展示","title":"つくしのTシャツ展に参加","period":"6/24〜7/14","venue":"MITTS COFFEE STAND","url":"https://x.com/nachiko0215/status/1147862286947635200"},
   {"year":"2018","category":"展示","title":"デザインフェスタ vol.48 に出展","period":"11月","venue":"東京ビッグサイト（I-23）","url":"https://x.com/nachiko0215/status/1061220573244575744"},

@@ -119,7 +119,9 @@ if (historyList) {
   historyList.innerHTML = years.map(year => {
     const rows = content.history.filter(item => item.year === year).map(item => {
       const label = `<span class="history-tag" data-cat="${escapeHTML(item.category)}">${escapeHTML(item.category)}</span><span class="history-title">${escapeHTML(item.title)}</span>`;
-      const line = item.url
+      const line = item.image
+        ? `<a class="history-line" href="${escapeHTML(item.image)}" data-history-image aria-haspopup="dialog">${label}<svg class="history-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 5 5"></path></svg></a>`
+        : item.url
         ? `<a class="history-line" href="${escapeHTML(item.url)}" ${external}>${label}<img class="history-arrow ext ui-icon" src="media/ui-external.svg" alt=""></a>`
         : `<span class="history-line">${label}<span class="history-arrow" aria-hidden="true"></span></span>`;
       return `<li>${line}</li>`;
@@ -300,6 +302,18 @@ imageDialog.setAttribute('aria-label', '画像を拡大');
 imageDialog.innerHTML = '<button type="button" class="image-close" aria-label="画像を閉じる">×</button><img alt=""><p></p><a class="button small image-save" hidden>この壁紙を保存 </a>';
 document.body.append(imageDialog);
 let imageOpener;
+document.querySelectorAll('[data-history-image]').forEach(link => {
+ link.addEventListener('click', event => {
+  event.preventDefault();
+  imageOpener = link;
+  const title = link.querySelector('.history-title').textContent;
+  imageDialog.querySelector('img').src = link.href;
+  imageDialog.querySelector('img').alt = title;
+  imageDialog.querySelector('p').textContent = title;
+  imageDialog.querySelector('.image-save').hidden = true;
+  imageDialog.showModal();
+ });
+});
 document.querySelectorAll('.mini-card .stamp-track > img,.mini-card .phones-row img,.memories img').forEach(img => {
  img.tabIndex = 0;
  img.setAttribute('role', 'button');
