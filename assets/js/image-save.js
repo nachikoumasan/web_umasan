@@ -21,7 +21,7 @@ window.UmasanImageSave = (() => {
       return await new Promise((resolve, reject) => canvas.toBlob(value => value ? resolve(value) : reject(new Error('Export failed')), 'image/png'));
     } finally { URL.revokeObjectURL(url); }
   }
-  function bind(button, {image, message}) {
+  function bind(button, {image, message, mode='auto', readyMessage='保存ボタン、または画像の長押しで保存できます。右下に©旅する馬さんが入ります。', downloadMessage='画像をダウンロードしました。写真に保存する場合は、表示中の画像を長押ししてください。'}) {
     let file, url, request = 0;
     function release() { if (url) URL.revokeObjectURL(url); url = null; file = null; }
     function download() {
@@ -32,13 +32,13 @@ window.UmasanImageSave = (() => {
       event.preventDefault(); if (!file) return;
       const selected = file;
       try {
-        if (navigator.share && navigator.canShare?.({files:[selected]})) await navigator.share({files:[selected]});
+        if (mode!=='download' && navigator.share && navigator.canShare?.({files:[selected]})) await navigator.share({files:[selected]});
         else {
           download();
-          message.textContent = '画像をダウンロードしました。写真に保存する場合は、表示中の画像を長押ししてください。';
+          message.textContent = downloadMessage;
         }
       } catch (error) {
-        if (error.name !== 'AbortError') message.textContent = '共有できませんでした。表示中の画像を長押しして保存してください。';
+        if (error.name !== 'AbortError') message.textContent = mode==='download'?'保存できませんでした。もう一度お試しください。':'共有できませんでした。表示中の画像を長押しして保存してください。';
       }
     });
     return {
@@ -53,7 +53,7 @@ window.UmasanImageSave = (() => {
           url = URL.createObjectURL(file);
           if (image) image.src = url;
           button.setAttribute('aria-disabled', 'false');
-          message.textContent = '保存ボタン、または画像の長押しで保存できます。右下に©旅する馬さんが入ります。';
+          message.textContent = readyMessage;
         } catch {
           if (current === request) message.textContent = '保存用の画像を準備できませんでした。もう一度選び直してください。';
         }

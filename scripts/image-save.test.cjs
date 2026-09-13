@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
 const code = fs.readFileSync(path.join(__dirname,'../assets/js/image-save.js'),'utf8');
-function setup(supported=true) {
+function setup(supported=true,options={}) {
   const shares=[],downloads=[],revoked=[],requests=[],marks=[];
   let failure, counter=0;
   const button={events:{},setAttribute(k,v){this[k]=v},addEventListener(k,fn){this.events[k]=fn}};
@@ -16,7 +16,7 @@ function setup(supported=true) {
     navigator:{canShare:()=>supported,share:async x=>{shares.push(x);if(failure)throw {name:failure}}},
     fetch:()=>new Promise(resolve=>requests.push(resolve))};
   vm.runInNewContext(code,context);
-  const saver=context.window.UmasanImageSave.bind(button,{image,message});
+  const saver=context.window.UmasanImageSave.bind(button,{image,message,...options});
   return {saver,button,image,message,shares,downloads,revoked,requests,marks,fail:x=>failure=x,click:()=>button.events.click({preventDefault(){}})};
 }
 (async()=>{
@@ -34,5 +34,13 @@ function setup(supported=true) {
  await race.saver.prepare({blob:original,name:'new.png',marked:true});
  race.requests[0]({ok:true,blob:async()=>original});await pending;await race.click();
  assert.equal(race.shares[0].files[0].name,'new.png');
+ const camera=setup(true,{mode:'download',readyMessage:'',downloadMessage:''});
+ await camera.saver.prepare({blob:original,name:'camera.png',marked:true});
+ assert.equal(camera.message.textContent,'');assert.equal(camera.marks.length,0);
+ await camera.click();assert.equal(camera.shares.length,0);assert.deepEqual(camera.downloads,['camera.png']);assert.equal(camera.message.textContent,'');
+ const phone=setup(true,{mode:'auto',readyMessage:'',downloadMessage:''});
+ await phone.saver.prepare({blob:original,name:'camera.png',marked:true});await phone.click();
+ assert.equal(phone.shares.length,1);assert.equal(phone.downloads.length,0);assert.equal(phone.marks.length,0);
+ assert.deepEqual(Object.keys(phone.shares[0]),['files']);assert.equal(phone.message.textContent,'');
  console.log('PASS: no extra dialog; explicit share; cancellation; download fallback; watermark; original camera pixels; stale selection cleanup.');
 })().catch(e=>{console.error(e);process.exitCode=1});

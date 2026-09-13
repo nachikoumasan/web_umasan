@@ -1,0 +1,17 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const root=path.resolve(__dirname,'..'),html=fs.readFileSync(root+'/contents/umasan-camera.html','utf8');
+const canonical=html.match(/rel="canonical" href="([^"]+)"/)[1];
+const context={window:{},URL};
+vm.runInNewContext(fs.readFileSync(root+'/assets/js/camera-share.js','utf8'),context);
+const link={};context.window.UmasanCameraShare.bind(link,{url:canonical});
+const intent=new URL(link.href);
+assert.equal(intent.origin,'https://x.com');assert.equal(intent.pathname,'/intent/tweet');
+assert.equal(intent.searchParams.get('text'),'#旅するうまさん #うまさんカメラ');assert.equal(intent.searchParams.get('url'),canonical);
+assert.match(html,/<a id="share"[^>]+target="_blank"[^>]+rel="noopener noreferrer"/);
+assert.ok(!html.includes('id="share-panel"'));assert.ok(!html.includes('id="copy-caption"'));
+const contentContext={window:{}};vm.runInNewContext(fs.readFileSync(root+'/assets/js/content.js','utf8'),contentContext);
+const work=contentContext.window.UMASAN_CONTENT.works.find(w=>w.url==='contents/umasan-camera.html');
+const origin=new URL(canonical).origin;
+assert.equal(html.match(/property="og:image" content="([^"]+)"/)[1],origin+'/'+work.image);
+assert.equal(html.match(/name="twitter:image" content="([^"]+)"/)[1],origin+'/'+work.image);
+console.log('PASS: direct X link, exact tags and public URL, no custom share dialog, OGP and X card match the camera work image.');

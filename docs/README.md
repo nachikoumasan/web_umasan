@@ -87,7 +87,7 @@ SEO設定の公開後は、Google Search ConsoleでこのURLのURLプレフィ�
 | 動画からの導線 | assets/js/app.js。動画ダイアログ内に元の主ボタンと同じ遷移先を表示（Echo Againは紹介記事、LINEスタンプは販売一覧） |
 | 押した先の共通画面 | assets/js/playful.js / assets/css/dialogs.css。見出しと閉じる・下部操作を固定し、本文だけスクロール。画像拡大は縦横比に応じた幅。壁紙は選択に連動する下部の保存ボタンに一本化。CSSはassets/css/playful.cssの後にassets/css/dialogs.cssを読む |
 | フッターのリンク | assets/css/journal.css / assets/css/playful.css / assets/js/playful.js。SNSとページ先頭リンクは幅・高さとも44px以上。5種のSNSは茶色のSimple Icons SVG、SUZURIは生成したsocial-suzuri.png。囲み枠なし。ライセンス・免責文はdocs/licenses/simple-icons-*.txt |
-| カメラ | contents/umasan-camera.html / assets/css/camera.css / assets/js/camera.js。全範囲をcontain表示。操作欄は開閉式、ドラッグ・2本指で拡縮と回転・スライダー・左右反転・位置リセット。撮影後に確認してPNG保存。カメラは取得した解像度を維持、読み込み写真は長辺4096pxを上限に合成。写真は端末内処理 |
+| カメラ | contents/umasan-camera.html / assets/css/camera.css / assets/js/camera.js。自動起動、カメラ映像は画面比率で切り取り全面表示、縦横追従。背景からの2本指操作で1〜4倍デジタルズーム。＋からポーズを選ぶたびスタンプ追加。タップ選択・ドラッグ移動・右下ハンドルまたはスタンプからの2本指操作で個別拡縮と回転。選択時のみ削除・左右反転。操作ボタンは半透明。選択枠・コピーライトを含めず撮影。「画像を保存」は対応端末で画像ファイルだけを端末の共有メニューへ渡し、非対応時はPNGダウンロード。「Xでシェア」はcamera-share.jsで設定したリンクからX投稿画面を直接開き、#旅するうまさん #うまさんカメラ・canonicalの公開URLを渡す。写真の自動添付・独自ポップアップはなし。OGP・Xカード画像はTOPの作品カードと同じmedia/work-camera.webp。撮影後はファイル選択を非表示。撮影前の写真読み込みは全体表示、長辺4096px上限。写真は端末内処理 |
 | 背景・ボタン演出 | assets/css/playful.css。淡い茶色の濃淡を交互に配置。ボタンの光・浮き上がりを除去。通常リンクの矢印は外し、活動履歴とメディア操作に限定。左右切替は角丸プレートのSVG |
 | 活動写真 | index.html の memories と assets/css/journal.css の photo-print。生成素材 media/activity-photo-mount.webp を台紙に使用。元写真全体、名称・年を重ねて表示 |
 | 紹介画像 | assets/css/journal.css と assets/css/responsive.css。PC225px、タブレット180px、スマホは欄の75%・最大250px。スマホでは概要以外の紹介文を開閉できる |
