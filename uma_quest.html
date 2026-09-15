@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#faf5e9">
+<title>うまさんからの挑戦状｜2026 秋の冒険</title>
+<link rel="icon" href="media/icon-horseshoe.webp">
+<link rel="stylesheet" href="assets/css/uma-quest.css">
+<link rel="stylesheet" href="assets/css/uma-quest-journey.css">
+<script src="assets/js/uma-quest-config.js" defer></script>
+<script src="assets/js/uma-quest-core.js" defer></script>
+<script src="assets/js/uma-quest-journey.js" defer></script>
+<script src="assets/js/uma-quest.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#adventure">冒険メニューへ</a>
+<div class="preview-note">お試し版 · 本番のお題・成長ルールは準備中です</div>
+<header class="site-head"><a href="./"><img src="media/icon-horseshoe.webp" alt="">旅するうまさん</a><span>小さな一歩が、物語になる。</span></header>
+<main>
+<section class="hero"><div class="hero-copy"><p class="eyebrow">YOUR EVERYDAY, YOUR ADVENTURE</p><h1>うまさんからの<br><strong>挑戦状</strong></h1><p class="event-date">2026. 10.1 <span>―</span> 11.30</p><p>物語の主人公は、あなた。<br>見つけて、つくって、やってみて。<br>小さな一歩を、冒険の手帳に。</p><a class="primary button" href="#adventure">挑戦状をひらく ↓</a></div><img class="hero-horse" src="media/work-quest.webp" alt="挑戦状を届けるうまさん"><div class="hero-foot">休んだ日があっても、冒険は消えない。</div></section>
+<div class="adventure" id="adventure">
+<section id="intro" class="panel onboarding"><h2>あなたの冒険手帳を、ここに。</h2><p>同じ端末・同じブラウザーで遊んでね。記録が消える場合に備え、「冒険の書」を保存できます。プライベートブラウズでの継続利用は避けてください。</p><button id="intro-ok">手帳をひらく</button></section>
+<div id="storage-error" class="panel error-panel" role="alert" hidden><h2>記録を読み込めませんでした</h2><p id="storage-error-text"></p><p>元の保存内容は上書きしていません。有効な冒険の書を読み込んで復元できます。</p><button id="raw-backup">元の保存内容を退避</button><button id="retry-storage">再読み込み</button></div>
+<details class="dev-tools"><summary>動作確認・モード切り替え</summary><p id="mode-description"></p><div id="dev-controls" hidden><label>確認日時（日本時間）<input id="preview-date" type="date" min="2026-09-01" max="2026-12-31"></label><div class="dev-presets"><button data-date="2026-09-30">開催前</button><button data-date="2026-10-07">開催中</button><button data-date="2026-12-01">開催後</button></div></div><a id="mode-link" class="button" href="?preview=1#adventure">試用モードを開く</a><p>仮クエストは7件です。未作成の本番61件は含みません。</p></details>
+<p id="phase-note" class="phase-note"></p>
+<section class="profile panel" aria-label="冒険者のプロフィール"><div class="profile-top"><div class="profile-name"><label>冒険者のなまえ（任意）<input id="player-name" maxlength="16" placeholder="名もなき冒険者" autocomplete="off"></label><button type="button" id="save-name">名前を保存</button></div><div class="level">Lv.<strong id="level">1</strong></div></div><div class="exp-row"><progress id="exp" max="100" value="0" aria-label="次のレベルまでの経験値"></progress><span id="exp-label"></span></div><p id="rank" class="profile-caption"></p></section>
+<nav class="tabs" aria-label="冒険メニュー"><button data-tab="today" aria-current="page"><img src="media/icon-lantern.png" alt="">今日</button><button data-tab="journal"><img src="media/icon-book-storybook.webp" alt="">冒険手帳</button><button data-tab="trophy-panel"><img src="media/icon-star-color.png" alt="">トロフィー</button><button data-tab="result"><img src="media/icon-horseshoe.webp" alt="">クリア画面</button></nav>
+<section id="today" class="tab-panel"><div class="section-title"><div><p class="eyebrow">A LETTER FOR YOU</p><h2>今日のクエスト</h2></div><p>あなたのペースで、<br>小さな冒険を。</p></div><div id="today-list"></div><details id="past-quests" class="all-quests"><summary>これまでの挑戦状 <span id="past-count"></span></summary><div id="past-list"></div></details><p class="small-note">画像の提出・判定はありません。自分でできたと思ったらクリア。<br>公開済みのお題は後日でも挑戦できます。</p></section>
+<section id="journal" class="tab-panel" hidden><div class="section-title"><div><p class="eyebrow">MY ADVENTURE JOURNAL</p><h2>冒険手帳</h2></div><p id="clear-count"></p></div><div id="stats" class="stats"></div><p class="small-note">数値は分類ごとの達成ポイントです。上限は未確定です。</p><h3>クリアした挑戦</h3><p class="small-note">星をつけたひとつを「いちばんの冒険」としてクリア画像に残せます。</p><div id="history"></div><div class="backup panel"><div><h3>冒険の書</h3><p>写真を含まない、小さな記録の控え。</p></div><button id="export">冒険の書を保存</button><button id="open-import">冒険の書を読み込む</button><input id="import" type="file" accept=".json,application/json" hidden></div></section>
+<section id="trophy-panel" class="tab-panel" hidden><div class="section-title"><div><p class="eyebrow">LITTLE ACHIEVEMENTS</p><h2>集めたトロフィー</h2></div></div><label class="title-picker">表示する称号<select id="title-select"></select></label><div id="trophies" class="trophy-grid"></div><p class="small-note">連続参加の条件はありません。61件の特別な実績は、本番61件の完成・達成後に解放されます。</p></section>
+<section id="result" class="tab-panel" hidden><div class="section-title"><div><p class="eyebrow">THIS IS YOUR STORY</p><h2 id="result-heading">冒険のクリア画面</h2></div></div><p id="result-note" class="small-note"></p>
+<div id="certificate" class="certificate" role="img" aria-label="冒険の記念カード"></div>
+<div class="photo-controls panel"><h3>思い出を添える（任意・最大3枚）</h3><p>写真なしでも完成するカードです。選んだ画像はこの画面だけで扱い、再読み込みすると消えます。サーバーへの送信やブラウザーへの永続保存はしません。</p><button id="add-photos">写真・絵を選ぶ</button><input id="photos" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden><div id="photo-list"></div></div>
+<details id="export-preview" hidden><summary>保存する画像を確認する</summary><img id="export-image" alt="保存用の冒険記念画像"><p class="small-note">画像の長押しからも保存できます。</p></details><div class="card-actions"><button id="save-image" class="primary" disabled>クリア画像を保存</button><button id="share-image" disabled>シェアする</button><button id="copy-result">投稿文をコピー</button></div><p id="image-message" class="small-note" role="status"></p><textarea id="result-caption" rows="4" readonly aria-label="クリア画面の投稿文"></textarea><p class="small-note">共有先に文章が入らない場合はコピーして添えてください。対応しない環境では画像保存＋投稿文コピーでシェアできます。公開予定のURLは、本番公開後に利用できます。</p>
+</section>
+</div>
+</main>
+<footer>いつもの毎日に、ひとつぶの冒険を。<br><a href="./">旅するうまさん</a></footer>
+<div id="notice" role="status" aria-live="polite"></div>
+<dialog id="report-dialog"><form id="report-form"><p class="eyebrow">QUEST REPORT</p><h2>冒険の足あとを残そう</h2><p id="report-title"></p><p>「できた！」の自己申告で記録します。写真や絵の提出は不要です。</p><div class="dialog-actions"><button type="button" data-close="report-dialog">戻る</button><button type="submit" class="primary">クリアを記録する</button></div></form></dialog>
+<dialog id="clear-dialog"><p class="eyebrow">A LITTLE ADVENTURE, COMPLETE</p><h2 class="celebrate">冒険クリア！</h2><img class="celebrate-horse" src="media/camera-pose-lantern.png" alt="ランタンを持って冒険を祝ううまさん"><p id="clear-title"></p><div id="clear-reward"></div><textarea id="quest-share-text" rows="9" readonly aria-label="シェアする文章"></textarea><div class="share-actions"><button id="share-quest" class="primary">SNSでシェア</button><button id="share-x">Xで投稿を作る</button><button id="copy-quest">文章をコピー</button><button data-close="clear-dialog">冒険を続ける</button></div></dialog>
+<dialog id="undo-dialog"><h2>クリアの記録を取り消す</h2><p id="undo-title"></p><p>経験値・ステータス・トロフィーを再計算します。未獲得に戻った称号や、取り消す「いちばんの冒険」の選択も解除します。お題にはまた挑戦できます。</p><div class="dialog-actions"><button data-close="undo-dialog">戻る</button><button id="confirm-undo">取り消す</button></div></dialog>
+<dialog id="import-dialog"><h2>冒険の書を読み込む</h2><p id="import-summary"></p><p>現在の記録を、バックアップ時点の記録に置き換えます。</p><button id="backup-before-import">置き換え前の記録を保存</button><div class="dialog-actions"><button data-close="import-dialog">戻る</button><button id="confirm-import" class="primary">この記録に復元する</button></div></dialog>
+<noscript>このイベントを遊ぶにはJavaScriptを有効にしてください。</noscript>
+</body>
+</html>
