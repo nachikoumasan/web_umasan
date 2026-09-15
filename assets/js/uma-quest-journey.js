@@ -69,7 +69,7 @@ function refresh(data){
  if(blocked&&!settings.el.open)settings.el.showModal();
 }
 function depart(){switchTab('today');if(!reduced()){app.classList.add('departing');setTimeout(()=>app.classList.remove('departing'),480);}}
-function animateQuest(id,kind){const article=[...document.querySelectorAll('[data-quest-id]')].find(e=>e.dataset.questId===id);if(article&&!reduced()){article.classList.add(kind);setTimeout(()=>article.classList.remove(kind),500);}}
+function animateQuest(id,kind){const article=[...document.querySelectorAll('[data-quest-id]')].find(e=>e.dataset.questId===id&&e.getClientRects().length);if(article&&!reduced()){article.classList.add(kind);setTimeout(()=>article.classList.remove(kind),500);}}
 function levelUp(data){
  const{state,before,after,quest}=data;past.el.close();history.el.close();
  $('#level-initial').textContent=[...(state.name||'旅')][0];$('#level-name').textContent=state.name;
@@ -82,19 +82,19 @@ async function prepareGrowth(data){
  const token=++revision;growthFile=null;shareData=data;caption.value=growthCaption(data);$('#share-level').disabled=true;$('#growth-download').disabled=true;$('#growth-native-share').disabled=true;$('#growth-image').removeAttribute('src');$('#growth-image-note').textContent='画像を準備しています…';$('.level-image-message').textContent='';
  try{
   await document.fonts.ready;await document.fonts.load('32px "Yu Mincho"','冒険者');
-  const[book,guide]=await Promise.all([asset('media/quest/journey-book-v1.jpg'),asset('media/camera-pose-wave.png')]);if(token!==revision)return;
+  const[book,guide]=await Promise.all([asset('media/quest/diary-map-v1.jpg'),asset('media/camera-pose-wave.png')]);if(token!==revision)return;
   const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1440;const ctx=canvas.getContext('2d'),{state,t,kind}=data;
   ctx.fillStyle='#fff6e5';ctx.fillRect(0,0,1080,1440);
-  if(kind==='status'){ctx.drawImage(book,0,0,1080,1440);ctx.fillStyle='#fff8e5e8';ctx.fillRect(135,160,810,1110);}else{const glow=ctx.createRadialGradient(540,510,10,540,510,720);glow.addColorStop(0,'#fff8c9');glow.addColorStop(1,'#fff5e7');ctx.fillStyle=glow;ctx.fillRect(0,0,1080,1440);ctx.save();ctx.translate(540,500);ctx.fillStyle='#e5b65335';for(let n=0;n<20;n++){ctx.rotate(Math.PI/10);ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(-18,-650);ctx.lineTo(18,-650);ctx.fill();}ctx.restore();}
+  if(kind==='status'){ctx.drawImage(book,0,book.naturalHeight*.4,book.naturalWidth,book.naturalHeight*.33,80,240,920,220);ctx.fillStyle='#fff6e533';ctx.fillRect(80,240,920,220);const scale=Math.min(180/guide.naturalWidth,205/guide.naturalHeight);ctx.drawImage(guide,770,260,guide.naturalWidth*scale,guide.naturalHeight*scale);}else{const glow=ctx.createRadialGradient(540,510,10,540,510,720);glow.addColorStop(0,'#fff8c9');glow.addColorStop(1,'#fff5e7');ctx.fillStyle=glow;ctx.fillRect(0,0,1080,1440);ctx.save();ctx.translate(540,500);ctx.fillStyle='#e5b65335';for(let n=0;n<20;n++){ctx.rotate(Math.PI/10);ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(-18,-650);ctx.lineTo(18,-650);ctx.fill();}ctx.restore();}
   ctx.strokeStyle='#b78b3f';ctx.lineWidth=3;ctx.strokeRect(50,50,980,1340);
   const text=(value,y,size=32,color='#50321d',max=780)=>{ctx.font='600 '+size+'px "Yu Mincho",serif';ctx.fillStyle=color;ctx.textAlign='center';ctx.fillText(String(value),540,y,max);};
-  text(C.title,115,28,kind==='status'?'#fff3d9':'#50321d');text(kind==='level'?'LEVEL UP!':'冒険者証',210,kind==='level'?74:48,'#886023');
+  text(C.title,115,28);text(kind==='level'?'LEVEL UP!':'わたしの冒険の記録',210,kind==='level'?74:45,'#886023');
   ctx.fillStyle='#64733e';ctx.beginPath();ctx.arc(540,355,92,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#c7a45c';ctx.lineWidth=10;ctx.stroke();text([...(state.name||'旅')][0],383,64,'#fff2d0');
   text(state.name,520,64);text(t.title,573,27);
   if(kind==='level'){text('Lv. '+data.before.level+' →',648,42);text('Lv. '+t.level,770,118);text(statNames[data.quest.category]+' '+data.before.stats[data.quest.category]+' → '+t.stats[data.quest.category],875,45);text('+ '+data.quest.reward.xp+' EXP',960,56);}
   else{text('Lv. '+t.level,690,100);text(t.exp+' / '+C.xpPerLevel+' EXP',747,29);ctx.fillStyle='#e1d5b7';ctx.fillRect(230,772,620,18);ctx.fillStyle='#758444';ctx.fillRect(230,772,620*t.exp/C.xpPerLevel,18);text('次のレベルまで '+(C.xpPerLevel-t.exp)+' EXP',835,27);C.categories.forEach((c,i)=>text(statNames[c.id]+'　'+t.stats[c.id],915+i*68,36));text('クリアしたクエスト　'+t.done.length,1210,32);}
   if(kind==='level'){const scale=Math.min(250/guide.naturalWidth,260/guide.naturalHeight);ctx.drawImage(guide,765,1080,guide.naturalWidth*scale,guide.naturalHeight*scale);text('次の冒険も、あなたのペースで。',1145,28,'#715938',640);}
-  text((data.trial?'試用記録 · ':'')+C.start.replaceAll('-','.')+' — '+C.end.replaceAll('-','.'),1350,24,kind==='status'?'#fff3d9':'#50321d');
+  text((data.trial?'試用記録 · ':'')+C.start.replaceAll('-','.')+' — '+C.end.replaceAll('-','.'),1350,24);
   const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(Error('PNG生成に失敗しました。')),'image/png'));if(token!==revision)return;
   growthFile=new File([blob],'umasan-'+kind+'-lv'+t.level+'.png',{type:'image/png'});$('#growth-image').src=canvas.toDataURL('image/png');$('#share-level').disabled=false;$('#growth-download').disabled=false;$('#growth-native-share').disabled=false;$('#growth-image-note').textContent='名前と実際の成長記録を入れた画像です。';
  }catch(e){if(token===revision){$('#growth-image-note').textContent='画像を用意できませんでした。閉じてからもう一度お試しください。';$('.level-image-message').textContent='画像を用意できませんでした。ステータスから作り直せます。';}}

@@ -7,6 +7,7 @@ const trial=septemberTest||params.get('preview')==='1',mode=trial?'trial':'parti
 const key='umasan:quest:'+C.eventId+':'+mode+':v'+C.version;
 let dateOverride='2026-10-07',state=K.fresh(mode),raw=null,blocked=false,pending=null,restore=null,undoId=null;
 let photoItems=[],photoBusy=false,renderVersion=0,prepared=null,exportUrl=null,toastTimer;
+let selectedQuestId='';
 const now=()=>trial?new Date(dateOverride+'T12:00:00+09:00'):new Date();
 const date=()=>K.day(now()),stats=()=>K.summary(state,date());
 function notice(text){clearTimeout(toastTimer);$('#notice').textContent=text;toastTimer=setTimeout(()=>{$('#notice').textContent='';},6500);}
@@ -50,7 +51,14 @@ function render(){
  $('#title-select').innerHTML='<option value="">はじまりの冒険者</option>'+t.trophies.filter(m=>m.unlocked).map(m=>'<option value="'+m.id+'">'+m.title+'</option>').join('');$('#title-select').value=state.titleId;$('#title-select').disabled=blocked;
  renderResult(t);
  window.UmaQuestScreen?.refresh({state,t,date:d,blocked,trial,septemberTest});
+ renderSelectedQuest();
 }
+function renderSelectedQuest(){
+ const slot=$('#diary-quest-detail');if(!slot||!selectedQuestId)return;
+ const q=K.released(date()).find(q=>q.id===selectedQuestId);
+ slot.innerHTML=q?questCard(q):'<p class="empty">この挑戦状はまだ公開されていません。</p>';
+}
+document.addEventListener('diary-select-quest',e=>{if(K.released(date()).some(q=>q.id===e.detail)){selectedQuestId=e.detail;renderSelectedQuest();}});
 function renderResult(t){
  $('#result-heading').textContent=t.final?'冒険クリア！':'冒険の途中経過';
  $('#result-note').textContent=t.canResult?(t.final?'あなたが重ねた小さな一歩が、一枚の物語になりました。':'途中の記録も、あなただけの冒険の証。'):'公開後に1件以上クリアすると、冒険の記念画像を作れます。';
