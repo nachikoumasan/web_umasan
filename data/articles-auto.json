@@ -1,11 +1,20 @@
 {
-  "updatedAt": "2026-09-20",
+  "updatedAt": "2026-09-21",
   "genres": [
     "ARG",
     "没入型アート・イベント",
     "謎解き"
   ],
   "experiences": [
+    {
+      "genre": "謎解き",
+      "title": "縁日で、爆弾解除に挑む｜縁日、爆破させていただきます",
+      "rawTitle": "【謎解き体験レポ】縁日で、爆弾解除に挑む｜縁日、爆破させていただきます",
+      "url": "https://note.com/nachiko0215/n/n1c73d9358c34",
+      "image": "https://assets.st-note.com/production/uploads/images/315702841/rectangle_large_type_2_e5e21b9269bad3422c5d6772b442300f.png?width=800",
+      "publishedAt": "2026-09-20",
+      "summary": "謎を解いたら、今度は自分の手で爆弾解除へ。"
+    },
     {
       "genre": "謎解き",
       "title": "杖を振って魔法を発動する。夜の遊園地で魔法使いに｜夜の魔法学校からの脱出",
@@ -248,15 +257,6 @@
       "image": "https://assets.st-note.com/production/uploads/images/244716592/rectangle_large_type_2_6a5b955b2fc30eed766b3c2f2d40a26b.png?width=800",
       "publishedAt": "2026-01-18",
       "summary": "だいぶ前ですが、「100万ドルの絡繰館からの脱出」に参加してきました！"
-    },
-    {
-      "genre": "謎解き",
-      "title": "古都の風景と物語をめぐる謎解き旅！京都謎解き街歩き",
-      "rawTitle": "【リアル脱出ゲーム】古都の風景と物語をめぐる謎解き旅！京都謎解き街歩き",
-      "url": "https://note.com/nachiko0215/n/n56655b410324",
-      "image": "https://assets.st-note.com/production/uploads/images/224880312/rectangle_large_type_2_c433e4713b3ae7c5668e8a67784c58dc.png?width=800",
-      "publishedAt": "2025-10-26",
-      "summary": "「京都謎解き街歩き」に参加してきました！"
     },
     {
       "genre": "ARG",
