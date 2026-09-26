@@ -1,11 +1,20 @@
 {
-  "updatedAt": "2026-09-25",
+  "updatedAt": "2026-09-26",
   "genres": [
     "ARG",
     "没入型アート・イベント",
     "謎解き"
   ],
   "experiences": [
+    {
+      "genre": "謎解き",
+      "title": "遊ぶゲームを選んで、電車で冒険へ｜間違いだらけの遊戯場〈北急編〉",
+      "rawTitle": "【周遊謎解きレポ】遊ぶゲームを選んで、電車で冒険へ｜間違いだらけの遊戯場〈北急編〉",
+      "url": "https://note.com/nachiko0215/n/nfbe7baa82767",
+      "image": "https://assets.st-note.com/production/uploads/images/317449645/rectangle_large_type_2_a30c38383192dafd9fcce9fc29a8bf3c.png?width=800",
+      "publishedAt": "2026-09-25",
+      "summary": "ゲームを選んで街を巡り、最後は手元の仕掛けに夢中になる。"
+    },
     {
       "genre": "謎解き",
       "title": "縁日で、爆弾解除に挑む｜縁日、爆破させていただきます",
@@ -248,15 +257,6 @@
       "image": "https://assets.st-note.com/production/uploads/images/244739462/rectangle_large_type_2_a59f7a95a65af00c1b9a137b3fa43120.png?width=800",
       "publishedAt": "2026-01-24",
       "summary": "「漂流した救命ボートからの脱出」に参加してきました。"
-    },
-    {
-      "genre": "謎解き",
-      "title": "コナンたちと肩を並べて事件を解く没入体験｜100万ドルの絡繰館 体験レポ",
-      "rawTitle": "【名探偵コナン×謎解き】コナンたちと肩を並べて事件を解く没入体験｜100万ドルの絡繰館 体験レポ",
-      "url": "https://note.com/nachiko0215/n/nd8de3dc23d10",
-      "image": "https://assets.st-note.com/production/uploads/images/244716592/rectangle_large_type_2_6a5b955b2fc30eed766b3c2f2d40a26b.png?width=800",
-      "publishedAt": "2026-01-18",
-      "summary": "だいぶ前ですが、「100万ドルの絡繰館からの脱出」に参加してきました！"
     },
     {
       "genre": "ARG",
