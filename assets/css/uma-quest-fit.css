@@ -73,3 +73,36 @@ body[data-journey=start] .journey-main,body[data-journey=level] .journey-main{mi
 @media(min-width:800px){.catalogue-slots{grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr))}}
 @media(max-width:799px) and (min-height:651px){.catalogue-slot,.catalogue-slot[aria-pressed=true]{grid-template-columns:44px minmax(0,1fr);padding:6px}.catalogue-slot img{width:44px;height:44px}.catalogue-slot span{font-size:13px}.catalogue-slot small{font-size:10px}}
 .catalogue-slot[data-trophy=all61]{border-color:#b58c48;box-shadow:inset 0 0 0 3px #d9ba7233}
+/* An empty day is a single message, not one of the three quest cards. */
+#diary-choices>.empty{grid-column:1/-1;margin:0;padding:16px;font-size:14px;line-height:1.6}
+@media(max-width:799px){
+ .diary-welcome{min-height:145px}
+ .diary-dashboard{min-height:min-content}
+ .catalogue-slots{grid-template-rows:repeat(5,minmax(42px,1fr));flex-shrink:0}
+ #diary-bag{height:auto;min-height:100%}
+ #diary-result .diary-memory{flex-shrink:0;overflow:visible}
+ #diary-result .memory-picture{min-height:100px}
+ #diary-result{height:auto;min-height:100%}
+}
+/* Chrome's expanded toolbars leave about 509 CSS pixels on an iPhone SE. */
+@media(max-width:799px) and (max-height:560px){
+ .journey-app{grid-template-rows:42px minmax(0,1fr) auto}
+ .journey-head{height:42px;padding-block:3px}
+ .journey-nav button{min-height:52px;padding:2px 0}
+ .journey-nav svg{width:20px;height:20px;padding:3px}
+ #diary-bag{padding:6px 12px;gap:4px}
+ #diary-bag .bag-cover{height:22px}
+ #diary-bag .bag-cover>img{height:24px;width:24px}
+ #bag-content,.trophy-catalogue{gap:5px}
+ #bag-content select{height:32px;min-height:32px;padding:3px 8px}
+ .catalogue-slots{gap:4px;grid-template-rows:repeat(5,minmax(40px,1fr))}
+ .catalogue-slot,.catalogue-slot[aria-pressed=true]{grid-template-columns:26px minmax(0,1fr);grid-template-rows:1fr;align-items:center;padding:3px 5px}
+ .catalogue-slot img{grid-row:auto;width:26px;height:26px}
+ .catalogue-detail{padding:4px 8px}
+ .catalogue-detail p{margin:1px 0}.catalogue-detail progress{margin:2px 0}
+ #diary-result .diary-memory{padding:8px}
+ .memory-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 10px}
+ #memory-numbers .memory-stats span{grid-template-columns:48px minmax(0,1fr) 16px;gap:4px;padding:0;font-size:11px}
+ .memory-picture p{line-height:1.4;max-width:57%}
+ .diary-bubble{top:8%}
+}
