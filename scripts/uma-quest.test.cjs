@@ -6,7 +6,7 @@ assert.equal(K.phase('2026-09-30'),'before');assert.equal(K.phase(C.start),'duri
 assert.equal(K.day(new Date('2026-09-30T14:59:59Z')),'2026-09-30');assert.equal(K.day(new Date('2026-09-30T15:00:00Z')),C.start);
 assert.equal(K.released('2026-09-30').length,0);assert.equal(K.released('2026-10-03').length,3);assert.equal(K.released('2026-12-01').length,7);
 assert.throws(()=>K.complete(s,'autumn-paper',time(C.start)));
-s=K.complete(s,'autumn-door',time('2026-10-07'));assert.equal(K.summary(s,C.start).level,2);assert.equal(K.summary(s,C.start).stats.explore,1);
+s=K.complete(s,'autumn-door',time('2026-10-07'));assert.equal(K.summary(s,C.start).level,1);assert.equal(K.summary(s,C.start).stats.explore,1);
 assert.equal(K.complete(s,'autumn-door',time('2026-10-08')),s);
 const oldRecord=JSON.parse(JSON.stringify(s));delete oldRecord.questStates;delete oldRecord.journeyVersion;
 const migrated=K.validate(oldRecord,'trial');assert.deepEqual(migrated.completed,s.completed);assert.equal(migrated.questStates['autumn-door'],'started');assert.equal(migrated.version,3);
@@ -24,23 +24,50 @@ const serialized=JSON.stringify(s),restored=K.validate(JSON.parse(serialized),'t
 const undone=K.undo(s,'autumn-door');assert.equal(K.summary(undone,C.end).level,1);assert.equal(undone.titleId,'');assert.equal(undone.favoriteId,'');assert.equal(K.summary(undone,C.end).trophies.some(t=>t.unlocked),false);
 assert.equal(K.summary(s,'2026-12-01').canResult,true);assert.equal(K.summary(K.fresh('trial'),'2026-12-01').canResult,false);
 for(const q of C.quests)s=K.complete(s,q.id,time('2026-12-01'));
-assert.equal(K.summary(s,C.end).level,8);assert.equal(K.summary(s,C.end).trophies.find(t=>t.id==='all61').unlocked,false);
+assert.equal(K.summary(s,C.end).level,2);assert.equal(K.summary(s,C.end).trophies.find(t=>t.id==='all61').unlocked,false);
 for(const change of [{eventId:'other'},{version:99},{mode:'participant'},{completed:{unknown:time(C.end).toISOString()}},{favoriteId:'not-cleared'},{name:'a'.repeat(17)},{titleId:'all61'},{completed:{'autumn-paper':'2026-09-01T00:00:00.000Z'}}])assert.throws(()=>K.validate({...s,...change},'trial'));
 assert.ok(K.shareText('テスト').includes('【テスト】\nをクリアしました！'));assert.ok(K.shareText('テスト').includes('#旅するうまさん #うまさんからの挑戦状'));
 const source=fs.readFileSync(path.join(__dirname,'../assets/js/uma-quest.js'),'utf8');
 function appHarness(initial,failWrite=false,failRead=false){
- let stored=initial,writes=0;
+ let stored=initial,writes=0;const events={},posts=[];
  const nodes=new Map();const node=selector=>{if(!nodes.has(selector))nodes.set(selector,{textContent:'',value:'',hidden:false,disabled:false,addEventListener(){},close(){},showModal(){}});return nodes.get(selector);};
- const sandbox={window:{UmaQuestCore:K},URLSearchParams,location:{search:'?preview=1'},document:{querySelector:node,querySelectorAll:()=>[],addEventListener(){},fonts:{ready:Promise.resolve(),load:()=>Promise.resolve()}},localStorage:{getItem(){if(failRead)throw Error('denied');return stored;},setItem(k,v){if(failWrite)throw Error('quota');stored=v;writes++;}},setTimeout:()=>0,clearTimeout(){},setInterval(){},Image:class{decode(){return Promise.resolve();}},Date,console};
- const instrumented=source.replace(/render\(\);\s*\}\)\(\);\s*$/, 'this.test={commit,read,get:()=>({state,blocked,raw}),replaceRender:()=>{render=()=>{};}};})();');
- vm.runInNewContext(instrumented,sandbox);sandbox.test.replaceRender();return {api:sandbox.test,get stored(){return stored;},get writes(){return writes;}};
+ const sandbox={window:{UmaQuestCore:K,UmaQuestExport:{post:text=>posts.push(text)}},URLSearchParams,location:{search:'?preview=1'},document:{querySelector:node,querySelectorAll:()=>[],addEventListener(type,fn){events[type]=fn;},fonts:{ready:Promise.resolve(),load:()=>Promise.resolve()}},localStorage:{getItem(){if(failRead)throw Error('denied');return stored;},setItem(k,v){if(failWrite)throw Error('quota');stored=v;writes++;}},setTimeout:()=>0,clearTimeout(){},setInterval(){},Image:class{decode(){return Promise.resolve();}},Date,console};
+ const instrumented=source.replace(/render\(\);\s*\}\)\(\);\s*$/, 'this.test={commit,read,recordQuest,questCard,get:()=>({state,blocked,raw}),replaceRender:()=>{render=()=>{};}};})();');
+ vm.runInNewContext(instrumented,sandbox);sandbox.test.replaceRender();return {api:sandbox.test,events,posts,get stored(){return stored;},get writes(){return writes;}};
 }
 const corrupt=appHarness('{broken');assert.equal(corrupt.api.get().blocked,true);assert.equal(corrupt.api.commit(K.fresh('trial')),false);assert.equal(corrupt.stored,'{broken');assert.equal(corrupt.writes,0);
 const denied=appHarness(null,true);assert.equal(denied.api.commit({...K.fresh('trial'),name:'test'}),false);assert.equal(denied.api.get().state.name,'');assert.equal(denied.writes,0);
 const readDenied=appHarness(null,false,true);assert.equal(readDenied.api.get().blocked,true);
 const normal=appHarness(null);assert.equal(normal.api.commit({...K.fresh('trial'),name:'テスト'}),true);assert.equal(JSON.parse(normal.stored).name,'テスト');assert.equal(normal.writes,1);
 assert.equal(corrupt.api.commit(K.fresh('trial'),true),true);assert.equal(corrupt.api.get().blocked,false);
+// Reporting is now a single action, including old opened/started records.
+for(const stage of [null,'opened','started']){
+ const initial={...K.fresh('trial'),name:'テスト'};
+ if(stage)initial.questStates['autumn-door']=stage;
+ const app=appHarness(JSON.stringify(initial));
+ assert.ok(app.api.questCard(K.byId['autumn-door']).includes('できた！記録する'));
+ app.api.recordQuest('autumn-door');app.api.recordQuest('autumn-door');
+ assert.equal(app.writes,1);assert.equal(K.summary(app.api.get().state,C.end).xp,100);
+ const reloaded=appHarness(app.stored);reloaded.api.recordQuest('autumn-door');assert.equal(reloaded.writes,0);
+ assert.equal(K.summary(K.undo(reloaded.api.get().state,'autumn-door'),C.end).xp,0);
+}
+const failedReport=appHarness(null,true);failedReport.api.recordQuest('autumn-door');assert.equal(failedReport.writes,0);assert.equal(Object.keys(failedReport.api.get().state.completed).length,0);
+const brokenReport=appHarness('{broken');brokenReport.api.recordQuest('autumn-door');assert.equal(brokenReport.stored,'{broken');assert.equal(brokenReport.writes,0);
 const html=fs.readFileSync(path.join(__dirname,'../uma_quest.html'),'utf8'),ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(ids.length,new Set(ids).size);
+// The completed letter shares directly, without another modal or progress writes.
+const shareApp=appHarness(JSON.stringify({...staged,name:'共有確認'}));
+const shareClick=id=>({target:{closest:selector=>selector==='[data-share]'?{dataset:{share:id}}:null}});
+shareApp.events.click(shareClick('autumn-door'));
+assert.deepEqual(shareApp.posts,[K.shareText(K.byId['autumn-door'].title)]);assert.equal(shareApp.writes,0);
+shareApp.events.click(shareClick('autumn-paper'));assert.equal(shareApp.posts.length,1);
+assert.match(shareApp.api.questCard(K.byId['autumn-door']),/class="export-actions"/);
+assert.ok(!html.includes('id="clear-dialog"'));assert.ok(!source.includes('showClear'));
+// Crawler-visible metadata must use the public URL and an existing shared image.
+const meta=key=>html.match(new RegExp('<meta (?:property|name)="'+key+'" content="([^"]+)"'))?.[1];
+assert.equal(meta('og:url'),C.url);assert.equal(meta('twitter:card'),'summary_large_image');
+assert.equal(meta('og:image'),meta('twitter:image'));assert.ok(meta('og:image:alt'));
+const imageURL=new URL(meta('og:image'));assert.equal(imageURL.origin,new URL(C.url).origin);
+assert.ok(fs.existsSync(path.join(__dirname,'..',imageURL.pathname)));
 for(const m of html.matchAll(/(?:src|href)="([^"]+)"/g)){if(!/^(?:#|\?|https?:)/.test(m[1]))assert.ok(fs.existsSync(path.join(__dirname,'..',m[1])),m[1]);}
 assert.ok(html.indexOf('uma-quest-config.js')<html.indexOf('uma-quest-core.js'));assert.ok(html.indexOf('uma-quest-core.js')<html.indexOf('uma-quest.js'));
 assert.ok(!/gtag|google-analytics|googletagmanager/.test(html));assert.ok(!/fetch\(/.test(source));

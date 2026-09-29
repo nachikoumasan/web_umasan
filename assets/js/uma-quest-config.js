@@ -4,7 +4,9 @@
   const config={
     eventId:'umasan-autumn-2026',version:3,start:'2026-10-01',end:'2026-11-30',timeZone:'Asia/Tokyo',
     title:'うまさんからの挑戦状',url:'https://web-umasan.nachiko-umasan0215.workers.dev/uma_quest.html',
-    isDraft:true,productionComplete:false,productionQuestCount:61,xpPerLevel:100,initialLevel:1,resultMinClears:1,
+    isDraft:true,productionComplete:false,productionQuestCount:61,initialLevel:1,resultMinClears:1,
+    // Cumulative EXP for Lv.1–10: 0, 7, 14, 21, 28, 34, 41, 48, 55, 61 clears.
+    levelThresholds:[0,700,1400,2100,2800,3400,4100,4800,5500,6100],
     artwork:{explore:'media/quest/explore-v1.png',create:'media/quest/create-v1.png',challenge:'media/quest/challenge-v1.png',rest:'media/quest/rest-v1.png'},
     categories:[{id:'explore',name:'探索',icon:'media/icon-compass-storybook.webp',color:'#89966a'},{id:'create',name:'創作',icon:'media/icon-art-color.png',color:'#c48473'},{id:'challenge',name:'挑戦',icon:'media/icon-star-color.png',color:'#80a2b7'},{id:'rest',name:'休息',icon:'media/icon-lantern.png',color:'#c3a155'}],
     quests:[
@@ -19,6 +21,9 @@
     trophies:[
       {id:'first',name:'はじめの一歩',title:'一歩を踏み出す冒険者',kind:'count',target:1,icon:'media/icon-lantern.png'},
       {id:'three',name:'物語のはじまり',title:'日常の冒険者',kind:'count',target:3,icon:'media/icon-book-storybook.webp'},
+      {id:'count-10',name:'10ページの手帳',title:'物語を重ねる人',kind:'count',target:10,icon:'media/icon-book-storybook.webp'},
+      {id:'count-20',name:'20の足あと',title:'日常を旅する人',kind:'count',target:20,icon:'media/icon-book-storybook.webp'},
+      {id:'count-40',name:'実りの旅支度',title:'季節を歩いた冒険者',kind:'count',target:40,icon:'media/icon-book-storybook.webp'},
       {id:'explorer',name:'発見のコンパス',title:'小さな世界の発見者',kind:'category',category:'explore',target:2,icon:'media/icon-compass-storybook.webp'},
       {id:'creator',name:'物語の羽根',title:'物語のつくり手',kind:'category',category:'create',target:2,icon:'media/icon-art-color.png'},
       {id:'brave',name:'勇気の星',title:'はじめてを楽しむ人',kind:'category',category:'challenge',target:2,icon:'media/icon-star-color.png'},

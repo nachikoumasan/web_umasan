@@ -1,0 +1,20 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const C=require('../assets/js/uma-quest-config.js');
+const source=fs.readFileSync('assets/js/uma-quest-game.js','utf8');
+const block=source.slice(source.indexOf('async function prepareTrophies()'),source.indexOf("$('#trophy-save').onclick"));
+const nodes=new Map(),drawn=[],rects=[];
+const $=id=>{if(!nodes.has(id))nodes.set(id,{});return nodes.get(id);};
+const x=new Proxy({fillText:(text,...position)=>drawn.push({text,...{position}}),fillRect:(...r)=>rects.push(r)},{get:(o,k)=>k in o?o[k]:()=>{}});
+const model={state:{name:'宝物確認'},trial:true,t:{trophies:C.trophies.map((t,i)=>({...t,unlocked:i<3,progress:i<3?t.target:0}))}};
+const sandbox={$,C,model,E:{image:async()=>null,render:async(w,h,paint)=>{assert.equal(w,1080);assert.equal(h,1350);paint(x,false);return new Blob(['png']);},errorCode:()=> 'error'}};
+vm.createContext(sandbox);vm.runInContext('let trophyRevision=0,trophyFile=null;'+block+';this.prepare=prepareTrophies;',sandbox);
+(async()=>{
+ await sandbox.prepare();assert.equal($('#trophy-save').disabled,false);
+ for(const t of C.trophies)assert.ok(drawn.some(d=>d.text===t.name),t.id);
+ assert.ok(drawn.some(d=>d.text==='3 / 10 種のトロフィー'));
+ const cards=rects.filter(r=>r[2]===450);assert.equal(cards.length,10);
+ assert.ok(cards.every(([x,y,w,h])=>x>=40&&x+w<=1040&&y>=345&&y+h<1230));
+ assert.ok(drawn.every(d=>d.position[1]<=1260));
+ assert.ok(drawn.some(d=>d.text==='特別実績 · 全61件'));
+ console.log('PASS: all ten trophy names/counts, special completion award, export bounds and ready state.');
+})().catch(e=>{console.error(e);process.exitCode=1;});

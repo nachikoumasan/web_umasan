@@ -1,5 +1,10 @@
 /* Five distinct game screens. Live UI overlays only purpose-made scenic assets. */
 :root{--paper:#fff0d4;--edge:#caab74;--brown:#65451f;--moss:#757845}
+/* Navigation and quest reporting each have a single visible entry. */
+#journey-menu,#share-growth{display:none!important}
+.diary-choice-hint,.quest-self-report{font-size:12px;line-height:1.6;text-align:center;color:#795c38;margin:8px 0}
+.memory-export-details{font-size:12px}.memory-export-details summary{padding:10px;cursor:pointer;text-align:center}
+.quest-letter .history-actions{justify-content:center}
 body{background:#eaddc3 url('../../media/scenery-shop.webp') center/cover fixed}
 .journey-app{max-width:1180px;background:var(--paper);box-shadow:0 0 60px #58361555}
 .journey-head{height:52px;padding:0 52px;background:linear-gradient(105deg,#fff7e3,#f8e5bd);border-bottom:1px solid #b28a4c;position:relative}
@@ -26,6 +31,9 @@ body{background:#eaddc3 url('../../media/scenery-shop.webp') center/cover fixed}
 .diary-home-paper{padding:8px 16px 6px;background:radial-gradient(ellipse at 20% 40%,#fff8e8a0,transparent),var(--paper);flex:0 0 auto}
 .diary-divider{display:flex;justify-content:center;align-items:center;gap:9px;font-size:15px;font-weight:600;letter-spacing:.06em;margin:0 0 9px;line-height:1.5}.diary-divider:before,.diary-divider:after{content:"❧";font-weight:400;color:#98713f}
 #diary-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+#diary-choices[data-count="1"]{grid-template-columns:1fr}
+#diary-choices[data-count="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+#diary-choices[data-count="1"] .diary-choice{min-height:145px}
 .diary-choice{position:relative;display:flex;flex-direction:column;align-items:center;gap:0;min-height:165px;padding:9px 6px 5px;border:1px solid #cfa968;border-radius:9px;background:linear-gradient(120deg,#fff8e5,#f8e8c7);box-shadow:inset 0 0 0 3px #fff7e180;color:#573c23}
 .choice-icon{display:grid;place-items:center;border:3px double var(--category-color);border-radius:50%;width:57px;height:57px;background:#fff3da;margin-bottom:0}.choice-icon img{width:40px;height:40px;object-fit:contain}
 .choice-ribbon{background:var(--category-color);color:#fffae9;font-size:12px;line-height:1.5;margin-top:-4px;padding:1px 12px;clip-path:polygon(0 0,100% 0,94% 50%,100% 100%,0 100%,6% 50%);z-index:1}
@@ -105,3 +113,61 @@ body[data-journey=start] .journey-main,body[data-journey=level] .journey-main{pa
  #diary-result{gap:7px;padding-top:12px}.memory-title{padding:5px}.memory-title strong{font-size:18px}.diary-memory{min-height:270px}.memory-picture{height:110px}.memory-picture img{height:100px}.memory-picture p{top:17px;font-size:11px}.memory-owner strong,.memory-owner span{font-size:21px}
 }
 @media(prefers-reduced-motion:no-preference){.journey-view:not([hidden]){animation:diary-enter .18s ease-out}@keyframes diary-enter{from{opacity:.7;transform:translateY(4px)}to{opacity:1;transform:none}}}
+/* Trophy book: select an illustration, read its entry, then turn the page. */
+#diary-bag{padding:12px 16px}
+#diary-bag .diary-page-intro,#diary-bag>.diary-footnote{display:none}
+#diary-bag .bag-cover{margin:0 0 9px;gap:12px}
+#diary-bag .bag-cover>img{width:43px;height:43px}
+#diary-bag .bag-cover strong{font-size:18px}
+#bag-content select{margin:4px 0 10px;font-size:14px}
+.trophy-catalogue{display:grid;gap:10px}
+.catalogue-slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;min-height:206px;align-content:start}
+.catalogue-slot{min-width:0;min-height:98px;padding:7px 3px;display:flex;flex-direction:column;align-items:center;gap:3px;background:#fff6e4;border:1px solid #c9ad7c;border-radius:8px;box-shadow:inset 0 0 0 3px #fffaf080;color:#65451f}
+.catalogue-slot img{height:43px;width:43px;object-fit:contain}
+.catalogue-slot span{font-size:12px;line-height:1.35;margin-top:4px;overflow-wrap:anywhere}
+.catalogue-slot small{font-size:10px;color:#7a6544}
+.catalogue-slot.locked img{filter:grayscale(1);opacity:.45}
+.catalogue-slot[aria-pressed=true]{border:2px solid #768249;background:#f1edd6;padding:6px 2px}
+.catalogue-slot.earned small{color:#50602a}
+.catalogue-detail{min-height:136px;padding:12px;background:#fff8e9;border:1px solid #c9ad7c;border-radius:8px}
+.catalogue-detail>div{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.catalogue-detail strong{font-size:17px;line-height:1.4}.catalogue-detail>div>span{font-size:11px;white-space:nowrap}
+.catalogue-detail p{font-size:12px;line-height:1.5;margin:6px 0}
+.catalogue-detail progress{width:100%;height:8px;display:block;margin:7px 0}
+.catalogue-detail small{display:block;font-size:11px;line-height:1.5}
+.catalogue-pager{display:flex;justify-content:center;align-items:center;gap:20px}
+.catalogue-pager button{min-width:48px;min-height:44px;padding:4px 12px;background:#fff8e9;border-radius:8px}
+.catalogue-pager span{font-size:12px}
+@media(max-height:720px){
+ #diary-bag{padding:6px 12px}#diary-bag .bag-cover{margin-bottom:5px}#diary-bag .bag-cover>img{width:30px;height:30px}#diary-bag .bag-cover span{display:none}
+ #bag-content select{margin-bottom:7px;min-height:40px}.trophy-catalogue{gap:7px}
+ .catalogue-slots{grid-template-columns:repeat(2,minmax(0,1fr));min-height:134px;gap:6px}
+ .catalogue-slot{min-height:64px;display:grid;grid-template-columns:36px 1fr;grid-template-rows:auto auto;text-align:left;column-gap:6px;padding:6px}
+ .catalogue-slot[aria-pressed=true]{padding:5px}.catalogue-slot img{width:34px;height:34px;grid-row:1/3}.catalogue-slot span{margin:0}
+ .catalogue-detail{min-height:114px;padding:8px}.catalogue-detail strong{font-size:15px}.catalogue-detail p{margin:4px 0}
+}
+@media(min-width:800px){#diary-bag{max-width:800px;padding:24px 36px}.catalogue-slots{min-height:252px}.catalogue-slot{min-height:122px}.catalogue-slot img{width:60px;height:60px}.catalogue-slot span{font-size:15px}.catalogue-slot small{font-size:12px}.catalogue-detail{min-height:140px}.catalogue-detail strong{font-size:20px}.catalogue-detail p,.catalogue-detail small{font-size:14px}}
+/* One record card, with its actions immediately below. */
+#diary-result{gap:8px;padding:12px 14px;min-height:0}
+#diary-result .diary-memory{flex:none;min-height:0;padding:12px}
+#memory-title{text-align:center;font-size:14px;margin:0 0 9px}
+.memory-experience{margin-bottom:10px}.memory-experience progress{display:block;width:100%;height:13px}.memory-experience small{display:block;text-align:center;font-size:10px;margin-top:5px}
+#diary-result .memory-picture{flex:none;height:clamp(110px,21svh,185px);min-height:0}
+#diary-result .memory-picture img{height:95%}.memory-picture p{top:22%}
+.memory-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}
+#memory-numbers .memory-stats span{display:flex;justify-content:space-between;font-size:13px;padding:4px 9px;background:#fff8e9a8;border:1px solid #dbc39c;border-radius:4px}
+#memory-date{text-align:center;margin:5px 0 0}#memory-favorite{text-align:center;margin:6px 0}
+#memory-copy{align-self:center;font-size:12px;min-height:38px;padding:6px 12px}#memory-export-note:empty,#memory-note:empty{display:none}
+#memory-preview[hidden],#memory-caption[hidden]{display:none}
+#diary-settings-inline{max-width:500px;margin:auto}#diary-settings-inline .profile-name{display:grid;grid-template-columns:1fr auto;gap:12px}#diary-settings-inline label{grid-column:1/-1;font-size:16px}#diary-settings-inline input{width:100%;min-width:0;padding:10px;font-size:18px}#diary-settings-inline button{margin:0;min-height:44px}#diary-settings-inline .storage-note{margin-top:24px;font-size:12px}
+@media(max-height:720px) and (max-width:799px){#diary-result{padding:7px 12px;gap:5px}#diary-result .diary-memory{padding:8px}#diary-result .memory-picture{height:95px}#diary-result .memory-picture p{top:17px}.memory-owner{margin-bottom:3px}#memory-title{margin-bottom:5px;font-size:12px}.memory-experience{margin-bottom:7px}.memory-stats{margin-top:5px;gap:4px}#memory-numbers{margin:4px 0}#memory-favorite{font-size:10px;margin:3px 0}#memory-copy{min-height:32px;padding:3px 10px}.memory-actions button{font-size:14px}}
+@media(min-width:800px){#diary-result{max-width:680px;padding:22px 36px;gap:12px}#diary-result .diary-memory{padding:22px}#memory-title{font-size:19px}.memory-experience small{font-size:12px}#memory-numbers .memory-stats span{font-size:17px}#diary-result .memory-picture{height:190px}}
+@media(max-height:620px) and (max-width:799px){
+ #diary-result .diary-divider{margin-bottom:4px;font-size:10px;line-height:14px}
+ #diary-result .memory-owner{line-height:26px}#diary-result .memory-owner span{line-height:26px}
+ #diary-result .memory-picture{height:72px}#diary-result .memory-picture p{top:8px;font-size:10px;line-height:1.5}
+ #memory-numbers>strong{font-size:16px;line-height:23px}#memory-numbers .memory-stats span{font-size:12px;line-height:18px;padding:2px 7px}
+ #memory-title{line-height:17px}.memory-experience small{line-height:14px}
+ #memory-date{font-size:8px;line-height:12px;margin-top:3px}
+}
+@media(min-width:800px) and (min-height:800px){#diary-result{padding-top:14px;padding-bottom:14px;gap:8px}#diary-result .diary-memory{padding:16px}#diary-result .memory-picture{height:150px}.memory-picture p{top:30px}#memory-numbers strong{font-size:21px}#memory-numbers .memory-stats span{font-size:15px}#memory-copy{min-height:32px}}

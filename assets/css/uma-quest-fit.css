@@ -1,0 +1,75 @@
+﻿/* Viewport-led layout: normal play fits without scrolling; zoom can still overflow naturally. */
+html,body{height:100%;min-height:0}body{line-height:1.5}
+.journey-app{height:100dvh;min-height:0;display:grid;grid-template-rows:48px minmax(0,1fr) auto}
+.journey-head{height:48px;padding:5px 40px}.diary-page-title{font-size:20px}
+.journey-main{min-height:0;padding:0;overflow:auto}
+.journey-view{height:100%;min-height:0;box-sizing:border-box;max-width:720px}
+.journey-nav{position:static;transform:none;width:100%;max-width:720px;margin:0 auto;min-height:0;border-radius:0;padding:0 5px env(safe-area-inset-bottom)}
+.journey-nav button{min-height:60px;padding:4px 0;font-size:10px;gap:1px}.journey-nav svg{width:22px;height:22px;padding:4px}
+body[data-journey=start] .journey-app,body[data-journey=level] .journey-app{grid-template-rows:48px minmax(0,1fr)}
+body[data-journey=start] .journey-main,body[data-journey=level] .journey-main{min-height:0;padding:0}
+.export-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;margin-top:auto;flex:none}
+.export-actions button,.memory-actions button:not(.primary),.level-view .export-actions button{font-size:14px;font-weight:600;min-height:44px;padding:8px 5px;line-height:1.3;color:#fff7df;background:linear-gradient(#828a4c,#5b6834);border:3px double #d9ba72;border-radius:12px;box-shadow:0 2px 5px #63431626}
+.export-actions button:before{display:inline-block;margin-right:6px}.export-actions button:first-child:before{content:'↓'}.export-actions button:last-child:before{content:'𝕏'}
+.export-note,#memory-export-note,.level-image-message{font-size:11px;line-height:1.4;margin:3px 0;text-align:center}.export-note:empty,.level-image-message:empty{display:none}
+/* All ten trophies share one collection page. */
+#diary-bag{padding:10px 14px;display:flex;flex-direction:column;gap:8px;max-width:800px}
+#diary-bag .bag-cover{margin:0;gap:8px;height:27px;flex:none}#diary-bag .bag-cover>img{width:28px;height:28px}#diary-bag .bag-cover span{display:none}#diary-bag .bag-cover strong{font-size:16px}
+#bag-content{display:flex;flex-direction:column;min-height:0;flex:1;gap:6px}
+#bag-content .title-picker{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:8px;font-size:12px;flex:none}#bag-content select{margin:0;font-size:13px;min-height:38px;width:100%}
+.trophy-catalogue{display:flex;flex-direction:column;gap:8px;min-height:0;flex:1}
+.catalogue-slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:6px;min-height:0;flex:1;align-content:stretch}
+.catalogue-slot,.catalogue-slot[aria-pressed=true]{display:flex;flex-direction:column;justify-content:center;gap:2px;padding:4px;min-height:0;text-align:center;border-width:1px}
+.catalogue-slot[aria-pressed=true]{outline:2px solid #798148;outline-offset:-2px}
+.catalogue-slot img{width:clamp(27px,5dvh,48px);height:clamp(27px,5dvh,48px)}.catalogue-slot span{font-size:11px;line-height:1.25;margin:0}.catalogue-slot small{font-size:9px;line-height:1.1}
+.catalogue-detail{min-height:0;padding:7px 9px;flex:none}.catalogue-detail strong{font-size:14px}.catalogue-detail p{font-size:11px;line-height:1.3;margin:3px 0}.catalogue-detail progress{margin:4px 0;height:6px}.catalogue-detail small{font-size:10px;line-height:1.3}
+/* Record: one live card and the same pair of actions as every export. */
+#diary-result{display:flex;flex-direction:column;gap:7px;padding:10px 14px;max-width:680px;min-height:0}
+#diary-result .diary-memory{flex:1;min-height:0;padding:10px;gap:0}
+#diary-result .diary-divider{font-size:11px;line-height:1.3;margin-bottom:5px}
+.memory-owner{margin:0 0 3px;flex-wrap:wrap;gap:5px;line-height:1.3}.memory-owner strong,.memory-owner span{font-size:24px;line-height:1.3}
+#memory-title{font-size:12px;line-height:1.4;margin:2px 0 6px}.memory-experience{margin-bottom:7px}.memory-experience small{font-size:9px;line-height:1.4;margin-top:3px}
+#diary-result .memory-picture{flex:1;min-height:55px;height:auto;max-height:200px}.memory-picture p{top:20%;font-size:11px!important;padding:5px;line-height:1.5}.memory-picture img{height:96%!important}
+#memory-numbers{margin:5px 0 2px}#memory-numbers>strong{font-size:17px;line-height:1.4}
+.memory-stats{display:grid;grid-template-columns:1fr;gap:5px;margin-top:5px}
+#memory-numbers .memory-stats span{display:grid;grid-template-columns:58px minmax(0,1fr) 22px;align-items:center;gap:9px;padding:0 7px;border:0;background:none;font-size:12px;line-height:20px}
+.memory-stats label{text-align:left}.memory-stats progress{width:100%;height:10px;accent-color:var(--ability-color);margin:0}.memory-stats progress::-webkit-progress-value{background:var(--ability-color)}.memory-stats progress::-moz-progress-bar{background:var(--ability-color)}
+#memory-favorite{font-size:10px;line-height:1.3;margin:4px 0}#memory-date{font-size:9px;line-height:1.3;margin:4px 0 0}
+#memory-copy{display:none}#memory-note{font-size:11px}
+/* Home, map and menus fill the space between header and navigation. */
+.diary-dashboard{height:100%;min-height:0}.diary-welcome{min-height:0;height:auto;flex:1 1 0}.diary-home-paper{flex:none;padding:8px 14px}
+.diary-choice,#diary-choices[data-count="1"] .diary-choice{min-height:125px;padding:6px}.choice-icon{width:42px;height:42px}.choice-icon img{width:30px;height:30px}.choice-ribbon{font-size:10px}.diary-choice strong{font-size:12px;margin:5px 0}.diary-choice small{font-size:10px}
+.diary-lantern{min-height:45px;margin:7px 0;padding:3px 8px}.diary-lantern>img{height:34px;width:26px}.diary-lantern>strong{font-size:14px}.diary-test-note{font-size:9px;margin:3px 0}
+#diary-map{padding:0}.diary-map-art{height:100%;min-height:0}.map-node strong{font-size:18px}.map-future{height:48px;font-size:10px;padding:10px 0 3px}
+#diary-menu{padding:15px 22px}.menu-brand{margin:0 0 16px;padding:10px}.menu-brand img{max-height:110px}.menu-brand div{font-size:20px}
+/* Celebration keeps both actions visible. */
+.level-view{display:flex;flex-direction:column;align-items:center;padding:12px 22px!important;gap:5px;min-height:0}
+.level-up-heading{font-size:clamp(28px,4.5dvh,42px);margin:0}.level-emblem{width:clamp(50px,10dvh,90px);height:clamp(50px,10dvh,90px);font-size:32px;margin:0;border-width:5px;flex:none}
+.level-view h1{font-size:26px;margin:0;line-height:1.3}.level-before{font-size:18px;margin:0}.level-after{font-size:clamp(48px,8dvh,78px);margin:0;line-height:1.1}.level-growth{font-size:17px;margin:2px 0;padding-top:5px}.level-xp{font-size:25px;margin:0;line-height:1.3}
+.level-guide{flex:1;min-height:40px;width:100%;margin:0;max-height:140px}.level-guide img{height:100%;max-height:120px;width:90px}.level-guide p{font-size:11px}.level-view .export-actions{margin:0}.level-view>.text-button{font-size:13px;min-height:32px;margin:0;padding:5px}
+.start-view{display:flex;flex-direction:column;padding:12px 22px;min-height:0}.start-view h1{font-size:27px;line-height:1.4;margin:0}.door-guide{flex:1;min-height:30px;max-height:220px;width:150px;height:25%;margin:5px 0;object-fit:contain}.adventure-pass{flex:none;padding:12px 18px}.first-storage{font-size:10px;line-height:1.4}
+@media(max-height:650px){#diary-result,#diary-bag{padding:7px 12px;gap:5px}.catalogue-slot img{width:27px;height:27px}.catalogue-slot small{display:none}.catalogue-slots{gap:5px}.catalogue-detail{padding:5px 8px}#bag-content select{min-height:32px}.catalogue-detail small{font-size:9px}.memory-owner strong,.memory-owner span{font-size:21px}.memory-stats{gap:2px}#memory-numbers .memory-stats span{line-height:18px}.memory-experience small{font-size:8px}#memory-title{margin:1px 0 4px}.memory-experience{margin-bottom:4px}.level-emblem{display:none}.level-guide{max-height:65px}.journey-head .diary-page-title{font-size:18px}.diary-bubble{font-size:11px;padding:7px 10px}.diary-bubble strong{font-size:11px}.diary-choice,#diary-choices[data-count="1"] .diary-choice{min-height:112px}.choice-icon{width:34px;height:34px}.choice-icon img{width:26px;height:26px}}
+@media(min-width:800px){.journey-main{padding:12px 24px}.journey-view{border-radius:12px;max-width:1000px}.journey-nav{border-radius:12px 12px 0 0;max-width:720px}.diary-dashboard{min-height:0}.diary-welcome{min-height:0;height:100%;flex:1}.diary-welcome>img{height:65%;width:80%}.diary-home-paper{padding:24px;justify-content:center}.diary-choice{min-height:190px}.choice-icon{height:58px;width:58px}.diary-choice strong{font-size:15px}.diary-lantern{margin-top:18px;min-height:60px}#diary-map{max-width:650px}#diary-bag{max-width:800px;padding:16px 24px}.catalogue-slots{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr))}.catalogue-slot img{width:65px;height:65px}.catalogue-slot span{font-size:14px}.catalogue-slot small{font-size:11px}.catalogue-detail{padding:10px 14px}.catalogue-detail strong{font-size:18px}.catalogue-detail p,.catalogue-detail small{font-size:12px}#diary-result{padding:12px 20px}#diary-result .diary-memory{padding:14px}.memory-owner strong,.memory-owner span{font-size:28px}#memory-numbers .memory-stats span{font-size:14px;line-height:23px}.export-actions button{font-size:16px}#diary-menu{max-width:760px}.level-view{max-width:650px}.start-view{max-width:600px}}
+#diary-result .memory-picture{max-height:none}
+@media(min-height:651px){.catalogue-slot img{width:clamp(40px,7dvh,64px);height:clamp(40px,7dvh,64px)}.catalogue-slot span{font-size:13px}.catalogue-slot small{font-size:10px}}
+@media(max-width:799px){.catalogue-slot:last-child:nth-child(3n + 1){grid-column:2}}
+.area-pager{display:flex;align-items:center;justify-content:center;gap:15px;margin-top:8px}.area-pager button{min-height:36px;padding:4px 12px;font-size:12px}.area-pager span{font-size:12px}
+#diary-area-sheet .area-quest{padding:7px;min-height:52px;margin:5px 0}#diary-area-sheet .area-quest img{height:35px;width:35px}#diary-area-sheet .sheet-body>p{margin:0 0 8px}
+@media(max-height:650px){.journey-sheet .sheet-body{padding:10px}.quest-letter{padding:10px 12px}.quest-letter h3{font-size:20px}.quest-letter .description{font-size:13px;line-height:1.5;min-height:0}.quest-letter .quest-art{height:65px}.quest-letter .reward{font-size:19px}.quest-letter .letter-to{margin:3px 0}.quest-letter .quest-top{font-size:11px}}
+@media(prefers-reduced-motion:no-preference){.journey-view:not([hidden]){animation:quest-fit-fade .16s ease-out}@keyframes quest-fit-fade{from{opacity:.7}to{opacity:1}}}
+/* The completed letter uses the same action row as records and belongings. */
+#diary-quest-detail .export-actions{margin-top:12px;clear:both}
+#diary-quest-detail .export-actions button{font-size:14px;min-height:44px;padding:8px 5px}
+#diary-quest-detail .export-note{margin:5px 0 0;font-size:11px;line-height:1.4}
+@media(max-width:360px){#diary-quest-detail .export-actions button{font-size:12px;white-space:nowrap}#diary-quest-detail .export-actions button:before{margin-right:3px}}
+@media(max-height:650px){#diary-quest-detail .export-actions{margin-top:7px}#diary-quest-detail .achievement-stamp{padding:3px 12px;margin:5px auto}}
+/* Ten trophies: compact horizontal entries on phones, five columns on desktop. */
+@media(max-width:799px){
+ .catalogue-slots{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(5,minmax(0,1fr))}
+ .catalogue-slot,.catalogue-slot[aria-pressed=true]{display:grid;grid-template-columns:32px minmax(0,1fr);grid-template-rows:auto auto;align-content:center;gap:2px 5px;text-align:left;padding:4px}
+ .catalogue-slot img{grid-row:1/3;width:32px;height:32px}.catalogue-slot span{font-size:11px}.catalogue-slot small{font-size:9px}
+ .catalogue-slot:last-child:nth-child(3n + 1){grid-column:auto}
+}
+@media(min-width:800px){.catalogue-slots{grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr))}}
+@media(max-width:799px) and (min-height:651px){.catalogue-slot,.catalogue-slot[aria-pressed=true]{grid-template-columns:44px minmax(0,1fr);padding:6px}.catalogue-slot img{width:44px;height:44px}.catalogue-slot span{font-size:13px}.catalogue-slot small{font-size:10px}}
+.catalogue-slot[data-trophy=all61]{border-color:#b58c48;box-shadow:inset 0 0 0 3px #d9ba7233}

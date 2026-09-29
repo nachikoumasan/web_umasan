@@ -6,16 +6,24 @@ const day=(date=new Date())=>new Intl.DateTimeFormat('en-CA',{timeZone:C.timeZon
 const phase=d=>d<C.start?'before':d>C.end?'after':'during';
 const released=d=>C.quests.filter(q=>q.date<=d);
 const fresh=mode=>({eventId:C.eventId,version:C.version,mode,name:'',completed:{},titleId:'',favoriteId:'',onboarded:false,journeyVersion:1,questStates:{}});
+function levelProgress(xp){
+ const thresholds=C.levelThresholds;
+ let index=0;while(index+1<thresholds.length&&xp>=thresholds[index+1])index++;
+ const isMaxLevel=index===thresholds.length-1;
+ const expMax=isMaxLevel?thresholds[index]-thresholds[index-1]:thresholds[index+1]-thresholds[index];
+ return {level:C.initialLevel+index,exp:isMaxLevel?expMax:xp-thresholds[index],expMax,nextExp:isMaxLevel?0:thresholds[index+1]-xp,isMaxLevel};
+}
+const experienceText=t=>t.isMaxLevel?'最高レベル達成！ · '+t.xp+' EXP':t.exp+' / '+t.expMax+' EXP ・ 次のレベルまで '+t.nextExp+' EXP';
 function summary(s,d){
  const done=Object.keys(s.completed).map(id=>byId[id]).filter(Boolean);
  const xp=done.reduce((n,q)=>n+q.reward.xp,0);
  const stats=Object.fromEntries(C.categories.map(c=>[c.id,done.filter(q=>q.category===c.id).reduce((n,q)=>n+q.reward.stat,0)]));
  const trophies=C.trophies.map(t=>{
   const progress=t.kind==='category'?done.filter(q=>q.category===t.category).length:done.length;
-  const unlocked=t.kind==='all'?C.productionComplete&&C.quests.length===C.productionQuestCount&&done.length===C.productionQuestCount:progress>=t.target;
+  const unlocked=t.kind==='all'?(C.productionComplete||C.isPreflight===true)&&C.quests.length===C.productionQuestCount&&done.length===C.productionQuestCount:progress>=t.target;
   return {...t,progress:Math.min(progress,t.target),unlocked};
  });
- return {done,xp,stats,level:C.initialLevel+Math.floor(xp/C.xpPerLevel),exp:xp%C.xpPerLevel,trophies,
+ return {done,xp,stats,...levelProgress(xp),trophies,
   title:trophies.find(t=>t.id===s.titleId&&t.unlocked)?.title||'はじまりの冒険者',
   canResult:phase(d)!=='before'&&done.length>=C.resultMinClears,final:phase(d)==='after'};
 }
@@ -59,7 +67,7 @@ function undo(s,id){
  return next;
 }
 function shareText(title){return '＝＝＝＝＝＝＝＝＝＝\n'+C.title+'\n【'+title+'】\nをクリアしました！\n＝＝＝＝＝＝＝＝＝＝\n\n#旅するうまさん #うまさんからの挑戦状\n'+C.url;}
-const core={C,byId,day,phase,released,fresh,summary,validate,complete,undo,advance,shareText};
+const core={C,byId,day,phase,released,fresh,summary,levelProgress,experienceText,validate,complete,undo,advance,shareText};
 if(typeof module==='object'&&module.exports)module.exports=core;else root.UmaQuestCore=core;
 })(typeof window==='object'?window:globalThis);
 

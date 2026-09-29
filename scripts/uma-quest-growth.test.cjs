@@ -1,0 +1,8 @@
+﻿const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const source=fs.readFileSync('assets/js/uma-quest-journey.js','utf8'),block=source.slice(source.indexOf('async function prepareGrowth'),source.indexOf("$('#save-level').onclick"));
+const nodes=new Map(),drawn=[];let fail=false;
+const $=s=>{if(!nodes.has(s))nodes.set(s,{});return nodes.get(s);};const ctx=new Proxy({fillText:t=>drawn.push(String(t)),createRadialGradient:()=>({addColorStop(){}})},{get:(o,k)=>k in o?o[k]:()=>{}});
+const sandbox={$ ,C:{title:'挑戦状',start:'2026-10-01',end:'2026-11-30'},statNames:{explore:'観察力'},E:{image:async()=>null,render:async(w,h,draw)=>{if(fail)throw Error('test');draw(ctx,false);return new Blob(['png']);},errorCode:()=> '画像変換に失敗'}};
+vm.createContext(sandbox);vm.runInContext('let revision=0,growthFile=null,shareData=null;'+block+';this.prepare=prepareGrowth;',sandbox);
+const data={state:{name:'試験'},before:{level:1,stats:{explore:0}},t:{level:2,title:'一歩',stats:{explore:1}},quest:{category:'explore',title:'扉',reward:{xp:100}},trial:true};
+(async()=>{await sandbox.prepare(data);assert.equal($('#save-level').disabled,false);assert.ok(drawn.includes('試験'));assert.ok(drawn.includes('観察力 0 → 1'));fail=true;await sandbox.prepare(data);assert.equal($('#save-level').textContent,'画像を再作成');fail=false;await sandbox.prepare(data);assert.equal($('#save-level').textContent,'画像を保存');assert.equal($('.level-image-message').textContent,'');assert.match(source,/E.post\(growthCaption\(shareData\)\)/);console.log('PASS: level export uses actual growth, no required illustration, retry recovers, direct X action.');})().catch(e=>{console.error(e);process.exitCode=1;});
