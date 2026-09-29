@@ -1,0 +1,9 @@
+# Repository metadata and development files are not public site assets.
+.git
+.github
+.gitignore
+.assetsignore
+.wrangler
+node_modules
+scripts
+artifacts
