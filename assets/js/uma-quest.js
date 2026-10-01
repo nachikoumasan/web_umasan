@@ -62,8 +62,8 @@ $('#title-select').addEventListener('change',e=>{if(!commit({...state,titleId:e.
 document.addEventListener('click',e=>{
  const report=e.target.closest('[data-report]'),share=e.target.closest('[data-share]'),save=e.target.closest('[data-save-quest]');
  if(report)recordQuest(report.dataset.report);
- if(share&&state.completed[share.dataset.share])window.UmaQuestExport.post(K.shareText(K.byId[share.dataset.share].title));
- if(save&&state.completed[save.dataset.saveQuest]){const q=K.byId[save.dataset.saveQuest];if(questImage&&questImageId===q.id){window.UmaQuestExport.save(questImage,'umasan-quest-'+q.id+'.png');$('#quest-export-note').textContent='画像の保存を開始しました。';}else prepareQuestImage(q);}
+ if(share&&state.completed[share.dataset.share])window.UmaQuestExport.post(K.shareText(K.byId[share.dataset.share].title),$('#quest-export-note'));
+ if(save&&state.completed[save.dataset.saveQuest]){const q=K.byId[save.dataset.saveQuest];if(questImage&&questImageId===q.id){window.UmaQuestExport.save(questImage,'umasan-quest-'+q.id+'.png',$('#quest-export-note'));}else prepareQuestImage(q);}
 });
 function recordQuest(id){
  if(blocked||state.completed[id])return;

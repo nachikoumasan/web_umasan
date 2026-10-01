@@ -85,8 +85,8 @@ async function prepareMemory(){const revision=++exportRevision;cardFile=null;$('
  }catch(e){if(revision===exportRevision){$('#memory-export-note').textContent=E.errorCode(e)+'。もう一度お試しください。';$('#memory-retry').hidden=false;}}}
 $('#memory-retry').onclick=()=>prepareMemory();
 function recordCaption(){return model.state.name+'の冒険記録\nLv.'+model.t.level+' · '+model.t.done.length+'件のクエストをクリア！\n#旅するうまさん #うまさんからの挑戦状\n'+C.url;}
-function downloadCard(){if(!cardFile)return;E.save(cardFile,'umasan-memory-lv'+model.t.level+'.png');$('#memory-export-note').textContent='保存した画像はXの投稿画面で添付できます。';}
-function shareCard(){E.post(recordCaption());}
+function downloadCard(){if(!cardFile)return;E.save(cardFile,'umasan-memory-lv'+model.t.level+'.png',$('#memory-export-note'));}
+function shareCard(){E.post(recordCaption(),$('#memory-export-note'));}
 $('#memory-save').onclick=downloadCard;$('#memory-share').onclick=shareCard;$('#memory-copy').onclick=async()=>{try{await navigator.clipboard.writeText($('#memory-caption').value);$('#memory-export-note').textContent='投稿文をコピーしました。';}catch{$('#memory-caption').hidden=false;$('#memory-caption').focus();$('#memory-caption').select();$('#memory-export-note').textContent='文章を選択しました。端末のコピー操作をお使いください。';}};
 
 function trophyCaption(){return model.state.name+'の冒険トロフィー\n'+model.t.trophies.filter(t=>t.unlocked).length+' / '+model.t.trophies.length+' 種を獲得！\n#旅するうまさん #うまさんからの挑戦状\n'+C.url;}
@@ -100,8 +100,8 @@ async function prepareTrophies(){const revision=++trophyRevision;trophyFile=null
  text((model.trial?'試用記録 · ':'')+C.start.replaceAll('-','.')+' — '+C.end.replaceAll('-','.'),1260,24);
  });if(revision!==trophyRevision)return;trophyFile=blob;$('#trophy-save').disabled=false;$('#trophy-save').textContent='画像を保存';$('#trophy-note').textContent='';
  }catch(e){if(revision===trophyRevision){$('#trophy-save').disabled=false;$('#trophy-save').textContent='画像を再作成';$('#trophy-note').textContent=E.errorCode(e)+'。再作成できます。';}}}
-$('#trophy-save').onclick=()=>{if(trophyFile){E.save(trophyFile,'umasan-trophies.png');$('#trophy-note').textContent='保存した画像はXの投稿画面で添付できます。';}else prepareTrophies();};
-$('#trophy-share').onclick=()=>{if(model)E.post(trophyCaption());};
+$('#trophy-save').onclick=()=>{if(trophyFile){E.save(trophyFile,'umasan-trophies.png',$('#trophy-note'));}else prepareTrophies();};
+$('#trophy-share').onclick=()=>{if(model)E.post(trophyCaption(),$('#trophy-note'));};
 
 go('today');
 })();

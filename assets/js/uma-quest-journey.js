@@ -55,8 +55,8 @@ async function prepareGrowth(data){
  growthFile=blob;$('#save-level').disabled=false;$('#save-level').textContent='画像を保存';$('.level-image-message').textContent='';
  }catch(e){if(token===revision){$('#save-level').disabled=false;$('#save-level').textContent='画像を再作成';$('.level-image-message').textContent=E.errorCode(e)+'。再作成できます。記録は保存済みです。';}}
 }
-$('#save-level').onclick=()=>{if(growthFile){E.save(growthFile,'umasan-level-lv'+shareData.t.level+'.png');$('.level-image-message').textContent='保存した画像はXの投稿画面で添付できます。';}else if(shareData)prepareGrowth(shareData);};
-$('#share-level').onclick=()=>{if(shareData)E.post(growthCaption(shareData));};
+$('#save-level').onclick=()=>{if(growthFile){E.save(growthFile,'umasan-level-lv'+shareData.t.level+'.png',$('.level-image-message'));}else if(shareData)prepareGrowth(shareData);};
+$('#share-level').onclick=()=>{if(shareData)E.post(growthCaption(shareData),$('.level-image-message'));};
 switchTab('today');
 window.addEventListener('load',()=>window.scrollTo({top:0,behavior:'instant'}));
 window.UmaQuestScreen={statNames,refresh,depart,animateQuest,levelUp,switchTab,fitCard(){}};

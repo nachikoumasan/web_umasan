@@ -16,9 +16,37 @@ async function render(width,height,draw){
  }
  throw last||Error('EXPORT_FAILED');
 }
-function save(blob,name){if(!blob)return;const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);}
+function download(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);}
+const isIOS=()=>typeof navigator!=='undefined'&&(/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1));
+const fallbackUrls=new WeakMap();let sharing=false;
+function message(note,text){if(!note)return;const old=fallbackUrls.get(note);if(old){URL.revokeObjectURL(old);fallbackUrls.delete(note);}note.textContent=text;}
+function link(note,text,url){if(!note)return;const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=text;note.append(' ',a);}
+function imageFallback(blob,note){message(note,'画像を開き、長押しして写真に保存してください。');if(note){const url=URL.createObjectURL(blob);fallbackUrls.set(note,url);link(note,'画像を開く',url);}return 'fallback';}
+async function save(blob,name,note){
+ if(!blob||sharing)return;
+ if(isIOS()){
+  let file;try{if(typeof File!=='undefined')file=new File([blob],name,{type:'image/png'});}catch{/* Use the image link on older browsers. */}
+  let supported=false;try{supported=!!(file&&navigator.share&&navigator.canShare?.({files:[file]}));}catch{/* Capability checks may be restricted. */}
+  if(!supported)return imageFallback(blob,note);
+  message(note,'共有メニューの「画像を保存」で写真に保存できます。');sharing=true;
+  try{await navigator.share({files:[file]});return 'shared';}
+  catch(e){if(e?.name==='AbortError'){message(note,'');return 'cancelled';}return imageFallback(blob,note);}
+  finally{sharing=false;}
+ }
+ try{download(blob,name);message(note,'画像のダウンロードを開始しました。');return 'download';}catch{message(note,'画像を保存できませんでした。もう一度お試しください。');return 'error';}
+}
 const xURL=text=>'https://x.com/intent/post?text='+encodeURIComponent(text);
-function post(text){window.open(xURL(text),'_blank','noopener,noreferrer');}
+async function post(text,note){
+ if(sharing)return;
+ if(isIOS()&&typeof navigator.share==='function'){
+  message(note,'共有先にXを選んでください。表示されない場合は「その他」を確認してください。');sharing=true;
+  // The caption already contains the event URL. Send no image, preserving its web thumbnail.
+  try{await navigator.share({text});return 'shared';}
+  catch(e){if(e?.name==='AbortError'){message(note,'');return 'cancelled';}message(note,'共有メニューを開けませんでした。');link(note,'Xをブラウザで開く',xURL(text));return 'fallback';}
+  finally{sharing=false;}
+ }
+ message(note,isIOS()?'この環境ではXをブラウザで開きます。':'');window.open(xURL(text),'_blank','noopener,noreferrer');return 'browser';
+}
 function errorCode(e){return e?.name==='SecurityError'?'画像の読み込み制限':e?.message==='NO_CANVAS'?'描画機能が利用不可':'画像変換に失敗';}
 window.UmaQuestExport={image,render,save,post,xURL,errorCode};
 })();
