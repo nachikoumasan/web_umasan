@@ -53,7 +53,7 @@ for(const stage of [null,'opened','started']){
 }
 const failedReport=appHarness(null,true);failedReport.api.recordQuest('autumn-door');assert.equal(failedReport.writes,0);assert.equal(Object.keys(failedReport.api.get().state.completed).length,0);
 const brokenReport=appHarness('{broken');brokenReport.api.recordQuest('autumn-door');assert.equal(brokenReport.stored,'{broken');assert.equal(brokenReport.writes,0);
-const html=fs.readFileSync(path.join(__dirname,'../uma_quest.html'),'utf8'),ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(ids.length,new Set(ids).size);
+const html=fs.readFileSync(path.join(__dirname,'../contents/uma_quest.html'),'utf8'),ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(ids.length,new Set(ids).size);
 // The completed letter shares directly, without another modal or progress writes.
 const shareApp=appHarness(JSON.stringify({...staged,name:'共有確認'}));
 const shareClick=id=>({target:{closest:selector=>selector==='[data-share]'?{dataset:{share:id}}:null}});
@@ -68,7 +68,7 @@ assert.equal(meta('og:url'),C.url);assert.equal(meta('twitter:card'),'summary_la
 assert.equal(meta('og:image'),meta('twitter:image'));assert.ok(meta('og:image:alt'));
 const imageURL=new URL(meta('og:image'));assert.equal(imageURL.origin,new URL(C.url).origin);
 assert.ok(fs.existsSync(path.join(__dirname,'..',imageURL.pathname)));
-for(const m of html.matchAll(/(?:src|href)="([^"]+)"/g)){if(!/^(?:#|\?|https?:)/.test(m[1]))assert.ok(fs.existsSync(path.join(__dirname,'..',m[1])),m[1]);}
+for(const m of html.matchAll(/(?:src|href)="([^"]+)"/g)){if(!/^(?:#|\?|https?:)/.test(m[1]))assert.ok(fs.existsSync(path.join(__dirname,'../contents',m[1])),m[1]);}
 assert.ok(html.indexOf('uma-quest-config.js')<html.indexOf('uma-quest-core.js'));assert.ok(html.indexOf('uma-quest-core.js')<html.indexOf('uma-quest.js'));
 assert.ok(!/gtag|google-analytics|googletagmanager/.test(html));assert.ok(!/fetch\(/.test(source));
 console.log('PASS: release dates/JST, completion/idempotency/undo, title and favorite reset, 7 ≠ 61, result eligibility, backups and invalid files, corrupt storage protection, denied reads/writes, explicit recovery, page references and script order.');

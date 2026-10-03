@@ -3,7 +3,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
-const pages = ['index.html', 'contents/umasan-camera.html'];
+const pages = ['index.html', 'contents/umasan-camera.html', 'contents/uma_quest.html'];
 const refs = [], duplicateIds = [];
 function add(value, base) {
   if (!value || /^(?:[a-z]+:|\/\/)/i.test(value)) return;
@@ -24,7 +24,7 @@ for (const name of fs.readdirSync(path.join(root, 'assets/css'))) {
 for (const name of fs.readdirSync(path.join(root, 'assets/js'))) {
   const source = read('assets/js/' + name);
   new vm.Script(source);
-  const page = name === 'camera.js' ? pages[1] : pages[0];
+  const page = name.startsWith('uma-quest') ? pages[2] : name === 'camera.js' ? pages[1] : pages[0];
   for (const m of source.matchAll(/["']((?:\.\.\/)?media\/[^"'$]+)["']/g)) add(m[1], page);
   for (const m of source.matchAll(/fetch\(['"]([^'"]+)['"]/g)) add(m[1], page);
 }

@@ -1,16 +1,16 @@
 {
-  "id": "./uma_quest.html?test=september",
+  "id": "../uma_quest.html?test=early",
   "name": "うまさんの冒険・試用",
   "short_name": "うまさんの冒険",
   "lang": "ja",
-  "start_url": "./uma_quest.html?test=september#adventure",
-  "scope": "./",
+  "start_url": "./uma_quest?test=early#adventure",
+  "scope": "../",
   "display": "standalone",
   "background_color": "#fff0d4",
   "theme_color": "#faf5e9",
   "icons": [
     {
-      "src": "media/quest/app-icon-v1.png",
+      "src": "../media/quest/app-icon-v1.png",
       "sizes": "1254x1254",
       "type": "image/png",
       "purpose": "any"

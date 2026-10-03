@@ -1,0 +1,7 @@
+# Keep shared links and existing home-screen shortcuts working after the move.
+/uma_quest /contents/uma_quest 301
+/uma_quest.html /contents/uma_quest 301
+/uma_quest/ /contents/uma_quest 301
+/uma-quest.webmanifest /contents/uma-quest.webmanifest 301
+/uma-quest-early.webmanifest /contents/uma-quest-early.webmanifest 301
+/uma-quest-trial.webmanifest /contents/uma-quest-trial.webmanifest 301

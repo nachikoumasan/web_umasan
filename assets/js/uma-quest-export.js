@@ -40,8 +40,10 @@ async function post(text,note){
  if(sharing)return;
  if(isIOS()&&typeof navigator.share==='function'){
   message(note,'共有先にXを選んでください。表示されない場合は「その他」を確認してください。');sharing=true;
-  // The caption already contains the event URL. Send no image, preserving its web thumbnail.
-  try{await navigator.share({text});return 'shared';}
+  // Pass the event as a URL item so native share targets can request its web card.
+  const url=window.UmaQuestConfig?.url;
+  const payload=url&&text.includes(url)?{text:text.replace(url,'').trim(),url}:{text};
+  try{await navigator.share(payload);return 'shared';}
   catch(e){if(e?.name==='AbortError'){message(note,'');return 'cancelled';}message(note,'共有メニューを開けませんでした。');link(note,'Xをブラウザで開く',xURL(text));return 'fallback';}
   finally{sharing=false;}
  }

@@ -23,7 +23,8 @@ vm.createContext(sandbox);vm.runInContext(source,sandbox);const E=sandbox.window
  assert.equal(await payload.files[0].text(),await blob.text());assert.equal(Object.keys(payload).join(','),'files');
  assert.equal(await E.post(message,note),undefined,'a second tap cannot open another share sheet');
  resolveShare();assert.equal(await saving,'shared');assert.ok(!note.textContent.includes('保存しました'));
- const posting=E.post(message,note);assert.equal(payload.text,message);assert.equal(Object.keys(payload).join(','),'text','caption includes URL; no image attachment replaces OGP');resolveShare();await posting;
+ sandbox.window.UmaQuestConfig={url:'https://example.test/quest'};
+ const posting=E.post(message,note);assert.equal(payload.text,'確認用 #旅するうまさん');assert.equal(payload.url,'https://example.test/quest');assert.equal(Object.keys(payload).join(','),'text,url','native share receives the web URL without duplicate text or an image attachment');resolveShare();await posting;
  const openedBefore=opened.length;
  sandbox.navigator.share=()=>Promise.reject(Object.assign(Error('cancel'),{name:'AbortError'}));
  assert.equal(await E.save(blob,'record.png',note),'cancelled');assert.equal(await E.post(message,note),'cancelled');assert.equal(note.textContent,'');assert.equal(downloads.length,0);assert.equal(opened.length,openedBefore);

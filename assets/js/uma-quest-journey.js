@@ -5,7 +5,7 @@ const statNames={explore:'観察力',create:'創造力',challenge:'行動力',re
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const make=(tag,cls,html='')=>{const e=document.createElement(tag);e.className=cls;e.innerHTML=html;return e;};
 const app=make('div','journey-app');app.id='quest-app';document.body.prepend(app);
-const brand=()=>'<img src="media/icon-horseshoe.webp" alt=""><span>うまさんからの挑戦状</span>';
+const brand=()=>'<img src="../media/icon-horseshoe.webp" alt=""><span>うまさんからの挑戦状</span>';
 const head=make('header','journey-head','<a href="./" aria-label="旅するうまさんのホーム">'+brand()+'</a><button type="button" id="journey-menu" aria-label="名前・設定を開く">☰</button>');app.append(head);
 const main=make('main','journey-main');main.id='adventure';$('#adventure').removeAttribute('id');app.append(main);
 function sheet(id,title){const el=make('dialog','journey-sheet','<header><h2>'+title+'</h2><button type="button" aria-label="閉じる">×</button></header><div class="sheet-body"></div>');el.id=id;document.body.append(el);el.querySelector('button').onclick=()=>el.close();return{el,body:el.querySelector('.sheet-body')};}
@@ -14,12 +14,12 @@ settings.body.append($('.profile-name'),$('#storage-error'));
 settings.body.append(make('p','storage-note','このブラウザに保存されます。ブラウザのデータ削除などで記録が失われることがあります。'));
 $('#journey-menu').onclick=()=>settings.el.showModal();
 const today=$('#today');today.className='journey-view quest-view';main.append(today);document.querySelector('body>main').remove();
-const start=make('section','journey-view start-view','<h1>ここから、<br>あなたの冒険。</h1><img class="door-guide" src="media/camera-pose-back.png" alt="あなたを誘ううまさん"><form id="departure-form" class="adventure-pass"><label for="journey-name">冒険者の名前</label><input id="journey-name" maxlength="16" required autocomplete="off"><p>ニックネームでOK</p><button class="primary" type="submit">この名前で出発する →</button><p class="first-storage">このブラウザに保存されます。データ削除などで記録が失われることがあります。</p></form>');start.id='journey-start';main.append(start);
+const start=make('section','journey-view start-view','<h1>ここから、<br>あなたの冒険。</h1><img class="door-guide" src="../media/camera-pose-back.png" alt="あなたを誘ううまさん"><form id="departure-form" class="adventure-pass"><label for="journey-name">冒険者の名前</label><input id="journey-name" maxlength="16" required autocomplete="off"><p>ニックネームでOK</p><button class="primary" type="submit">この名前で出発する →</button><p class="first-storage">このブラウザに保存されます。データ削除などで記録が失われることがあります。</p></form>');start.id='journey-start';main.append(start);
 $('#departure-form').onsubmit=e=>{e.preventDefault();document.dispatchEvent(new CustomEvent('journey-name',{detail:$('#journey-name').value}));};
-const level=make('section','journey-view level-view','<p class="level-up-heading">LEVEL UP!</p><div class="level-emblem" aria-hidden="true"><span id="level-initial"></span></div><h1 id="level-name"></h1><p class="level-before"></p><p class="level-after"></p><p class="level-growth"></p><p class="level-xp"></p><div class="level-guide"><p>よし！<br>もっとすてきな景色が<br>待っているよ！</p><img src="media/camera-pose-wave.png" alt="あなたの成長を喜ぶ案内役のうまさん"></div><div class="export-actions"><button id="save-level" disabled>画像を保存</button><button id="share-level">Xでシェア</button></div><button id="continue-journey" class="text-button">冒険を続ける　›</button><p class="level-image-message" role="status"></p>');level.id='journey-level';main.append(level);
+const level=make('section','journey-view level-view','<p class="level-up-heading">LEVEL UP!</p><div class="level-emblem" aria-hidden="true"><span id="level-initial"></span></div><h1 id="level-name"></h1><p class="level-before"></p><p class="level-after"></p><p class="level-growth"></p><p class="level-xp"></p><div class="level-guide"><p>よし！<br>もっとすてきな景色が<br>待っているよ！</p><img src="../media/camera-pose-wave.png" alt="あなたの成長を喜ぶ案内役のうまさん"></div><div class="export-actions"><button id="save-level" disabled>画像を保存</button><button id="share-level">Xでシェア</button></div><button id="continue-journey" class="text-button">冒険を続ける　›</button><p class="level-image-message" role="status"></p>');level.id='journey-level';main.append(level);
 const particles=make('div','level-particles','<span>✦</span><span>❧</span><span>✧</span><span>✦</span><span>❧</span>');particles.setAttribute('aria-hidden','true');level.prepend(particles);
 $('#continue-journey').onclick=()=>switchTab('today');
-const nav=make('nav','journey-nav','<button data-tab="today" aria-current="page"><img src="media/icon-book-storybook.webp" alt="">クエスト</button><button data-tab="journal"><img src="media/icon-compass-storybook.webp" alt="">ステータス</button>');nav.setAttribute('aria-label','冒険メニュー');app.append(nav);
+const nav=make('nav','journey-nav','<button data-tab="today" aria-current="page"><img src="../media/icon-book-storybook.webp" alt="">クエスト</button><button data-tab="journal"><img src="../media/icon-compass-storybook.webp" alt="">ステータス</button>');nav.setAttribute('aria-label','冒険メニュー');app.append(nav);
 let model,active='today',growthFile=null,shareData=null,revision=0;
 const growthCaption=data=>K.shareText(data.quest.title)+'\n'+data.state.name+' Lv.'+data.before.level+' → '+data.t.level;
 const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -41,7 +41,7 @@ function levelUp(data){
 async function prepareGrowth(data){
  const token=++revision;growthFile=null;shareData=data;$('#save-level').disabled=true;$('.level-image-message').textContent='画像を準備しています…';
  try{
- const guide=await E.image('media/camera-pose-wave.png');
+ const guide=await E.image('../media/camera-pose-wave.png');
  const blob=await E.render(1080,1350,(ctx,art)=>{
   const {state,t,before,quest}=data;
   const glow=ctx.createRadialGradient(540,510,10,540,510,720);glow.addColorStop(0,'#fff8c9');glow.addColorStop(1,'#fff5e7');ctx.fillStyle=glow;ctx.fillRect(0,0,1080,1350);
