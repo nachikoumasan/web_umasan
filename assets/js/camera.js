@@ -2,12 +2,31 @@
 const $ = selector => document.querySelector(selector);
 const canvas=$('#camera-canvas'),ctx=canvas.getContext('2d'),video=$('#camera-video'),app=$('.camera-app');
 const poseData=[
- ['front','いつものうまさん','../media/camera-pose-front.png'],
- ['wave','こんにちは','../media/camera-pose-wave.png'],
- ['sit','ひとやすみ','../media/camera-pose-sit.png'],
- ['side','おさんぽ','../media/camera-pose-side.png'],
- ['lantern','見つけた！','../media/camera-pose-lantern.png'],
- ['back','振り返って','../media/camera-pose-back.png']
+ ['wave','こんにちは','../media/camera-poses/01_wave.png'],
+ ['side','おさんぽ','../media/camera-poses/02_walk.png'],
+ ['sit','ひとやすみ','../media/camera-poses/03_sit.png'],
+ ['look-up','見上げる','../media/camera-poses/04_look_up.png'],
+ ['show','ご案内','../media/camera-poses/05_show.png'],
+ ['lantern','見つけた！','../media/camera-poses/06_lantern.png'],
+ ['map','地図を見る','../media/camera-poses/07_map.png'],
+ ['peek','ひょっこり','../media/camera-poses/08_peek.png'],
+ ['back','後ろ姿','../media/camera-poses/09_scenery_back.png'],
+ ['jump','ジャンプ','../media/camera-poses/10_jump.png'],
+ ['hang','ぶらさがる','../media/camera-poses/13_hang.png'],
+ ['balance','バランス','../media/camera-poses/14_balance.png'],
+ ['inspect','調べる','../media/camera-poses/15_inspect.png'],
+ ['camera','カメラ','../media/camera-poses/19_camera.png'],
+ ['star-jump','大きくジャンプ','../media/camera-poses/21_star_jump.png'],
+ ['laugh','笑う','../media/camera-poses/26_laugh.png'],
+ ['dance','ダンス','../media/camera-poses/27_dance.png'],
+ ['pout','むすっ','../media/camera-poses/29_pout.png'],
+ ['front','いつものうまさん','../media/camera-poses/32_ready.png'],
+ ['curious','興味しんしん','../media/camera-poses/33_curious.png'],
+ ['idea','ひらめき','../media/camera-poses/35_idea.png'],
+ ['wait','待って','../media/camera-poses/37_wait.png'],
+ ['retry','もう一度','../media/camera-poses/38_retry.png'],
+ ['solved','できた！','../media/camera-poses/39_solved.png'],
+ ['rest','休憩','../media/camera-poses/40_rest.png']
 ];
 let stream=null,source=null,facing='environment',phase='idle',animation=0,photoUrl=null,busy=false;
 let cameraZoom=1,sourceRequest=0,posesVisible=false,selectedId=null,nextStampId=0,loadingStamps=0;
