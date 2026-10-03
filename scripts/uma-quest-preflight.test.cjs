@@ -25,7 +25,7 @@ for(const threshold of [10,20,40]){
   if(count===threshold){record.titleId=award.id;assert.equal(K.validate(JSON.parse(JSON.stringify(record)),'preflight').titleId,award.id);}
  }
 }
-assert.equal(K.C.quests.length,61);assert.equal(normal.C.quests.length,7);assert.equal(old.C.quests.length,7);
+assert.equal(K.C.quests.length,61);assert.equal(normal.C.quests.length,61);assert.equal(old.C.quests.length,61);
 assert.equal(K.released(calendar.eventDay('2026-09-28')).length,0);
 assert.equal(K.released(calendar.eventDay('2026-09-29')).length,1);
 assert.equal(K.released(calendar.eventDay('2026-09-30')).length,2);
@@ -38,4 +38,4 @@ assert.equal(K.summary(state,K.C.end).level,10);assert.equal(K.summary(state,K.C
 const restored=K.validate(JSON.parse(JSON.stringify(state)),'preflight');assert.equal(Object.keys(restored.completed).length,61);
 assert.throws(()=>K.validate(restored,'participant'));assert.throws(()=>K.validate(restored,'trial'));
 assert.equal(K.summary(K.undo(restored,K.C.quests[60].id),K.C.end).trophies.find(t=>t.id==='all61').unlocked,false);
-console.log('PASS: early-test calendar, 61 daily releases, normal/legacy test unchanged, duplicate prevention, backup restore, mode isolation, 61-clear trophy and undo.');
+console.log('PASS: early-test calendar, 61 daily releases, shared production data with separate test dates, duplicate prevention, backup restore, mode isolation, 61-clear trophy and undo.');
