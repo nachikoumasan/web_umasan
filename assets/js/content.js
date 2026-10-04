@@ -135,10 +135,12 @@ window.UMASAN_CONTENT = {
 };
 
 window.UMASAN_CONTENT.news = [
+  {"date":"2026-10-01","category":"作品","title":"「うまさんからの挑戦状」公開","url":"contents/uma_quest.html","external":false},
   {"date":"2026-08-31","category":"作品","title":"Web探索型ARG「Echo Again」公開","url":"https://note.com/nachiko0215/n/n7160168d5528","external":true}
 ];
 
 window.UMASAN_CONTENT.history = [
+  {"year":"2026","category":"作品","title":"「うまさんからの挑戦状」を10/1に公開","period":"10/1","venue":null,"url":"contents/uma_quest.html"},
   {"year":"2026","category":"作品","title":"Web探索型ARG「Echo Again」を制作・公開","period":"8/31","venue":null,"url":"https://x.com/nachiko0215/status/2094429388205117519"},
   {"year":"2026","category":"作品","title":"うまさんカメラを公開","period":"5/9","venue":null,"url":"https://x.com/nachiko0215/status/2053060911423008779"},
   {"year":"2026","category":"作品","title":"うまさんからの挑戦状を公開","period":"4/29","venue":null,"url":"https://x.com/nachiko0215/status/2049279342379946036"},
