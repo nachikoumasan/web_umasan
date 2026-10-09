@@ -1,11 +1,20 @@
 {
-  "updatedAt": "2026-10-08",
+  "updatedAt": "2026-10-09",
   "genres": [
     "ARG",
     "没入型アート・イベント",
     "謎解き"
   ],
   "experiences": [
+    {
+      "genre": "謎解き",
+      "title": "いつものPARCOで、魔法を使う2時間｜魔法文字と初めての大冒険",
+      "rawTitle": "【周遊謎解きレポ】いつものPARCOで、魔法を使う2時間｜魔法文字と初めての大冒険【ネタバレなし】",
+      "url": "https://note.com/nachiko0215/n/n7b300fac8f31",
+      "image": "https://assets.st-note.com/production/uploads/images/322270114/rectangle_large_type_2_1c1ed6b690ff9097d0dfdd6612c9ba45.png?width=800",
+      "publishedAt": "2026-10-08",
+      "summary": "いつも買い物をしているPARCOに、魔法の文字が逃げ込んだ。"
+    },
     {
       "genre": "謎解き",
       "title": "遊ぶゲームを選んで、電車で冒険へ｜間違いだらけの遊戯場〈北急編〉",
@@ -248,15 +257,6 @@
       "image": "https://assets.st-note.com/production/uploads/images/244823671/rectangle_large_type_2_f22367540a59eab55f77007d768ece46.png?width=800",
       "publishedAt": "2026-01-24",
       "summary": "名古屋の街に、魔法陣が現れた。"
-    },
-    {
-      "genre": "謎解き",
-      "title": "海上漂流から生き残る極限脱出｜救命ボートからの脱出ゲーム",
-      "rawTitle": "【体験レポ】海上漂流から生き残る極限脱出｜救命ボートからの脱出ゲーム【名古屋】",
-      "url": "https://note.com/nachiko0215/n/ne6ac12d08e6a",
-      "image": "https://assets.st-note.com/production/uploads/images/244739462/rectangle_large_type_2_a59f7a95a65af00c1b9a137b3fa43120.png?width=800",
-      "publishedAt": "2026-01-24",
-      "summary": "「漂流した救命ボートからの脱出」に参加してきました。"
     },
     {
       "genre": "ARG",
