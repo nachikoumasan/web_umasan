@@ -1,11 +1,20 @@
 {
-  "updatedAt": "2026-10-14",
+  "updatedAt": "2026-10-15",
   "genres": [
     "ARG",
     "没入型アート・イベント",
     "謎解き"
   ],
   "experiences": [
+    {
+      "genre": "謎解き",
+      "title": "明治の新聞記者になって、村を歩き事件を追う｜江戸川乱歩と不可解な残像〜暁と影〜",
+      "rawTitle": "【周遊謎解きレポ】明治の新聞記者になって、村を歩き事件を追う｜江戸川乱歩と不可解な残像〜暁と影〜【ネタバレなし】",
+      "url": "https://note.com/nachiko0215/n/nc8e1031479ee",
+      "image": "https://assets.st-note.com/production/uploads/images/324515854/rectangle_large_type_2_d39bfea8c1390c8a3c428ab012344f21.png?width=800",
+      "publishedAt": "2026-10-15",
+      "summary": "明治の世界を取材し、手元の資料と組み合わせて、事件の真相へ。"
+    },
     {
       "genre": "謎解き",
       "title": "いつものPARCOで、魔法を使う2時間｜魔法文字と初めての大冒険",
@@ -248,15 +257,6 @@
       "image": "https://assets.st-note.com/production/uploads/images/246481851/rectangle_large_type_2_1218f5d8b7261d8404170c0f6cb2ffc6.png?width=800",
       "publishedAt": "2026-01-26",
       "summary": "満月と新月の夜だけ開く、不思議な店がある。"
-    },
-    {
-      "genre": "謎解き",
-      "title": "名古屋に現れた魔法陣を6時間かけて辿る｜NANICA 魔女の切符と7つ目の路線",
-      "rawTitle": "【周遊型謎解き体験レポ】名古屋に現れた魔法陣を6時間かけて辿る｜NANICA 魔女の切符と7つ目の路線 ",
-      "url": "https://note.com/nachiko0215/n/nd217f3c2b660",
-      "image": "https://assets.st-note.com/production/uploads/images/244823671/rectangle_large_type_2_f22367540a59eab55f77007d768ece46.png?width=800",
-      "publishedAt": "2026-01-24",
-      "summary": "名古屋の街に、魔法陣が現れた。"
     },
     {
       "genre": "ARG",
